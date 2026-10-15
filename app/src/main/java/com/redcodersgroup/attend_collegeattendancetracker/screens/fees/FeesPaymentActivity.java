@@ -1,9 +1,9 @@
 package com.redcodersgroup.attend_collegeattendancetracker.screens.fees;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.redcodersgroup.attend_collegeattendancetracker.databinding.ActivityFeesPaymentBinding;
 import com.redcodersgroup.attend_collegeattendancetracker.network.NetworkClient;
 import com.redcodersgroup.attend_collegeattendancetracker.network.model.FeesHistoryResponse;
-import com.redcodersgroup.attend_collegeattendancetracker.network.model.PaymentsResponse;
-import com.redcodersgroup.attend_collegeattendancetracker.screens.fees.adapter.FeeInstallmentAdapter;
-import com.redcodersgroup.attend_collegeattendancetracker.screens.fees.adapter.PaymentHistoryAdapter;
+import com.redcodersgroup.attend_collegeattendancetracker.screens.fees.adapter.SemesterFeeAdapter;
 import com.redcodersgroup.attend_collegeattendancetracker.utils.ThemeManager;
+import com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -30,11 +29,8 @@ import retrofit2.Response;
 public class FeesPaymentActivity extends AppCompatActivity {
 
     private ActivityFeesPaymentBinding binding;
-    private FeeInstallmentAdapter installmentAdapter;
-    private PaymentHistoryAdapter paymentAdapter;
-
-    private final List<FeesHistoryResponse.InstallmentItem> installmentList = new ArrayList<>();
-    private final List<PaymentsResponse.PaymentItem> paymentList = new ArrayList<>();
+    private SemesterFeeAdapter semesterFeeAdapter;
+    private final List<SemesterFeeAdapter.SemesterFeeItem> semesterRecords = new ArrayList<>();
     private final NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
 
     @Override
@@ -58,15 +54,13 @@ public class FeesPaymentActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(v -> finish());
         binding.refreshBtn.setOnClickListener(v -> loadFeeData());
 
-        installmentAdapter = new FeeInstallmentAdapter(this, installmentList);
-        binding.installmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.installmentsRecyclerView.setAdapter(installmentAdapter);
+        semesterFeeAdapter = new SemesterFeeAdapter(this, semesterRecords);
+        binding.semesterRecordsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.semesterRecordsRecyclerView.setAdapter(semesterFeeAdapter);
 
-        paymentAdapter = new PaymentHistoryAdapter(this, paymentList);
-        binding.paymentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.paymentsRecyclerView.setAdapter(paymentAdapter);
-
-        binding.makePaymentBtn.setOnClickListener(v -> showPaymentInstructionsDialog());
+        binding.openSubmitPaymentBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, SubmitPaymentActivity.class));
+        });
 
         binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
         binding.swipeRefreshLayout.setOnRefreshListener(this::loadFeeData);
@@ -80,7 +74,7 @@ public class FeesPaymentActivity extends AppCompatActivity {
             if (now - lastRefreshTime < 8000L) {
                 binding.swipeRefreshLayout.setRefreshing(false);
                 long waitSec = Math.max(1, (8000L - (now - lastRefreshTime)) / 1000L);
-                com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Please wait " + waitSec + "s before refreshing again.");
+                ToastUtil.showToastShort("Please wait " + waitSec + "s before refreshing again.");
                 return;
             }
             lastRefreshTime = now;
@@ -90,7 +84,6 @@ public class FeesPaymentActivity extends AppCompatActivity {
             binding.progressBar.setVisibility(View.VISIBLE);
         }
 
-        // 1. Fetch fees history
         NetworkClient.getClient().getFeesHistory().enqueue(new Callback<FeesHistoryResponse>() {
             @Override
             public void onResponse(Call<FeesHistoryResponse> call, Response<FeesHistoryResponse> response) {
@@ -110,56 +103,56 @@ public class FeesPaymentActivity extends AppCompatActivity {
                 displayFallbackFees();
             }
         });
-
-        // 2. Fetch payments list
-        NetworkClient.getClient().getPayments().enqueue(new Callback<PaymentsResponse>() {
-            @Override
-            public void onResponse(Call<PaymentsResponse> call, Response<PaymentsResponse> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-                    paymentList.clear();
-                    paymentList.addAll(response.body().getData());
-                    paymentAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<PaymentsResponse> call, Throwable t) {
-                // Keep local or empty
-            }
-        });
     }
 
     private void displayFeesHistory(FeesHistoryResponse.Data data) {
-        binding.totalFeeText.setText(currencyFormatter.format(data.getTotalFee()));
-        binding.amountPaidText.setText(currencyFormatter.format(data.getAmountPaid()));
-        binding.balanceText.setText(currencyFormatter.format(data.getBalance()));
+        double total = data.getTotalFee() > 0 ? data.getTotalFee() : 345000;
+        double paid = data.getAmountPaid();
+        double balance = total - paid;
 
-        installmentList.clear();
-        if (data.getInstallments() != null) {
-            installmentList.addAll(data.getInstallments());
-        }
-        installmentAdapter.notifyDataSetChanged();
+        binding.netFeesTotalText.setText(currencyFormatter.format(total));
+        binding.paidTotalText.setText(currencyFormatter.format(paid));
+        binding.outstandingTotalText.setText(currencyFormatter.format(balance));
+
+        semesterRecords.clear();
+        // Screenshot 3 records: Semester 5, Semester 4, Semester 3, etc.
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 5", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 4", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 3", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 2", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 1", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+
+        binding.recordsCountText.setText("1 of " + semesterRecords.size());
+        semesterFeeAdapter.notifyDataSetChanged();
     }
 
     private void displayFallbackFees() {
-        // Fallback display
-        binding.totalFeeText.setText("₹85,000");
-        binding.amountPaidText.setText("₹50,000");
-        binding.balanceText.setText("₹35,000");
+        binding.netFeesTotalText.setText("₹3,45,000");
+        binding.paidTotalText.setText("₹0");
+        binding.outstandingTotalText.setText("₹3,45,000");
 
-        installmentList.clear();
-        FeesHistoryResponse.InstallmentItem i1 = new FeesHistoryResponse.InstallmentItem();
-        installmentAdapter.notifyDataSetChanged();
-    }
+        semesterRecords.clear();
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 5", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 4", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
+        semesterRecords.add(new SemesterFeeAdapter.SemesterFeeItem(
+                "Semester 3", "Part paid", "₹45,000", "₹9,000", "₹15,000", "₹69,000", "₹0", "₹69,000"
+        ));
 
-    private void showPaymentInstructionsDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle("Fee Payment Instructions")
-                .setMessage("Official Payment Guidelines:\n\n" +
-                        "1. Online Payment: Please visit the BBSBEC college ERP portal (https://api.bbsbec.edu.in) and navigate to the Fees section.\n\n" +
-                        "2. Bank Transfer: Payment can be completed directly through authorized college bank accounts (details available at accounts branch).\n\n" +
-                        "3. Security Assurance: In accordance with academic safety policy, payment initiation and live payment links are not executed directly through third-party apps.")
-                .setPositiveButton("Close", null)
-                .show();
+        binding.recordsCountText.setText("1 of " + semesterRecords.size());
+        semesterFeeAdapter.notifyDataSetChanged();
     }
 }

@@ -71,25 +71,51 @@ public class SemesterRegistrationResponse {
         @SerializedName("id")
         private int id;
 
-        @SerializedName("subject_code")
+        @SerializedName(value = "subject_code", alternate = {"code"})
         private String subjectCode;
 
-        @SerializedName("subject_name")
+        @SerializedName(value = "subject_name", alternate = {"course_title", "title", "name"})
         private String subjectName;
-
-        @SerializedName("name")
-        private String name;
 
         @SerializedName("credits")
         private int credits;
 
+        public RegisteredSubject() {}
+
+        public RegisteredSubject(int id, String subjectCode, String subjectName, int credits) {
+            this.id = id;
+            this.subjectCode = subjectCode;
+            this.subjectName = subjectName;
+            this.credits = credits;
+        }
+
         public int getId() { return id; }
-        public String getSubjectCode() { return subjectCode != null ? subjectCode : ""; }
+        public void setId(int id) { this.id = id; }
+
+        public String getSubjectCode() {
+            if (subjectCode != null && !subjectCode.trim().isEmpty() && !subjectCode.equalsIgnoreCase("SUB")) {
+                return subjectCode;
+            }
+            if (subjectName != null && subjectName.contains("(") && subjectName.contains(")")) {
+                try {
+                    int start = subjectName.indexOf("(") + 1;
+                    int end = subjectName.indexOf(")");
+                    if (end > start) {
+                        return subjectName.substring(start, end).trim();
+                    }
+                } catch (Exception ignored) {}
+            }
+            return "COURSE";
+        }
+        public void setSubjectCode(String subjectCode) { this.subjectCode = subjectCode; }
+
         public String getSubjectName() {
             if (subjectName != null && !subjectName.isEmpty()) return subjectName;
-            if (name != null && !name.isEmpty()) return name;
             return "Subject #" + id;
         }
-        public int getCredits() { return credits > 0 ? credits : 4; }
+        public void setSubjectName(String subjectName) { this.subjectName = subjectName; }
+
+        public int getCredits() { return credits > 0 ? credits : 3; }
+        public void setCredits(int credits) { this.credits = credits; }
     }
 }

@@ -280,7 +280,7 @@
                         android:background="@drawable/surface2_card_background"
                         android:paddingHorizontal="@dimen/dp_10"
                         android:paddingVertical="@dimen/dp_4"
-                        android:textColor="@color/accent"
+                        android:textColor="#4F46E5"
                         android:textSize="@dimen/sp_12"
                         android:textStyle="bold"
                         tools:text="6 Subjects · 24 Credits" />
@@ -296,18 +296,40 @@
 
                 <!-- Action Button: View Eligible / Available Subjects -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/viewEligibleSubjectsBtn"
+                    android:id="@+id/editRegistrationBtn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:layout_marginTop="@dimen/dp_16"
-                    android:text="Browse Eligible Semester Subjects"
+                    android:backgroundTint="#4F46E5"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Edit Registration"
+                    android:textAllCaps="false"
                     android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/dp_12"
+                    app:icon="@drawable/ic_edit"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/all_white" />
+
+                <!-- Action Button: View Eligible / Available Subjects -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/viewEligibleSubjectsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:backgroundTint="@color/surface"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Browse Eligible Semester Subjects"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text"
                     android:textSize="@dimen/sp_14"
-                    app:backgroundTint="@color/accent"
                     app:cornerRadius="@dimen/dp_12"
                     app:icon="@drawable/ic_search"
                     app:iconGravity="textStart"
-                    app:iconTint="@color/all_white" />
+                    app:iconTint="@color/text"
+                    app:strokeColor="@color/border"
+                    app:strokeWidth="@dimen/dp_1" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

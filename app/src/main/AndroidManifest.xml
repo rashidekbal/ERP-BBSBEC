@@ -80,6 +80,12 @@
             android:name=".screens.fees.FeesPaymentActivity"
             android:exported="false" />
         <activity
+            android:name=".screens.fees.SubmitPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.registration.EditRegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.webmail.WebmailActivity"
             android:exported="false" />
         <activity

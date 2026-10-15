@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Top Toolbar Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_15">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_left"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_weight="1"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="Submit Payment"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Scrollable Form Container -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_30">
+
+            <!-- Subtitle -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Pay against a semester fee record and attach your receipt."
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_13" />
+
+            <!-- 1. Fee Record -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Fee record"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/feeRecordSpinnerBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/feeRecordSelectedText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Semester 5 (₹69,000)"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 2. Payment Mode -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Payment mode"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/paymentModeSpinnerBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/paymentModeSelectedText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:hint="Select payment mode"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 3. Amount -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Amount"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/amountInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="Amount paid"
+                android:inputType="numberDecimal"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 4. Payment Date -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Payment date"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/paymentDateBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/paymentDateText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="15 Oct 2026"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_calendar_event"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 5. Payer Name -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Payer name"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/payerNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="Name on the account"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 6. Payer Relation -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Payer relation"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/payerRelationSpinnerBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/payerRelationSelectedText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Self"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 7. Bank -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Bank"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/bankSpinnerBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bankSelectedText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:hint="Select bank"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 8. Account Last 4 Digits -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Account last 4 digits"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/accountDigitsInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="1234"
+                android:inputType="number"
+                android:maxLength="4"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 9. Mobile -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Mobile"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/mobileInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="10-digit mobile"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 10. Alt Mobile (Optional) -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Alt mobile (optional)"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/altMobileInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="Optional"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 11. Reference Type -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Reference type"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/refTypeSpinnerBox"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/refTypeSelectedText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="UTR"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_chevron_down"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+            <!-- 12. Reference Number -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Reference number"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/refNumberInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="UTR / RRN"
+                android:inputType="textCapCharacters"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 13. Remark (Optional) -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Remark (optional)"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/remarkInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_6"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:background="@drawable/bg_rounded_input_field"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:hint="Optional note"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+            <!-- 14. Receipt -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Receipt"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="PDF / JPG / PNG, up to 5 MB."
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+            <!-- Attach Receipt Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/attachReceiptBtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:backgroundTint="@color/surface"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Attach receipt"
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_14"
+                app:cornerRadius="@dimen/dp_12"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1" />
+
+            <!-- Attached Receipt Name Indicator -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/attachedReceiptText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_14"
+                android:drawableStart="@drawable/ic_attachment"
+                android:drawablePadding="@dimen/dp_8"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="#4F46E5"
+                android:textSize="@dimen/sp_13"
+                android:visibility="gone"
+                tools:text="receipt_sem5_oct2026.pdf" />
+
+            <!-- 15. Submit payment button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitPaymentBtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:backgroundTint="#4F46E5"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Submit payment"
+                android:textAllCaps="false"
+                android:textColor="@color/all_white"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/dp_12" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

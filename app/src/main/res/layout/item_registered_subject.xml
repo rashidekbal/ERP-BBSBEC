@@ -29,7 +29,7 @@
                 android:id="@+id/subjectCodeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/accent"
+                android:textColor="#4F46E5"
                 android:textSize="@dimen/sp_12"
                 android:textStyle="bold"
                 tools:text="BTCS-701" />

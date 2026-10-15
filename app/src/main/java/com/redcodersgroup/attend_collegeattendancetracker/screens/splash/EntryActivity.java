@@ -26,16 +26,38 @@ public class EntryActivity extends AppCompatActivity {
     }
 
     private void handleNavigation() {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(() -> {
-            if (isFinishing() || isDestroyed()) return;
-            if (!TokenManager.isLoggedIn()) {
+        if (!TokenManager.isLoggedIn()) {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                if (isFinishing() || isDestroyed()) return;
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();
-                return;
-            }
+            }, 1000);
+            return;
+        }
+
+        final boolean[] navigated = {false};
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        Runnable navigateHome = () -> {
+            if (navigated[0] || isFinishing() || isDestroyed()) return;
+            navigated[0] = true;
             startActivity(new Intent(this, HomeActivity.class));
             finish();
-        }, 1200);
+        };
+
+        // Guarantee maximum splash duration of 2500ms
+        handler.postDelayed(navigateHome, 2500);
+
+        com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncOnLaunchIfNeeded(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(() -> handler.postDelayed(navigateHome, 800));
+            }
+
+            @Override
+            public void onError(String message) {
+                runOnUiThread(() -> handler.postDelayed(navigateHome, 800));
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
@@ -34,29 +35,16 @@
                 app:tint="@color/text" />
         </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_14"
             android:layout_weight="1"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fees &amp; Payments"
-                android:textColor="@color/text"
-                android:textSize="@dimen/sp_20"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_2"
-                android:text="Fee Ledger, Dues &amp; Receipts"
-                android:textColor="@color/text_dim"
-                android:textSize="@dimen/sp_12" />
-        </LinearLayout>
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="Fees"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/refreshBtn"
@@ -71,14 +59,17 @@
                 android:layout_width="@dimen/dp_20"
                 android:layout_height="@dimen/dp_20"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_restore"
+                android:src="@drawable/ic_widget_refresh"
                 app:tint="@color/text" />
         </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 
+    <!-- Main Content with Swipe Refresh -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -93,215 +84,316 @@
             android:layout_height="match_parent">
 
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/contentScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="@dimen/dp_15"
                 android:scrollbars="none">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/dp_40">
-
-                <!-- Safety Notice Banner -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:background="@drawable/surface2_card_background"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/dp_14"
-                    android:paddingVertical="@dimen/dp_10">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_20"
-                        android:src="@drawable/info_alert"
-                        app:tint="@color/text" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp_10"
-                        android:layout_weight="1"
-                        android:text="Official ledger records. Direct API payment links are disabled for financial safety."
-                        android:textColor="@color/text_dim"
-                        android:textSize="@dimen/sp_12" />
-                </LinearLayout>
-
-                <!-- 1. Fee Balance Summary Card (3 Columns) -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_14"
-                    android:background="@drawable/surface_card_bg"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/dp_16"
-                    android:paddingVertical="@dimen/dp_16">
+                    android:paddingBottom="@dimen/dp_80">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
+                    <!-- 1. Top Card: Net fees Hero Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/plus_jakarta_sans"
-                        android:text="Financial Summary"
-                        android:textColor="@color/text"
-                        android:textSize="@dimen/sp_15"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="@dimen/dp_10"
+                        app:cardBackgroundColor="@color/surface"
+                        app:cardCornerRadius="@dimen/dp_16"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_18">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Net fees"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_13" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/netFeesTotalText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_4"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="₹3,45,000"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_28"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_14"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/plus_jakarta_sans"
+                                        android:text="PAID"
+                                        android:textColor="@color/text_dim"
+                                        android:textSize="@dimen/sp_11"
+                                        android:textStyle="bold" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/paidTotalText"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp_2"
+                                        android:fontFamily="@font/plus_jakarta_sans"
+                                        android:text="₹0"
+                                        android:textColor="@color/success"
+                                        android:textSize="@dimen/sp_16"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/plus_jakarta_sans"
+                                        android:text="OUTSTANDING"
+                                        android:textColor="@color/text_dim"
+                                        android:textSize="@dimen/sp_11"
+                                        android:textStyle="bold" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/outstandingTotalText"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp_2"
+                                        android:fontFamily="@font/plus_jakarta_sans"
+                                        android:text="₹3,45,000"
+                                        android:textColor="#B45309"
+                                        android:textSize="@dimen/sp_16"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 2. Balance due Warning Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_14"
+                        app:cardBackgroundColor="#FFFBEB"
+                        app:cardCornerRadius="@dimen/dp_14"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#FDE68A"
+                        app:strokeWidth="@dimen/dp_1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="@dimen/dp_16"
+                            android:paddingVertical="@dimen/dp_14">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Balance due"
+                                android:textColor="#92400E"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_4"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:lineSpacingExtra="@dimen/dp_2"
+                                android:text="Pending payments are not included in the paid total until verified by the college."
+                                android:textColor="#78350F"
+                                android:textSize="@dimen/sp_12" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 3. Section Header: Semester records & Pagination -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_12"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:layout_marginTop="@dimen/dp_18"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <!-- Total Fee -->
-                        <LinearLayout
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/dp_4"
                             android:layout_weight="1"
-                            android:background="@drawable/surface2_card_background"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/dp_12">
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Semester records"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_16"
+                            android:textStyle="bold" />
 
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/totalFeeText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/plus_jakarta_sans"
-                                android:textColor="@color/text"
-                                android:textSize="@dimen/sp_15"
-                                android:textStyle="bold"
-                                tools:text="₹85,000" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_2"
-                                android:text="Total Fee"
-                                android:textColor="@color/text_dim"
-                                android:textSize="@dimen/sp_11" />
-                        </LinearLayout>
-
-                        <!-- Paid -->
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/recordsCountText"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/dp_4"
-                            android:layout_weight="1"
-                            android:background="@drawable/surface2_card_background"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/dp_12">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/amountPaidText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/plus_jakarta_sans"
-                                android:textColor="@color/success"
-                                android:textSize="@dimen/sp_15"
-                                android:textStyle="bold"
-                                tools:text="₹50,000" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_2"
-                                android:text="Paid"
-                                android:textColor="@color/text_dim"
-                                android:textSize="@dimen/sp_11" />
-                        </LinearLayout>
-
-                        <!-- Balance Due -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_4"
-                            android:layout_weight="1"
-                            android:background="@drawable/surface2_card_background"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/dp_12">
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/balanceText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/plus_jakarta_sans"
-                                android:textColor="@color/danger"
-                                android:textSize="@dimen/sp_15"
-                                android:textStyle="bold"
-                                tools:text="₹35,000" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_2"
-                                android:text="Balance"
-                                android:textColor="@color/text_dim"
-                                android:textSize="@dimen/sp_11" />
-                        </LinearLayout>
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="1 of 1"
+                            android:textColor="#4F46E5"
+                            android:textSize="@dimen/sp_13"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:lineSpacingExtra="@dimen/dp_2"
+                        android:text="Fee records by semester, line items and how much is paid. This module is under development — records below may not be accurate; please ignore any discrepancy."
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12" />
+
+                    <!-- Per Page Pagination Selector -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginBottom="@dimen/dp_14"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_8"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Per page"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="@dimen/dp_32"
+                            android:layout_height="@dimen/dp_32"
+                            android:layout_marginEnd="@dimen/dp_8"
+                            app:cardBackgroundColor="@color/surface"
+                            app:cardCornerRadius="@dimen/dp_16"
+                            app:cardElevation="0dp"
+                            app:strokeColor="#4F46E5"
+                            app:strokeWidth="@dimen/dp_1">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="20"
+                                android:textColor="#4F46E5"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="@dimen/dp_32"
+                            android:layout_height="@dimen/dp_32"
+                            android:layout_marginEnd="@dimen/dp_8"
+                            app:cardBackgroundColor="@color/surface"
+                            app:cardCornerRadius="@dimen/dp_16"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="50"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_12" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_32"
+                            app:cardBackgroundColor="@color/surface"
+                            app:cardCornerRadius="@dimen/dp_16"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="100"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                    <!-- 4. Semester Fee Records RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/semesterRecordsRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_semester_fee_card" />
+
                 </LinearLayout>
-
-                <!-- 2. Installments / Ledger Section -->
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_20"
-                    android:fontFamily="@font/plus_jakarta_sans"
-                    android:text="Installments &amp; Dues"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/installmentsRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:nestedScrollingEnabled="false" />
-
-                <!-- 3. Payment History Section -->
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_20"
-                    android:fontFamily="@font/plus_jakarta_sans"
-                    android:text="Payment History &amp; Receipts"
-                    android:textColor="@color/text"
-                    android:textSize="@dimen/sp_16"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/paymentsRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:nestedScrollingEnabled="false" />
-
-                <!-- Safe Pay Button (Explains safe payment methods) -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/makePaymentBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_50"
-                    android:layout_marginTop="@dimen/dp_20"
-                    android:text="Fee Payment Instructions"
-                    android:textColor="@color/all_white"
-                    android:textSize="@dimen/sp_14"
-                    app:backgroundTint="@color/accent"
-                    app:cornerRadius="@dimen/dp_12"
-                    app:icon="@drawable/ic_payments"
-                    app:iconGravity="textStart"
-                    app:iconTint="@color/all_white" />
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <!-- Bottom Action Button for Submit Payment -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bottom_sheet_bg"
+            android:paddingHorizontal="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_16">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/openSubmitPaymentBtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:backgroundTint="#4F46E5"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Submit Payment"
+                android:textAllCaps="false"
+                android:textColor="@color/all_white"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/dp_12"
+                app:icon="@drawable/ic_payments"
+                app:iconGravity="textStart"
+                app:iconTint="@color/all_white" />
+        </FrameLayout>
+
     </FrameLayout>
 </LinearLayout>

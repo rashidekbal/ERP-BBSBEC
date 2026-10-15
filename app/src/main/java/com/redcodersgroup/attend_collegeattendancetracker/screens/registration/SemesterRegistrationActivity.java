@@ -64,6 +64,9 @@ public class SemesterRegistrationActivity extends AppCompatActivity {
         binding.registeredSubjectsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.registeredSubjectsRecyclerView.setAdapter(adapter);
 
+        binding.editRegistrationBtn.setOnClickListener(v -> {
+            startActivity(new android.content.Intent(this, EditRegistrationActivity.class));
+        });
         binding.viewEligibleSubjectsBtn.setOnClickListener(v -> showEligibleSubjectsDialog());
 
         binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
@@ -161,9 +164,17 @@ public class SemesterRegistrationActivity extends AppCompatActivity {
                 int totalCredits = 0;
                 if (subs != null) {
                     for (SubjectSchema s : subs) {
-                        SemesterRegistrationResponse.RegisteredSubject reg = new SemesterRegistrationResponse.RegisteredSubject();
+                        String name = s.getSubjectName() != null && !s.getSubjectName().isEmpty()
+                                ? s.getSubjectName()
+                                : "Subject Course";
+                        String code = s.getSubjectCode() != null && !s.getSubjectCode().isEmpty()
+                                ? s.getSubjectCode()
+                                : (s.isLab() ? "LAB" : "THEORY");
+                        int credits = s.getCredits() > 0 ? s.getCredits() : (s.isLab() ? 1 : 3);
+                        SemesterRegistrationResponse.RegisteredSubject reg =
+                                new SemesterRegistrationResponse.RegisteredSubject(s.getSid(), code, name, credits);
                         subjectList.add(reg);
-                        totalCredits += (s.isLab() ? 2 : 4);
+                        totalCredits += credits;
                     }
                 }
                 binding.subjectCountBadge.setText(subjectList.size() + " Subjects · " + totalCredits + " Credits");
