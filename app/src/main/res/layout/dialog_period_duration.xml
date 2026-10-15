@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/surface_card_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingVertical="@dimen/dp_20">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/set_period_duration"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:text="@string/choose_standard_duration_or_enter_custom"
+        android:textColor="@color/text_dim"
+        android:textSize="@dimen/sp_13" />
+
+    <!-- Preset Chips -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/durationPresetChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        app:singleLine="false"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip30min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_30_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip40min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_40_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip45min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_45_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip50min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_50_minsample"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip55min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_55_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip60min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_60_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip75min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_75_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip90min"
+            style="@style/Widget.Material3.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_90_min"
+            android:textColor="@color/text"
+            app:chipBackgroundColor="@color/surface2" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Custom Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/customDurationLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:hint="@string/custom_minutes_e_g_50"
+        android:textColorHint="@color/text_dim"
+        app:boxBackgroundColor="@color/surface2"
+        app:boxCornerRadiusBottomEnd="@dimen/dp_8"
+        app:boxCornerRadiusBottomStart="@dimen/dp_8"
+        app:boxCornerRadiusTopEnd="@dimen/dp_8"
+        app:boxCornerRadiusTopStart="@dimen/dp_8"
+        app:boxStrokeColor="@color/accent"
+        app:hintTextColor="@color/accent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/customDurationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:maxLines="1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_15" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Dialog Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_18"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelBtn"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/text_dim" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveDurationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:backgroundTint="@color/accent"
+            android:text="@string/apply"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

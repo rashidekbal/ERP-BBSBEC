@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingTop="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_28">
+
+    <!-- Bottom Sheet Drag Handle -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/dp_36"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:cardBackgroundColor="@color/border"
+        app:cardCornerRadius="@dimen/dp_2"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp" />
+
+    <!-- 1. Add Assignment Option -->
+    <LinearLayout
+        android:id="@+id/add_assignment_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/dp_10">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_14"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="📝"
+                android:textSize="@dimen/sp_16" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/add_assignment"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="Due date + reminder notification"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_subject"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/border"
+        android:visibility="gone" />
+
+    <!-- 2. Add Subject Option (Disabled: ERP synced only) -->
+    <LinearLayout
+        android:id="@+id/add_subject_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/dp_10"
+        android:visibility="gone">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_14"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="📚"
+                android:textSize="@dimen/sp_16" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/add_subject_1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="@string/new_subject_with_weekly_class_count"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_marks"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/border"
+        android:visibility="gone" />
+
+    <!-- 3. Add Marks Option (Disabled: ERP synced only) -->
+    <LinearLayout
+        android:id="@+id/add_marks_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/dp_10"
+        android:visibility="gone">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_14"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="📊"
+                android:textSize="@dimen/sp_16" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/add_marks"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="@string/log_a_mid_sem_marks"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/border" />
+
+    <!-- 4. Add Holiday Option -->
+    <LinearLayout
+        android:id="@+id/add_holiday_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/dp_10">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_14"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="🌴"
+                android:textSize="@dimen/sp_16" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/add_holiday"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="Excluded from attendance automatically"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

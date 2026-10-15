@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingTop="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_24">
+
+    <!-- Bottom sheet drag handle -->
+    <View
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_14"
+        android:background="@drawable/surface2_card_background" />
+
+    <!-- Header Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialogDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                tools:text="15 Aug 2026" />
+
+            <TextView
+                android:id="@+id/dialogDaySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_13"
+                tools:text="Saturday • Today" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="@dimen/dp_28"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/close"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/ic_close"
+            app:tint="@color/text_dim" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginVertical="@dimen/dp_12"
+        android:background="@color/surface2" />
+
+    <!-- Day Schedule Info Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_12"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/border"
+        app:strokeWidth="@dimen/dp_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_14">
+
+            <ImageView
+                android:id="@+id/scheduleIcon"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:src="@drawable/time_table"
+                app:tint="@color/accent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/scheduleHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timetable_schedule"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/scheduleDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="Period 1 (09:00 AM - 09:50 AM)" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Current Attendance Status Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/currentStatusCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_12"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_12"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/border"
+        app:strokeWidth="@dimen/dp_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_14">
+
+            <View
+                android:id="@+id/statusDotIndicator"
+                android:layout_width="@dimen/dp_12"
+                android:layout_height="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@drawable/dot_shape" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attendance_status"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/statusDetailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold"
+                    tools:text="Marked Present" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Restricted Notice Banner -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/restrictedNoticeCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/surface2"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/restrictedNoticeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_12"
+            android:textColor="@color/danger"
+            android:textSize="@dimen/sp_12"
+            tools:text="Cannot mark attendance for future dates." />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginTop="@dimen/dp_8"
+        android:backgroundTint="@color/accent"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textColor="@color/all_white"
+        android:textSize="@dimen/sp_15"
+        app:cornerRadius="@dimen/dp_12" />
+
+</LinearLayout>

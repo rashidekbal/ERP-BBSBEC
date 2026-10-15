@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_border"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/dp_14">
+
+    <!-- Mini Ring Circular Progress Indicator with centered % text -->
+    <FrameLayout
+        android:layout_width="@dimen/dp_46"
+        android:layout_height="@dimen/dp_46"
+        android:layout_marginEnd="@dimen/dp_12">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/miniRingIndicator"
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="@dimen/dp_46"
+            android:layout_gravity="center"
+            android:progress="0"
+            tools:progress="80"
+            app:indicatorColor="@color/success"
+            app:indicatorSize="@dimen/dp_46"
+            app:trackColor="@color/surface2"
+            app:trackCornerRadius="@dimen/dp_2"
+            app:trackThickness="@dimen/dp_4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/attendance_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/outfit"
+            app:fontFamily="@font/outfit"
+            android:textColor="@color/success"
+            android:textSize="@dimen/sp_11"
+            android:textStyle="bold"
+            tools:text="80%" />
+    </FrameLayout>
+
+    <!-- Legacy compatibility dot view (hidden) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/accent_color"
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="@dimen/dp_1"
+        android:visibility="gone"
+        app:strokeWidth="0dp" />
+
+    <LinearLayout
+        android:id="@+id/subjectInfoContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ssubjectName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            tools:text="Database Management Systems" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subjectFacultyAndRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:ellipsize="end"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:maxLines="1"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone"
+            tools:text="Manjit Kaur · Room N 321"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/class_attended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_12"
+            tools:text="32 / 40 attended · 50 total classes" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/dp_18"
+        android:layout_height="@dimen/dp_18"
+        android:layout_marginStart="@dimen/dp_10"
+        android:padding="@dimen/dp_3"
+        android:rotation="180"
+        android:src="@drawable/greater_than"
+        app:tint="@color/text_dim" />
+
+</LinearLayout>

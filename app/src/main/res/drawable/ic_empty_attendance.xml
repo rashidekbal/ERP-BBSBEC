@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="@color/accent_dim"
+        android:pathData="M36,36m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
+    <!-- Attendance Card / Book -->
+    <path
+        android:strokeColor="@color/accent"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M23,22h26a4,4 0,0 1,4 4v24a4,4 0,0 1,-4 4H23a4,4 0,0 1,-4 -4V26a4,4 0,0 1,4 -4z" />
+    <!-- Chart Bars inside -->
+    <path
+        android:strokeColor="@color/color_blue"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M27,45v-8M36,45v-16M45,45v-11" />
+</vector>

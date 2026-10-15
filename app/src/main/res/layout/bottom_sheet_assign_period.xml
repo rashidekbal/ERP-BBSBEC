@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_18"
+    android:paddingTop="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_24">
+
+    <!-- Handle Bar -->
+    <View
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_14"
+        android:background="@drawable/surface2_card_background" />
+
+    <!-- Header Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assign_period_1_monday"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dialogSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="@string/_09_00_am_09_50_am"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="@dimen/dp_28"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/close"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/ic_close"
+            app:tint="@color/text_dim" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginVertical="@dimen/dp_12"
+        android:background="@color/surface2" />
+
+    <!-- Clear / Free Period Option -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/clearPeriodCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/danger"
+        app:strokeWidth="@dimen/dp_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingVertical="@dimen/dp_12">
+
+            <ImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:contentDescription="@string/free_period"
+                android:src="@drawable/ic_close"
+                app:tint="@color/danger" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/free_period_no_class"
+                    android:textColor="@color/danger"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:text="@string/remove_any_subject_assigned_to_this_slot"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:text="@string/select_subject"
+        android:textColor="@color/text_dim"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold" />
+
+    <!-- RecyclerView of Subjects -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSubjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="@dimen/dp_260"
+        android:nestedScrollingEnabled="false"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_assign_subject_option" />
+
+</LinearLayout>

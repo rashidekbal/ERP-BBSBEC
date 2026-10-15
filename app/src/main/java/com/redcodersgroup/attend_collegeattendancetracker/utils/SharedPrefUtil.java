@@ -1,0 +1,77 @@
+package com.redcodersgroup.attend_collegeattendancetracker.utils;
+
+import com.redcodersgroup.attend_collegeattendancetracker.constants.SharedPrefKeys;
+
+import com.redcodersgroup.attend_collegeattendancetracker.core.SharedPref;
+
+
+public class SharedPrefUtil {
+
+
+    public static boolean isSetupComplete(){
+       return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.IS_SETUP_COMPLETE.toString(),false);
+    }
+    public static void setSetupComplete(boolean val){
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.IS_SETUP_COMPLETE.toString(),val).apply();
+    }
+
+    public static int getPeriodLength() {
+        return SharedPref.getSharedPrefs().getInt(SharedPrefKeys.PERIOD_LENGTH.toString(), 50);
+    }
+
+    public static void setPeriodLength(int lengthMinutes) {
+        SharedPref.getSharedPrefs().edit().putInt(SharedPrefKeys.PERIOD_LENGTH.toString(), lengthMinutes).apply();
+    }
+
+    public static String getAccentColor() {
+        return SharedPref.getSharedPrefs().getString(SharedPrefKeys.ACCENT_COLOR.toString(), "#F5A623");
+    }
+
+    public static void setAccentColor(String colorHex) {
+        SharedPref.getSharedPrefs().edit().putString(SharedPrefKeys.ACCENT_COLOR.toString(), colorHex).apply();
+    }
+
+    public static boolean isAttendanceReminderEnabled() {
+        return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.ATTENDANCE_REMINDERS.toString(), true);
+    }
+
+    public static void setAttendanceReminderEnabled(boolean enabled) {
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.ATTENDANCE_REMINDERS.toString(), enabled).apply();
+    }
+
+    public static boolean isAssignmentReminderEnabled() {
+        return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.ASSIGNMENT_REMINDERS.toString(), true);
+    }
+
+    public static void setAssignmentReminderEnabled(boolean enabled) {
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.ASSIGNMENT_REMINDERS.toString(), enabled).apply();
+    }
+
+    public static boolean isHolidayAlertEnabled() {
+        return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.HOLIDAY_ALERTS.toString(), true);
+    }
+
+    public static void setHolidayAlertEnabled(boolean enabled) {
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.HOLIDAY_ALERTS.toString(), enabled).apply();
+    }
+
+    public static boolean isDarkModeEnabled() {
+        return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.DARK_MODE.toString(), false);
+    }
+
+    public static void setDarkModeEnabled(boolean enabled) {
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.DARK_MODE.toString(), enabled).apply();
+    }
+
+
+
+
+
+    public static boolean isProfileComplete() {
+        return SharedPref.getSharedPrefs().getBoolean(SharedPrefKeys.IS_PROFILE_COMPLETE.toString(), false);
+    }
+
+    public static void setProfileComplete(boolean val) {
+        SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.IS_PROFILE_COMPLETE.toString(), val).apply();
+    }
+}

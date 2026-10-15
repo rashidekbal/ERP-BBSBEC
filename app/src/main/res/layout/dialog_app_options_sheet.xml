@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_18"
+    android:paddingTop="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_24">
+
+    <!-- Handle Bar -->
+    <View
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_14"
+        android:background="@drawable/surface2_card_background" />
+
+    <!-- Header Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sheetTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                tools:text="Options" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sheetSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_13"
+                android:visibility="gone"
+                tools:text="Software Development Life Cycles" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/closeSheetBtn"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="@dimen/dp_28"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/ic_close"
+            app:tint="@color/text_dim" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginVertical="@dimen/dp_12"
+        android:background="@color/border" />
+
+    <!-- Options List Container -->
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>

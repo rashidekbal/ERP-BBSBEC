@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/dp_16"
+    android:layout_marginVertical="@dimen/dp_24"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_24"
+    app:cardElevation="@dimen/dp_8"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_20">
+
+        <!-- Header Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dateIconCard"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_12"
+                app:cardBackgroundColor="@color/accent_dim"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/dateIcon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_calendar_event"
+                    app:tint="@color/accent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dayTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"
+                    tools:text="Wednesday, 29 Jul 2026" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/daySubtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="College Day · 4 Subjects" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/closeBtn"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/dp_6"
+                android:src="@drawable/ic_close"
+                app:tint="@color/text_dim" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:background="@color/border" />
+
+        <!-- Subjects list -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/daySubjectsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="@dimen/dp_320"
+            android:nestedScrollingEnabled="false"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_day_subject_attendance" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/emptyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dp_20"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/emptyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="No classes scheduled"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/emptySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:text="No timetable classes assigned for this day."
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <!-- Bottom Done Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_14"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textColor="@color/all_white"
+            android:textSize="@dimen/sp_15"
+            app:cornerRadius="@dimen/dp_12" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

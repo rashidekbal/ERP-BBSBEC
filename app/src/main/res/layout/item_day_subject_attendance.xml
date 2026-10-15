@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_16"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:paddingVertical="@dimen/dp_14">
+
+        <!-- 4px vertical color pillar matching web design -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/colorIndicator"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginEnd="@dimen/dp_12"
+            app:cardBackgroundColor="@color/accent"
+            app:cardCornerRadius="@dimen/dp_2"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp" />
+
+        <!-- Subject info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subjectName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:maxLines="1"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                tools:text="Database Management Systems" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subjectFacultyAndRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:maxLines="1"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone"
+                tools:text="Manjit Kaur · Room N 321"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subjectStatusLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12"
+                tools:text="Theory · Not marked" />
+        </LinearLayout>
+
+        <!-- Read-only attendance status badge -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/statusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_8"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statusChipText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:paddingVertical="@dimen/dp_6"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12"
+                android:textStyle="bold"
+                tools:text="Present" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

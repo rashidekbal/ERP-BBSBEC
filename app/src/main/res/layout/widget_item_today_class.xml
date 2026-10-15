@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/widget_item_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dp_8"
+    android:paddingTop="@dimen/dp_8"
+    android:paddingEnd="@dimen/dp_8"
+    android:paddingBottom="@dimen/dp_8">
+
+    <!-- Subject Color Strip -->
+    <ImageView
+        android:id="@+id/widget_item_color_bar"
+        android:layout_width="@dimen/dp_4"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:background="@color/accent"
+        android:contentDescription="@null" />
+
+    <!-- Class Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/widget_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/subject_name_1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widget_item_faculty_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_11"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/widget_item_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/period_1_09_00_10_00_am"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_11" />
+
+        <TextView
+            android:id="@+id/widget_item_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:text="@string/not_marked"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_10"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

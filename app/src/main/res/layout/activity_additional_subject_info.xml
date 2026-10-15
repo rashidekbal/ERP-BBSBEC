@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    android:paddingBottom="@dimen/dp_20"
+    tools:context=".screens.subject.AdditionalSubjectInfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_left"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subject_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_toEndOf="@id/backBtn"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_22"
+            android:textStyle="bold"
+            tools:text="DBMS" />
+
+    </RelativeLayout>
+
+
+
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:scrollbars="none"
+      >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/subHeading"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dp_5"
+                  android:text="@string/sub_additional_ingo_add_page_sub_heading"
+                  android:textColor="@color/text_dim"
+                  android:textSize="@dimen/sp_14"
+                  />
+
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/classesSection"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+          <androidx.appcompat.widget.AppCompatTextView
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_10"
+              android:text="@string/class_details"
+              android:textAllCaps="true"
+              android:textColor="@color/text_dim"
+              android:textSize="@dimen/sp_14"
+              android:textStyle="bold"
+
+              />
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_5"
+              android:background="@drawable/surface_card_bg"
+              android:orientation="vertical"
+              android:paddingHorizontal="@dimen/dp_12"
+              android:paddingVertical="@dimen/dp_15">
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/dp_5"
+                   android:text="@string/classes_per_week_1"
+                   android:textAllCaps="true"
+                   android:textColor="@color/text_dim"
+                   android:textSize="@dimen/sp_14"
+                   android:textStyle="bold" />
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/classesPerWeek"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/dp_50"
+                   android:layout_marginVertical="@dimen/dp_5"
+                   android:background="@drawable/surface2_card_background"
+                   android:hint="@string/e_g_4"
+                   android:paddingHorizontal="@dimen/dp_15"
+                   android:textColor="@color/text"
+                   android:inputType="number"
+                   android:textColorHint="@color/text_faint"
+                   android:textSize="@dimen/sp_14" />
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/dp_10"
+                   android:text="@string/total_classes"
+                   android:textAllCaps="true"
+                   android:textColor="@color/text_dim"
+                   android:textSize="@dimen/sp_14"
+                   android:textStyle="bold"
+                   />
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="@dimen/dp_10"
+                  android:orientation="vertical"
+                  android:weightSum="4">
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:weightSum="4"
+                      android:gravity="center_vertical"
+                      >
+                      <androidx.appcompat.widget.AppCompatEditText
+                          android:id="@+id/totalClasses"
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/dp_50"
+                          android:layout_marginVertical="@dimen/dp_5"
+                          android:background="@drawable/surface2_card_background"
+                          android:hint="@string/eg_4"
+                          android:paddingHorizontal="@dimen/dp_15"
+                          android:textColor="@color/text"
+                          android:inputType="number"
+                          android:layout_weight="3"
+                          android:textColorHint="@color/text_faint"
+                          android:textSize="@dimen/sp_14" />
+                      <com.google.android.material.card.MaterialCardView
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/dp_50"
+                          android:layout_weight="1"
+                          android:layout_marginStart="@dimen/dp_5"
+                          app:strokeWidth="0dp"
+                          app:cardCornerRadius="@dimen/dp_16">
+                          <androidx.appcompat.widget.AppCompatButton
+                              android:id="@+id/calcClassesBtn"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:text="@string/calc"
+                              android:textColor="@color/all_white"
+                              android:background="@color/accent"
+                              />
+                      </com.google.android.material.card.MaterialCardView>
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_10"
+                      android:layout_marginBottom="@dimen/dp_4"
+                      android:gravity="center_vertical"
+                      android:orientation="horizontal">
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="@string/class_timetable"
+                          android:textAllCaps="true"
+                          android:textColor="@color/text_dim"
+                          android:textSize="@dimen/sp_14"
+                          android:textStyle="bold" />
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:id="@+id/classSlotCounterText"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@string/_0_4_slots_booked"
+                          android:textColor="@color/accent"
+                          android:textSize="@dimen/sp_13"
+                          android:textStyle="bold" />
+                  </LinearLayout>
+
+                  <!-- Monday Class -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/monday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/mondayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/mondayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Tuesday Class -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/tuesday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/tuesdayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/tuesdayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Wednesday Class -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/wednesday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/wednesdayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/wednesdayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Thursday Class -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/thursday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/thursdayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/thursdayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Friday Class -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/friday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/fridayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/fridayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Saturday Class -->
+                  <LinearLayout
+                      android:id="@+id/saturdayClassGroup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/saturday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/saturdayClassBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/saturdayClassChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayClassP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+              </LinearLayout>
+
+
+          </LinearLayout>
+          </LinearLayout>
+
+          <LinearLayout
+
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:id="@+id/labsSection">
+              <androidx.appcompat.widget.AppCompatTextView
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/dp_10"
+                  android:text="@string/lab_details"
+                  android:textAllCaps="true"
+                  android:textColor="@color/text_dim"
+                  android:textSize="@dimen/sp_14"
+                  android:textStyle="bold"
+
+                  />
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_5"
+                          android:background="@drawable/surface_card_bg"
+                          android:orientation="vertical"
+                          android:paddingHorizontal="@dimen/dp_12"
+                          android:paddingVertical="@dimen/dp_15">
+                   <androidx.appcompat.widget.AppCompatTextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="@dimen/dp_5"
+                       android:text="@string/labs_per_week"
+                       android:textAllCaps="true"
+                       android:textColor="@color/text_dim"
+                       android:textSize="@dimen/sp_14"
+                       android:textStyle="bold" />
+
+                   <androidx.appcompat.widget.AppCompatEditText
+                       android:id="@+id/labsPerWeek"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/dp_50"
+                       android:layout_marginVertical="@dimen/dp_5"
+                       android:background="@drawable/surface2_card_background"
+                       android:hint="@string/e_g_2"
+                       android:paddingHorizontal="@dimen/dp_15"
+                       android:textColor="@color/text"
+                       android:inputType="number"
+                       android:textColorHint="@color/text_faint"
+                       android:textSize="@dimen/sp_14" />
+
+                   <androidx.appcompat.widget.AppCompatTextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="@dimen/dp_10"
+                       android:text="@string/total_labs"
+                       android:textAllCaps="true"
+                       android:textColor="@color/text_dim"
+                       android:textSize="@dimen/sp_14"
+                       android:textStyle="bold"
+                       />
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="@dimen/dp_10"
+                      android:orientation="vertical">
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:weightSum="4"
+                          android:gravity="center_vertical"
+                          >
+                          <androidx.appcompat.widget.AppCompatEditText
+                              android:id="@+id/totalLabs"
+                              android:layout_width="0dp"
+                              android:layout_height="@dimen/dp_50"
+                              android:layout_marginVertical="@dimen/dp_5"
+                              android:background="@drawable/surface2_card_background"
+                              android:hint="@string/eg_4"
+                              android:paddingHorizontal="@dimen/dp_15"
+                              android:textColor="@color/text"
+                              android:inputType="number"
+                              android:layout_weight="3"
+                              android:textColorHint="@color/text_faint"
+                              android:textSize="@dimen/sp_14" />
+                          <com.google.android.material.card.MaterialCardView
+                              android:layout_width="0dp"
+                              android:layout_height="@dimen/dp_50"
+                              android:layout_weight="1"
+                              android:layout_marginStart="@dimen/dp_5"
+                              app:cardCornerRadius="@dimen/dp_16"
+                              app:strokeWidth="0dp">
+                              <androidx.appcompat.widget.AppCompatButton
+                                  android:id="@+id/calcLabsBtn"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:text="@string/calc"
+                                  android:textColor="@color/all_white"
+                                  android:background="@color/accent"
+                                  />
+                          </com.google.android.material.card.MaterialCardView>
+                      </LinearLayout>
+                  </LinearLayout>
+
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_10"
+                      android:layout_marginBottom="@dimen/dp_4"
+                      android:gravity="center_vertical"
+                      android:orientation="horizontal">
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="@string/lab_timetable"
+                          android:textAllCaps="true"
+                          android:textColor="@color/text_dim"
+                          android:textSize="@dimen/sp_14"
+                          android:textStyle="bold" />
+
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:id="@+id/labSlotCounterText"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="@string/_0_2_slots_booked"
+                          android:textColor="@color/accent"
+                          android:textSize="@dimen/sp_13"
+                          android:textStyle="bold" />
+                  </LinearLayout>
+
+                  <!-- Monday Lab -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/monday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/mondayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/mondayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/mondayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Tuesday Lab -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/tuesday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/tuesdayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/tuesdayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/tuesdayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Wednesday Lab -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/wednesday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/wednesdayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/wednesdayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/wednesdayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Thursday Lab -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/thursday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/thursdayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/thursdayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/thursdayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Friday Lab -->
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/friday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/fridayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/fridayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/fridayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+
+                  <!-- Saturday Lab -->
+                  <LinearLayout
+                      android:id="@+id/saturdayLabGroup"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/dp_6"
+                      android:background="@drawable/surface2_card_background"
+                      android:orientation="vertical"
+                      android:paddingHorizontal="@dimen/dp_12"
+                      android:paddingVertical="@dimen/dp_10">
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:orientation="horizontal">
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:layout_weight="1"
+                              android:text="@string/saturday"
+                              android:textAllCaps="true"
+                              android:textColor="@color/text"
+                              android:textSize="@dimen/sp_14"
+                              android:textStyle="bold" />
+
+                          <androidx.appcompat.widget.AppCompatTextView
+                              android:id="@+id/saturdayLabBadge"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="@string/no_slots"
+                              android:textColor="@color/text_dim"
+                              android:textSize="@dimen/sp_12" />
+                      </LinearLayout>
+
+                      <HorizontalScrollView
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/dp_6"
+                          android:scrollbars="none">
+
+                          <com.google.android.material.chip.ChipGroup
+                              android:id="@+id/saturdayLabChipGroup"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              app:singleLine="true"
+                              app:singleSelection="false">
+
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP1" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p1" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP2" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p2" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP3" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p3" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP4" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p4" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP5" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p5" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP6" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p6" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP7" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p7" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP8" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p8" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                              <com.google.android.material.chip.Chip android:id="@+id/saturdayLabP9" style="@style/Widget.Material3.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checkable="true" android:text="@string/p9" android:textColor="@color/text" app:chipBackgroundColor="@color/surface" />
+                          </com.google.android.material.chip.ChipGroup>
+                      </HorizontalScrollView>
+                  </LinearLayout>
+              </LinearLayout>
+          </LinearLayout>
+          <com.google.android.material.card.MaterialCardView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginVertical="@dimen/dp_15"
+              app:cardBackgroundColor="@android:color/transparent">
+              <androidx.appcompat.widget.AppCompatButton
+                  android:id="@+id/saveBtn"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/save"
+                  android:textAllCaps="false"
+                  android:textColor="@color/all_white"
+
+                  android:background="@color/accent"/>
+          </com.google.android.material.card.MaterialCardView>
+
+      </LinearLayout>
+  </ScrollView>
+</LinearLayout>

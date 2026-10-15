@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_14"
+    android:background="@drawable/bottom_border"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp_14"
+    android:weightSum="10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/subject_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:ellipsize="end"
+        android:fontFamily="@font/plus_jakarta_sans"
+        app:fontFamily="@font/plus_jakarta_sans"
+        android:gravity="center_vertical|start"
+        android:maxLines="2"
+        android:textAlignment="viewStart"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_13"
+        tools:text="Computer Networks" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mid1_marks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:fontFamily="@font/outfit"
+        app:fontFamily="@font/outfit"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_13"
+        tools:text="27/30" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mid2_marks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:fontFamily="@font/outfit"
+        app:fontFamily="@font/outfit"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_13"
+        tools:text="24/30" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mid3_marks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:fontFamily="@font/outfit"
+        app:fontFamily="@font/outfit"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_13"
+        tools:text="---" />
+
+</LinearLayout>

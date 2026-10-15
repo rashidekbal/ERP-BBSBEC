@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pendingSubjectCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_14"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_14"
+        android:paddingVertical="@dimen/dp_12">
+
+        <!-- 4dp vertical subject color pillar matching Today's Classes aesthetic -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/accent_color"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginEnd="@dimen/dp_12"
+            app:cardBackgroundColor="@color/accent"
+            app:cardCornerRadius="@dimen/dp_2"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp" />
+
+        <!-- Subject Name & Pending Subtitle -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/subjectName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/outfit"
+                    android:maxLines="1"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold"
+                    tools:text="Data Structures" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pendingLabBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:background="@drawable/surface_card_bg"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:paddingHorizontal="@dimen/dp_6"
+                    android:paddingVertical="@dimen/dp_2"
+                    android:text="LAB"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_10"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subjectPendingSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Set weekly schedule &amp; target criteria"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_11" />
+        </LinearLayout>
+
+        <!-- Action Pill Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/setupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_34"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingVertical="0dp"
+            android:text="Complete"
+            android:textAllCaps="false"
+            android:textColor="@color/all_white"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dp_10" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

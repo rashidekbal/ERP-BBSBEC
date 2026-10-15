@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="@color/accent_dim"
+        android:pathData="M36,36m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
+    <!-- Certificate / Report Outline -->
+    <path
+        android:strokeColor="@color/accent"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M23,20h26a4,4 0,0 1,4 4v26a4,4 0,0 1,-4 4H23a4,4 0,0 1,-4 -4V24a4,4 0,0 1,4 -4z" />
+    <!-- Lines -->
+    <path
+        android:strokeColor="@color/text_dim"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M27,28h18M27,35h12M27,42h8" />
+    <!-- Star / A+ Badge -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M44,40l1.2,2.5l2.8,0.4l-2,2l0.5,2.8l-2.5,-1.3l-2.5,1.3l0.5,-2.8l-2,-2l2.8,-0.4z" />
+</vector>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="false"
+    tools:context=".screens.home.HomeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <FrameLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Floating Pill Bottom Navigation Dock with Center Round Add Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_76"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_38"
+            app:cardElevation="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_max="520dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:id="@+id/bottom_nav_row"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_11">
+
+                <!-- 1. Home Tab Capsule -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/home"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/accent"
+                    app:cardCornerRadius="@dimen/dp_26"
+                    app:cardElevation="0dp"
+                    app:rippleColor="#22FFFFFF"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/nav_home_inner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_8">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/nav_home_icon"
+                            android:layout_width="@dimen/dp_22"
+                            android:layout_height="@dimen/dp_22"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_nav_home_grid"
+                            app:tint="@color/all_white" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nav_home_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_36"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_6"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="@dimen/dp_18"
+                            app:cardElevation="0dp"
+                            app:strokeWidth="0dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/nav_home_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                android:singleLine="true"
+                                android:text="Home"
+                                android:textColor="@color/all_white"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- 2. Attendance Tab Capsule -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/attendance"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/surface2"
+                    app:cardCornerRadius="@dimen/dp_26"
+                    app:cardElevation="0dp"
+                    app:rippleColor="#22FFFFFF"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/nav_attendance_inner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingEnd="@dimen/dp_8">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/nav_attendance_icon"
+                            android:layout_width="@dimen/dp_22"
+                            android:layout_height="@dimen/dp_22"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_nav_attendance_pie"
+                            app:tint="@color/accent" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nav_attendance_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_36"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_6"
+                            android:alpha="0"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="@dimen/dp_18"
+                            app:cardElevation="0dp"
+                            app:strokeWidth="0dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/nav_attendance_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                android:singleLine="true"
+                                android:text="Attend"
+                                android:textColor="@color/all_white"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- 3. Center Round Quick Add Button -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/action_btn"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:clickable="true"
+                    android:contentDescription="Add Action"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/text"
+                    app:cardCornerRadius="@dimen/dp_26"
+                    app:cardElevation="@dimen/dp_4"
+                    app:rippleColor="#33FFFFFF"
+                    app:strokeColor="@color/surface"
+                    app:strokeWidth="@dimen/dp_2">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/action_btn_icon"
+                        android:layout_width="@dimen/dp_22"
+                        android:layout_height="@dimen/dp_22"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_fab_plus"
+                        app:tint="@color/surface" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- 4. Tasks Tab Capsule -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/task"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/surface2"
+                    app:cardCornerRadius="@dimen/dp_26"
+                    app:cardElevation="0dp"
+                    app:rippleColor="#22FFFFFF"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/nav_task_inner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingEnd="@dimen/dp_8">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/nav_task_icon"
+                            android:layout_width="@dimen/dp_22"
+                            android:layout_height="@dimen/dp_22"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_nav_tasks_check"
+                            app:tint="@color/accent" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nav_task_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_36"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_6"
+                            android:alpha="0"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="@dimen/dp_18"
+                            app:cardElevation="0dp"
+                            app:strokeWidth="0dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/nav_task_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                android:singleLine="true"
+                                android:text="Tasks"
+                                android:textColor="@color/all_white"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- 5. Marks Tab Capsule -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/marks"
+                    android:layout_width="@dimen/dp_52"
+                    android:layout_height="@dimen/dp_52"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="@color/surface2"
+                    app:cardCornerRadius="@dimen/dp_26"
+                    app:cardElevation="0dp"
+                    app:rippleColor="#22FFFFFF"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/nav_marks_inner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingEnd="@dimen/dp_8">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/nav_marks_icon"
+                            android:layout_width="@dimen/dp_22"
+                            android:layout_height="@dimen/dp_22"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_streak_bolt"
+                            app:tint="@color/accent" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/nav_marks_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp_36"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_6"
+                            android:alpha="0"
+                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardCornerRadius="@dimen/dp_18"
+                            app:cardElevation="0dp"
+                            app:strokeWidth="0dp">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/nav_marks_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                android:singleLine="true"
+                                android:text="Marks"
+                                android:textColor="@color/all_white"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- drawer layout -->
+    <FrameLayout
+        android:id="@+id/side_bar_layout"
+        android:layout_width="@dimen/dp_360"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/surface" />
+</androidx.drawerlayout.widget.DrawerLayout>

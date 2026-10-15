@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attend — College Attendance Tracker & Academic Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-light accent-warm device-frame-mode">
+
+  <!-- Web Mockup Outer Control Bar -->
+  <header class="mockup-toolbar">
+    <div class="toolbar-brand">
+      <div class="app-icon-small">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <polyline points="12 7 12 12 15 15"></polyline>
+        </svg>
+      </div>
+      <div>
+        <span class="app-title">Attend Hub</span>
+        <span class="app-tag">Branch: <code>redesign</code></span>
+      </div>
+    </div>
+
+    <div class="toolbar-controls">
+      <div class="control-group">
+        <label>View Mode:</label>
+        <button id="toggleFrameBtn" class="btn-toggle active" title="Toggle Phone Frame vs Full Web View">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          <span>Phone Frame</span>
+        </button>
+      </div>
+
+      <div class="control-group">
+        <label>Theme:</label>
+        <button id="toggleThemeBtn" class="btn-toggle" title="Toggle Light / Dark Mode">
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="icon-moon hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+
+      <div class="control-group">
+        <label>Palette:</label>
+        <div class="accent-picker">
+          <button class="accent-dot warm active" data-accent="warm" title="Warm Amber Orange"></button>
+          <button class="accent-dot emerald" data-accent="emerald" title="Fresh Emerald Green"></button>
+          <button class="accent-dot indigo" data-accent="indigo" title="Soft Indigo"></button>
+          <button class="accent-dot rose" data-accent="rose" title="Soft Coral Rose"></button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Preset State:</label>
+        <select id="presetSelect" class="select-preset">
+          <option value="recoverable">Recoverable Risk (64% · Need 22 of 38 left)</option>
+          <option value="unreachable">Unreachable 75% (45% · Max Cap 58%)</option>
+          <option value="safe">Safe Margin (82% · Skip 5 · Max 91%)</option>
+          <option value="empty">Fresh Term (0% · 120 left in sem)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Device Container Wrapper -->
+  <main class="mockup-container">
+    <div class="phone-frame">
+      <div class="phone-earpiece"></div>
+      
+      <!-- Mobile Screen Root -->
+      <div class="mobile-screen">
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <span class="status-time">09:41</span>
+          <div class="status-icons">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.2A.996.996 0 0 0 5.1 19.8h13.8a.996.996 0 0 0 .75-1.6l-.62-.59C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+            <span class="battery-level">98%</span>
+            <div class="battery-icon"><div class="battery-fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Sidebar Backdrop & Drawer Panel -->
+        <div id="drawerBackdrop" class="drawer-backdrop"></div>
+        <aside id="sidebarDrawer" class="sidebar-drawer">
+          <div class="drawer-header" id="drawerHeaderProfile" style="cursor: pointer;" title="Open Profile Screen">
+            <div class="profile-avatar large" id="drawerAvatar">RE</div>
+            <div class="profile-info">
+              <h3 class="user-name" id="drawerUserName">Rashid Ekbal</h3>
+              <p class="user-sub" id="drawerUserSub">Computer Science & Engineering · Sem 5</p>
+              <a href="#" class="view-profile-link" id="drawerProfileBtn">View & edit profile</a>
+            </div>
+          </div>
+
+          <div class="drawer-section-title">ACADEMIC HUB</div>
+          <nav class="drawer-nav">
+            <button class="drawer-item" id="drawerTimetableBtn">
+              <div class="icon-square">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="3"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div class="drawer-item-text">
+                <span class="item-title">Master Timetable Grid</span>
+                <span class="item-subtitle">Manage weekly class schedules & periods</span>
+              </div>
+            </button>
+
+            <button class="drawer-item" id="drawerHolidayBtn">
+              <div class="icon-square">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <div class="drawer-item-text">
+                <span class="item-title">Holiday Manager</span>
+                <span class="item-subtitle">Auto-excluded from attendance math</span>
+              </div>
+            </button>
+
+            <button class="drawer-item" id="drawerSettingsBtn">
+              <div class="icon-square">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <div class="drawer-item-text">
+                <span class="item-title">System Settings</span>
+                <span class="item-subtitle">Target threshold 75% & themes</span>
+              </div>
+            </button>
+
+            <button class="drawer-item" id="drawerPrivacyBtn">
+              <div class="icon-square">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="drawer-item-text">
+                <span class="item-title">100% Offline & Private</span>
+                <span class="item-subtitle">Built with Room SQLite</span>
+              </div>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Main Screen Container (Swappable Tabs / Views) -->
+        <div class="app-content-container">
+
+          <!-- PAGE 1: HOME TAB -->
+          <div id="pageHome" class="tab-page active">
+            <header class="top-header">
+              <button class="icon-btn side-menu-trigger" aria-label="Open Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </button>
+              <div class="header-date">Wednesday, 15 Aug</div>
+              <button class="profile-avatar-btn">RE</button>
+            </header>
+
+            <div class="scroll-content">
+              <div class="greeting-block">
+                <h1 class="greeting-title">Hey Rashid</h1>
+                <p class="greeting-sub" id="homeGreetingSub">3 classes today · 1 assignment due tomorrow</p>
+              </div>
+
+              <!-- Quick Demo State Switcher for Hero Card Preview -->
+              <div class="hero-demo-switcher" aria-label="Preview Hero Card Scenarios">
+                <button class="demo-state-pill active" data-state="recoverable">Need 22/38 (64%)</button>
+                <button class="demo-state-pill" data-state="unreachable">Max 58% Cap (45%)</button>
+                <button class="demo-state-pill" data-state="safe">Safe (82%)</button>
+                <button class="demo-state-pill" data-state="empty">Fresh (0%)</button>
+              </div>
+
+              <!-- REDESIGNED HOME RISK CALCULATOR HERO CARD (CLEAN, NO REPETITION, NO EMOJI) -->
+              <div class="card ring-hero-card" id="homeHeroCard">
+                <div class="ring-wrapper">
+                  <svg class="activity-ring-svg" viewBox="0 0 120 120">
+                    <circle class="ring-bg" cx="60" cy="60" r="48" stroke-width="11" />
+                    <circle class="ring-arc warning" id="homeRingArc" cx="60" cy="60" r="48" stroke-width="11" stroke-dasharray="301.6" stroke-dashoffset="108.6" />
+                  </svg>
+                  <div class="ring-center-content">
+                    <span class="ring-percentage" id="homeGaugePct">64%</span>
+                    <span class="ring-label">overall</span>
+                  </div>
+                </div>
+
+                <div class="ring-details">
+                  <div class="status-tag-row">
+                    <span class="status-chip chip-warning" id="homeStatusChip">
+                      <span class="status-dot"></span>
+                      <span id="homeStatusChipLabel">Action Needed</span>
+                    </span>
+                  </div>
+                  <h2 class="hero-headline" id="homeStatusHeadline">Attend next <strong>22 classes</strong></h2>
+                  <p class="hero-sub" id="homeStatusSub"><strong>38 classes left</strong> in semester · Max possible: <strong>80%</strong></p>
+                  <div class="hero-footer-link" id="homeViewAnalyticsLink">
+                    <span>View detailed analytics</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stats-trio">
+                <div class="card stat-card">
+                  <span class="stat-value" id="statSubjectsCount">6</span>
+                  <span class="stat-label">Subjects</span>
+                </div>
+                <div class="card stat-card">
+                  <span class="stat-value" id="statBunkedCount">2</span>
+                  <span class="stat-label">Bunked this week</span>
+                </div>
+                <div class="card stat-card highlight">
+                  <span class="stat-value text-accent" id="statNextHoliday">Aug 15</span>
+                  <span class="stat-label">Next holiday</span>
+                </div>
+              </div>
+
+              <div class="section-header">
+                <div>
+                  <h3 class="section-title">Today's Classes</h3>
+                  <span class="section-badge">3 sessions</span>
+                </div>
+                <button class="btn-text" id="markAllPresentBtn">Mark all P</button>
+              </div>
+
+              <div id="todayClassesList" class="class-card-list">
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-blue"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">Data Structures</h4>
+                      <p class="class-time">Period 1 · 09:00 - 09:50 AM</p>
+                    </div>
+                  </div>
+                  <div class="class-action-group">
+                    <button class="action-btn p-btn active-p">P</button>
+                    <button class="action-btn a-btn">A</button>
+                    <button class="action-btn c-btn">C</button>
+                  </div>
+                </div>
+
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-purple"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">Computer Networks</h4>
+                      <p class="class-time">Period 2 · 10:00 - 10:50 AM</p>
+                    </div>
+                  </div>
+                  <div class="class-action-group">
+                    <button class="action-btn p-btn">P</button>
+                    <button class="action-btn a-btn active-a">A</button>
+                    <button class="action-btn c-btn">C</button>
+                  </div>
+                </div>
+
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-rose"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">Software Engineering</h4>
+                      <p class="class-time">Period 3 · 11:00 - 11:50 AM</p>
+                    </div>
+                  </div>
+                  <div class="class-action-group">
+                    <button class="action-btn p-btn">P</button>
+                    <button class="action-btn a-btn">A</button>
+                    <button class="action-btn c-btn">C</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="todayClassesEmpty" class="card empty-state-card hidden">
+                <div class="empty-emoji">🎉</div>
+                <h4 class="empty-title">No classes scheduled today</h4>
+                <p class="empty-desc">Enjoy your free time, revise your notes, or prepare for upcoming assignments.</p>
+              </div>
+
+              <!-- Upcoming Assignment Section with REDESIGNED Task Card -->
+              <div class="section-header">
+                <h3 class="section-title">Upcoming Assignment</h3>
+                <button class="btn-text" id="seeAllTasksBtn">See all</button>
+              </div>
+
+              <!-- REDESIGNED TASK CARD -->
+              <div class="card pro-task-card" id="upcomingTaskPreview">
+                <div class="task-accent-bar bar-warning"></div>
+                <div class="task-main-body">
+                  <div class="task-top-row">
+                    <div class="task-subject-tag">
+                      <span class="tag-icon">📘</span>
+                      <span class="tag-text">Software Engineering</span>
+                    </div>
+                    <span class="status-chip chip-warning">Due in 3 days</span>
+                  </div>
+
+                  <h4 class="task-card-title">Software Development Life Cycles Report</h4>
+
+                  <div class="task-meta-row">
+                    <div class="meta-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span>Due Aug 18 · 11:59 PM</span>
+                    </div>
+                    <div class="meta-item">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                      <span>1 day before</span>
+                    </div>
+                  </div>
+
+                  <div class="task-action-row">
+                    <button class="task-check-btn btn-submit-pill">
+                      <span class="check-box">✓</span>
+                      <span class="check-text">Mark Submitted</span>
+                    </button>
+                    <button class="icon-btn-ghost" aria-label="Task Options">⋮</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PAGE 2: ATTENDANCE TAB -->
+          <div id="pageAttendance" class="tab-page">
+            <header class="top-header">
+              <button class="icon-btn side-menu-trigger" aria-label="Open Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </button>
+              <h1 class="page-title">Attendance</h1>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle" id="attSemSubtitle">Semester 5 · Jul – Nov · 64% overall</p>
+
+              <!-- Quick Demo State Switcher for Hero Card Preview -->
+              <div class="hero-demo-switcher" aria-label="Preview Hero Card Scenarios">
+                <button class="demo-state-pill active" data-state="recoverable">Need 22/38 (64%)</button>
+                <button class="demo-state-pill" data-state="unreachable">Max 58% Cap (45%)</button>
+                <button class="demo-state-pill" data-state="safe">Safe (82%)</button>
+                <button class="demo-state-pill" data-state="empty">Fresh (0%)</button>
+              </div>
+
+              <!-- REDESIGNED ATTENDANCE RISK CALCULATOR HERO CARD (CLEAN, NO REPETITION, NO EMOJI) -->
+              <div class="card ring-hero-card redesigned-hero-card" id="attHeroCard">
+                <div class="hero-top-section">
+                  <div class="ring-wrapper">
+                    <svg class="activity-ring-svg" viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="48" stroke-width="11" />
+                      <circle class="ring-arc warning" id="attRingArc" cx="60" cy="60" r="48" stroke-width="11" stroke-dasharray="301.6" stroke-dashoffset="108.6" />
+                    </svg>
+                    <div class="ring-center-content">
+                      <span class="ring-percentage" id="attGaugePct">64%</span>
+                      <span class="ring-label">Overall</span>
+                    </div>
+                  </div>
+
+                  <div class="ring-details">
+                    <div class="status-tag-row">
+                      <span class="status-chip chip-warning" id="attStatusChip">
+                        <span class="status-dot"></span>
+                        <span id="attStatusChipLabel">Action Needed</span>
+                      </span>
+                    </div>
+                    <h2 class="hero-headline" id="attStatusHeadline">Attend next <strong>22 classes</strong></h2>
+                    <p class="hero-sub" id="attTargetNote"><strong>38 classes left</strong> in semester · Max possible: <strong>80%</strong></p>
+                    <div class="streak-inline" id="attStreakBadge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      </svg>
+                      <span id="attStreakText">4-Day Streak · Best: 9 Days</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4-Column Stats Grid (Attended / Conducted / Missed / Cancelled) -->
+                <div class="att-hero-stats-grid">
+                  <div class="att-stat-col">
+                    <span class="att-stat-num" id="attStatAttended">32</span>
+                    <span class="att-stat-lbl">Attended</span>
+                  </div>
+                  <div class="att-stat-col">
+                    <span class="att-stat-num" id="attStatConducted">50</span>
+                    <span class="att-stat-lbl">Conducted</span>
+                  </div>
+                  <div class="att-stat-col">
+                    <span class="att-stat-num text-danger" id="attStatMissed">18</span>
+                    <span class="att-stat-lbl">Missed</span>
+                  </div>
+                  <div class="att-stat-col">
+                    <span class="att-stat-num text-info" id="attStatCancelled">3</span>
+                    <span class="att-stat-lbl">Cancelled</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-header">
+                <h3 class="section-title">By subject</h3>
+                <button class="btn-text" id="addSubjectNavBtn">+ Add subject</button>
+              </div>
+
+              <div class="card subject-list-card" id="subjectListContainer">
+                <div class="subject-item" data-subject-id="dms">
+                  <div class="mini-ring-wrapper">
+                    <svg viewBox="0 0 36 36" class="mini-ring-svg">
+                      <path class="mini-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="mini-ring-arc safe" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                  </div>
+                  <div class="subject-main-info">
+                    <h4 class="subject-name">Database Management Systems</h4>
+                    <p class="subject-stats">38 / 42 attended · 51 total classes</p>
+                  </div>
+                  <div class="subject-badge">
+                    <span class="pct-val pct-safe">90%</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </div>
+
+                <div class="subject-item" data-subject-id="dms-lab">
+                  <div class="mini-ring-wrapper">
+                    <svg viewBox="0 0 36 36" class="mini-ring-svg">
+                      <path class="mini-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="mini-ring-arc safe" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                  </div>
+                  <div class="subject-main-info">
+                    <h4 class="subject-name">Database Management Systems Lab</h4>
+                    <p class="subject-stats">12 / 14 attended · 16 total labs</p>
+                  </div>
+                  <div class="subject-badge">
+                    <span class="pct-val pct-safe">85%</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </div>
+
+                <div class="subject-item" data-subject-id="cn">
+                  <div class="mini-ring-wrapper">
+                    <svg viewBox="0 0 36 36" class="mini-ring-svg">
+                      <path class="mini-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="mini-ring-arc risk" stroke-dasharray="70, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                  </div>
+                  <div class="subject-main-info">
+                    <h4 class="subject-name">Computer Networks</h4>
+                    <p class="subject-stats">28 / 40 attended · 51 total classes</p>
+                  </div>
+                  <div class="subject-badge">
+                    <span class="pct-val pct-risk">70%</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </div>
+
+                <div class="subject-item" data-subject-id="se">
+                  <div class="mini-ring-wrapper">
+                    <svg viewBox="0 0 36 36" class="mini-ring-svg">
+                      <path class="mini-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="mini-ring-arc safe" stroke-dasharray="83, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                  </div>
+                  <div class="subject-main-info">
+                    <h4 class="subject-name">Software Engineering</h4>
+                    <p class="subject-stats">35 / 42 attended · 51 total classes</p>
+                  </div>
+                  <div class="subject-badge">
+                    <span class="pct-val pct-safe">83%</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </div>
+
+                <div class="subject-item" data-subject-id="erp">
+                  <div class="mini-ring-wrapper">
+                    <svg viewBox="0 0 36 36" class="mini-ring-svg">
+                      <path class="mini-ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      <path class="mini-ring-arc safe" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    </svg>
+                  </div>
+                  <div class="subject-main-info">
+                    <h4 class="subject-name">Enterprise Resource Planning</h4>
+                    <p class="subject-stats">32 / 40 attended · 50 total classes</p>
+                  </div>
+                  <div class="subject-badge">
+                    <span class="pct-val pct-safe">80%</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 3: TASKS TAB WITH REDESIGNED CARDS -->
+          <div id="pageTasks" class="tab-page">
+            <header class="top-header">
+              <button class="icon-btn side-menu-trigger" aria-label="Open Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </button>
+              <h1 class="page-title">Tasks</h1>
+              <button class="icon-btn header-add-btn" id="taskHeaderAddBtn" aria-label="Add Task">+</button>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle" id="taskSubCount">1 pending assignment</p>
+
+              <div class="filter-chips">
+                <button class="chip-tab active">All</button>
+                <button class="chip-tab">Pending</button>
+                <button class="chip-tab">Submitted</button>
+              </div>
+
+              <div id="tasksList" class="tasks-list">
+                <!-- REDESIGNED TASK CARD 1 -->
+                <div class="card pro-task-card">
+                  <div class="task-accent-bar bar-warning"></div>
+                  <div class="task-main-body">
+                    <div class="task-top-row">
+                      <div class="task-subject-tag">
+                        <span class="tag-icon">📘</span>
+                        <span class="tag-text">Software Engineering</span>
+                      </div>
+                      <span class="status-chip chip-warning">Due in 3 days</span>
+                    </div>
+
+                    <h4 class="task-card-title">Software Development Life Cycles Report</h4>
+
+                    <div class="task-meta-row">
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Due Aug 18 · 11:59 PM</span>
+                      </div>
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span>1 day before</span>
+                      </div>
+                    </div>
+
+                    <div class="task-action-row">
+                      <button class="task-check-btn btn-submit-pill">
+                        <span class="check-box">✓</span>
+                        <span class="check-text">Mark Submitted</span>
+                      </button>
+                      <button class="icon-btn-ghost" aria-label="Task Options">⋮</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- REDESIGNED TASK CARD 2 -->
+                <div class="card pro-task-card">
+                  <div class="task-accent-bar bar-secondary"></div>
+                  <div class="task-main-body">
+                    <div class="task-top-row">
+                      <div class="task-subject-tag">
+                        <span class="tag-icon">💻</span>
+                        <span class="tag-text">Operating Systems</span>
+                      </div>
+                      <span class="status-chip chip-secondary">Pending</span>
+                    </div>
+
+                    <h4 class="task-card-title">OS Assignment 3 — Deadlock Handling Algorithm</h4>
+
+                    <div class="task-meta-row">
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Due Aug 24 · 11:59 PM</span>
+                      </div>
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span>2 days before</span>
+                      </div>
+                    </div>
+
+                    <div class="task-action-row">
+                      <button class="task-check-btn btn-submit-pill">
+                        <span class="check-box">✓</span>
+                        <span class="check-text">Mark Submitted</span>
+                      </button>
+                      <button class="icon-btn-ghost" aria-label="Task Options">⋮</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- REDESIGNED TASK CARD 3 (COMPLETED) -->
+                <div class="card pro-task-card completed">
+                  <div class="task-accent-bar bar-success"></div>
+                  <div class="task-main-body">
+                    <div class="task-top-row">
+                      <div class="task-subject-tag">
+                        <span class="tag-icon">🗄️</span>
+                        <span class="tag-text">Database Management</span>
+                      </div>
+                      <span class="status-chip chip-success">Submitted</span>
+                    </div>
+
+                    <h4 class="task-card-title">ER Diagram & Normalization Schema Document</h4>
+
+                    <div class="task-meta-row">
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Submitted Aug 10</span>
+                      </div>
+                    </div>
+
+                    <div class="task-action-row">
+                      <button class="task-check-btn btn-submit-pill active">
+                        <span class="check-box">✓</span>
+                        <span class="check-text">Submitted</span>
+                      </button>
+                      <button class="icon-btn-ghost" aria-label="Task Options">⋮</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 4: MARKS & MULTI-TERM COMPARISON TAB -->
+          <div id="pageMarks" class="tab-page">
+            <header class="top-header">
+              <button class="icon-btn side-menu-trigger" aria-label="Open Menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              </button>
+              <h1 class="page-title">Marks</h1>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle">Mid Sem performance across subjects & multi-term comparison</p>
+
+              <div class="marks-mode-toggle">
+                <button class="mode-btn active" id="modeTableBtn">All Subjects Table</button>
+                <button class="mode-btn" id="modeCompareBtn">📈 Compare 3 Terms</button>
+              </div>
+
+              <div id="marksTableViewBlock">
+                <div class="stats-trio">
+                  <div class="card stat-card">
+                    <span class="stat-value">62.5%</span>
+                    <span class="stat-label">Mid sem 1 Avg</span>
+                  </div>
+                  <div class="card stat-card">
+                    <span class="stat-value text-dim">----</span>
+                    <span class="stat-label">Mid sem 2 Avg</span>
+                  </div>
+                  <div class="card stat-card">
+                    <span class="stat-value text-dim">----</span>
+                    <span class="stat-label">Mid sem 3 Avg</span>
+                  </div>
+                </div>
+
+                <div class="section-header">
+                  <h3 class="section-title">All subjects</h3>
+                  <button class="btn-text" id="addMarksNavBtn">+ Add marks</button>
+                </div>
+
+                <div class="card marks-table-card">
+                  <table class="marks-table">
+                    <thead>
+                      <tr>
+                        <th class="col-subject">SUBJECT</th>
+                        <th>MID 1</th>
+                        <th>MID 2</th>
+                        <th>MID 3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="col-subject">Database Management Systems</td>
+                        <td class="mark-cell">10/24</td>
+                        <td class="mark-cell dim">---</td>
+                        <td class="mark-cell dim">---</td>
+                      </tr>
+                      <tr>
+                        <td class="col-subject">Computer networks</td>
+                        <td class="mark-cell highlight">20/24</td>
+                        <td class="mark-cell dim">---</td>
+                        <td class="mark-cell dim">---</td>
+                      </tr>
+                      <tr>
+                        <td class="col-subject">Software Engineering</td>
+                        <td class="mark-cell">18/24</td>
+                        <td class="mark-cell dim">---</td>
+                        <td class="mark-cell dim">---</td>
+                      </tr>
+                      <tr>
+                        <td class="col-subject">Enterprise Resource Planning</td>
+                        <td class="mark-cell dim">---</td>
+                        <td class="mark-cell dim">---</td>
+                        <td class="mark-cell dim">---</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="section-header">
+                  <h3 class="section-title">Trend Insights</h3>
+                </div>
+
+                <div class="card insight-card">
+                  <p>Computer networks leads with 20/24 (83.3%) in Mid 1. Database Management Systems trails at 10/24 (41.7%) — flagged for extra focus.</p>
+                </div>
+              </div>
+
+              <div id="marksCompareViewBlock" class="hidden">
+                <div class="subject-select-row">
+                  <label class="select-label">Select Course:</label>
+                  <select id="compareSubjectSelect" class="select-subject-dropdown">
+                    <option value="dms">Database Management Systems</option>
+                    <option value="cn">Computer Networks</option>
+                    <option value="se">Software Engineering</option>
+                    <option value="erp">Enterprise Resource Planning</option>
+                  </select>
+                </div>
+
+                <div class="card graph-card">
+                  <div class="graph-header">
+                    <div>
+                      <h3 class="card-section-title" id="graphCourseName">Database Management Systems</h3>
+                      <span class="graph-sub">3 Term Mid Sem Progression</span>
+                    </div>
+                    <span class="status-chip chip-safe" id="graphImprovementChip">+50% Growth</span>
+                  </div>
+
+                  <div class="chart-container">
+                    <svg class="multi-term-svg" viewBox="0 0 320 160">
+                      <line x1="40" y1="30" x2="300" y2="30" stroke="var(--border)" stroke-dasharray="3,3" />
+                      <line x1="40" y1="70" x2="300" y2="70" stroke="var(--border)" stroke-dasharray="3,3" />
+                      <line x1="40" y1="110" x2="300" y2="110" stroke="var(--border)" stroke-dasharray="3,3" />
+
+                      <line x1="40" y1="45" x2="300" y2="45" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4,4" />
+                      <text x="304" y="49" fill="var(--accent)" font-size="9" font-weight="700">75% Target</text>
+
+                      <polygon id="graphFillArea" points="60,110 170,62 280,30 280,130 60,130" fill="var(--accent-light)" />
+                      <path id="graphCurvePath" d="M 60,110 L 170,62 L 280,30" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+
+                      <g class="term-dot-group" data-term="Mid Sem 1">
+                        <circle id="dotTerm1" cx="60" cy="110" r="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="3" />
+                        <text id="valTerm1" x="60" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">10/24 (42%)</text>
+                        <text x="60" y="158" text-anchor="middle" font-size="10" fill="var(--text-dim)">Term 1</text>
+                      </g>
+
+                      <g class="term-dot-group" data-term="Mid Sem 2">
+                        <circle id="dotTerm2" cx="170" cy="62" r="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="3" />
+                        <text id="valTerm2" x="170" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">16/24 (67%)</text>
+                        <text x="170" y="158" text-anchor="middle" font-size="10" fill="var(--text-dim)">Term 2</text>
+                      </g>
+
+                      <g class="term-dot-group" data-term="Mid Sem 3">
+                        <circle id="dotTerm3" cx="280" cy="30" r="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="3" />
+                        <text id="valTerm3" x="280" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">22/24 (92%)</text>
+                        <text x="280" y="158" text-anchor="middle" font-size="10" fill="var(--text-dim)">Term 3</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="card term-bars-card">
+                  <h4 class="card-section-title">Term Score Comparison</h4>
+                  <div class="term-bar-row">
+                    <span class="bar-term-name">Mid Sem 1</span>
+                    <div class="bar-track">
+                      <div class="bar-fill" id="barFillTerm1" style="width: 41.7%;"></div>
+                    </div>
+                    <span class="bar-score-val" id="barScoreTerm1">10/24</span>
+                  </div>
+
+                  <div class="term-bar-row">
+                    <span class="bar-term-name">Mid Sem 2</span>
+                    <div class="bar-track">
+                      <div class="bar-fill" id="barFillTerm2" style="width: 66.7%;"></div>
+                    </div>
+                    <span class="bar-score-val" id="barScoreTerm2">16/24</span>
+                  </div>
+
+                  <div class="term-bar-row">
+                    <span class="bar-term-name">Mid Sem 3</span>
+                    <div class="bar-track">
+                      <div class="bar-fill highlight" id="barFillTerm3" style="width: 91.7%;"></div>
+                    </div>
+                    <span class="bar-score-val highlight" id="barScoreTerm3">22/24</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAGE 5: SUBJECT DETAIL VIEW -->
+          <div id="pageSubjectDetail" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn" id="backFromSubjectBtn" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <div class="header-titles">
+                <h2 class="detail-subject-name" id="detailSubjectTitle">Database Management Systems</h2>
+                <span class="detail-subject-sub" id="detailSubjectSub">Theory Subject · 75% Criteria</span>
+              </div>
+              <button class="icon-btn" aria-label="Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </button>
+            </header>
+
+            <div class="scroll-content">
+              <div class="card ring-hero-card">
+                <div class="ring-wrapper">
+                  <svg class="activity-ring-svg" viewBox="0 0 120 120">
+                    <circle class="ring-bg" cx="60" cy="60" r="48" stroke-width="12" />
+                    <circle class="ring-arc risk" id="detailRingArc" cx="60" cy="60" r="48" stroke-width="12" stroke-dasharray="301.6" stroke-dashoffset="246" />
+                  </svg>
+                  <div class="ring-center-content">
+                    <span class="ring-percentage pct-risk" id="detailGaugePct">18%</span>
+                    <span class="ring-label">attendance</span>
+                  </div>
+                </div>
+
+                <div class="ring-details">
+                  <h2 class="hero-headline pct-risk" id="detailStatusTitle">At Risk / Below Target</h2>
+                  <p class="status-sub-highlight" id="detailClassRatio">2 / 11 classes attended</p>
+                  <p class="status-action" id="detailActionNeed">Attend next 25 classes</p>
+                  <p class="hero-sub">Required Target: 75%</p>
+                </div>
+              </div>
+
+              <div class="quad-stats-grid">
+                <div class="card stat-card">
+                  <span class="stat-value" id="detailAttendedVal">2 / 11</span>
+                  <span class="stat-label">Classes Attended</span>
+                </div>
+                <div class="card stat-card">
+                  <span class="stat-value">3 / week</span>
+                  <span class="stat-label">Weekly Classes</span>
+                </div>
+                <div class="card stat-card">
+                  <span class="stat-value pct-risk" id="detailMissedVal">9 missed</span>
+                  <span class="stat-label">Absent / Missed</span>
+                </div>
+                <div class="card stat-card">
+                  <span class="stat-value">51 classes</span>
+                  <span class="stat-label">Semester Plan</span>
+                </div>
+              </div>
+
+              <div class="card calendar-card">
+                <div class="calendar-header">
+                  <h3 class="card-section-title">Attendance Calendar</h3>
+                  <div class="month-nav">
+                    <button class="btn-arrow">←</button>
+                    <span class="month-label">Aug 2026</span>
+                    <button class="btn-arrow">→</button>
+                  </div>
+                </div>
+
+                <div class="calendar-weekdays">
+                  <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+
+                <div class="calendar-grid">
+                  <span class="cal-day dim border-holiday">26</span><span class="cal-day dim border-holiday">27</span><span class="cal-day dim dot-missed">28</span><span class="cal-day dim dot-missed">29</span><span class="cal-day dim">30</span><span class="cal-day dim dot-missed">31</span><span class="cal-day border-holiday">1</span>
+                  <span class="cal-day border-holiday">2</span><span class="cal-day">3</span><span class="cal-day dot-attended">4</span><span class="cal-day dot-missed">5</span><span class="cal-day">6</span><span class="cal-day dot-missed">7</span><span class="cal-day border-holiday">8</span>
+                  <span class="cal-day border-holiday">9</span><span class="cal-day">10</span><span class="cal-day dot-attended">11</span><span class="cal-day dot-missed">12</span><span class="cal-day">13</span><span class="cal-day dot-cancelled">14</span><span class="cal-day bg-holiday">15</span>
+                  <span class="cal-day border-holiday">16</span><span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span><span class="cal-day">20</span><span class="cal-day">21</span><span class="cal-day border-holiday">22</span>
+                  <span class="cal-day border-holiday">23</span><span class="cal-day">24</span><span class="cal-day">25</span><span class="cal-day">26</span><span class="cal-day">27</span><span class="cal-day">28</span><span class="cal-day border-holiday">29</span>
+                  <span class="cal-day border-holiday">30</span><span class="cal-day">31</span><span class="cal-day dim">1</span><span class="cal-day dim">2</span><span class="cal-day dim">3</span><span class="cal-day dim">4</span><span class="cal-day dim border-holiday">5</span>
+                </div>
+
+                <div class="calendar-legend">
+                  <span class="leg-item"><span class="leg-dot green"></span>Attended</span>
+                  <span class="leg-item"><span class="leg-dot red"></span>Missed</span>
+                  <span class="leg-item"><span class="leg-dot teal"></span>Cancelled</span>
+                  <span class="leg-item"><span class="leg-dot orange"></span>Holiday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR PAGE 1: MASTER TIMETABLE -->
+          <div id="pageTimetable" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn back-sidebar-page" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <h1 class="page-title">Master Timetable</h1>
+              <button class="btn-text" id="editTimetableSlotsBtn">Edit Slots</button>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle">Weekly Schedule Grid (5-Day Working Week)</p>
+
+              <div class="filter-chips">
+                <button class="chip-tab active">Mon</button>
+                <button class="chip-tab">Tue</button>
+                <button class="chip-tab">Wed</button>
+                <button class="chip-tab">Thu</button>
+                <button class="chip-tab">Fri</button>
+              </div>
+
+              <div class="class-card-list">
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-blue"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">Data Structures & Algorithms</h4>
+                      <p class="class-time">Period 1 · 09:00 AM - 09:50 AM</p>
+                    </div>
+                  </div>
+                  <span class="status-chip chip-secondary">Lecture</span>
+                </div>
+
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-purple"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">Computer Networks</h4>
+                      <p class="class-time">Period 2 · 10:00 AM - 10:50 AM</p>
+                    </div>
+                  </div>
+                  <span class="status-chip chip-secondary">Lecture</span>
+                </div>
+
+                <div class="card class-card-item">
+                  <div class="class-card-main">
+                    <div class="color-pillar pillar-rose"></div>
+                    <div class="class-card-info">
+                      <h4 class="class-name">DBMS Laboratory</h4>
+                      <p class="class-time">Period 3 & 4 · 11:30 AM - 01:10 PM</p>
+                    </div>
+                  </div>
+                  <span class="status-chip chip-warning">2-Period Lab</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR PAGE 2: HOLIDAY MANAGER -->
+          <div id="pageHolidays" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn back-sidebar-page" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <h1 class="page-title">Holiday Manager</h1>
+              <button class="btn-text" id="addHolidayHeaderBtn">+ Add</button>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle">Holidays excluded from attendance requirements</p>
+
+              <div class="tasks-list">
+                <div class="card pro-task-card">
+                  <div class="task-accent-bar bar-success"></div>
+                  <div class="task-main-body">
+                    <div class="task-top-row">
+                      <div class="task-subject-tag">
+                        <span class="tag-icon">🌴</span>
+                        <span class="tag-text">National Holiday</span>
+                      </div>
+                      <span class="status-chip chip-safe">Auto-Excluded</span>
+                    </div>
+
+                    <h4 class="task-card-title">Independence Day</h4>
+
+                    <div class="task-meta-row">
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Aug 15, 2026</span>
+                      </div>
+                    </div>
+
+                    <div class="task-action-row">
+                      <button class="btn-submit-pill">Remove Holiday</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card pro-task-card">
+                  <div class="task-accent-bar bar-success"></div>
+                  <div class="task-main-body">
+                    <div class="task-top-row">
+                      <div class="task-subject-tag">
+                        <span class="tag-icon">🌴</span>
+                        <span class="tag-text">National Holiday</span>
+                      </div>
+                      <span class="status-chip chip-safe">Auto-Excluded</span>
+                    </div>
+
+                    <h4 class="task-card-title">Mahatma Gandhi Jayanti</h4>
+
+                    <div class="task-meta-row">
+                      <div class="meta-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span>Oct 02, 2026</span>
+                      </div>
+                    </div>
+
+                    <div class="task-action-row">
+                      <button class="btn-submit-pill">Remove Holiday</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR PAGE 3: SYSTEM SETTINGS -->
+          <div id="pageSettings" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn back-sidebar-page" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <h1 class="page-title">Settings</h1>
+            </header>
+
+            <div class="scroll-content">
+              <p class="page-subtitle">Academic criteria, period duration & app setup</p>
+
+              <div class="card">
+                <h4 class="card-section-title">Attendance Target Threshold</h4>
+                <div class="threshold-slider-row" style="margin-top: 10px;">
+                  <span class="stat-value" id="thresholdValDisplay">75%</span>
+                  <input type="range" id="thresholdSlider" min="60" max="90" value="75" style="flex:1; cursor:pointer;" />
+                </div>
+                <p class="hero-sub" style="margin-top: 6px;">Used to calculate live "Safe-to-Bunk" and "Classes to Recovery" formulas.</p>
+              </div>
+
+              <div class="card">
+                <h4 class="card-section-title">Class Schedule Configuration</h4>
+                <div class="form-group" style="margin-top: 10px;">
+                  <label>Default Period Duration (minutes)</label>
+                  <input type="number" class="form-input" value="50" />
+                </div>
+                <div class="form-group" style="margin-top: 8px;">
+                  <label>Academic Working Days</label>
+                  <select class="form-input">
+                    <option value="5">5 Days (Monday - Friday)</option>
+                    <option value="6">6 Days (Monday - Saturday)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR PAGE 4: PRIVACY -->
+          <div id="pagePrivacy" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn back-sidebar-page" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <h1 class="page-title">Privacy & Local DB</h1>
+            </header>
+
+            <div class="scroll-content">
+              <div class="card">
+                <h3 class="card-section-title">Local-First Architecture</h3>
+                <p class="hero-sub" style="margin-top: 8px; line-height: 1.5;">Attend stores all your attendance logs, timetable slots, marks records, and assignments strictly on your local Android device via Room SQLite.</p>
+                <p class="hero-sub" style="margin-top: 8px; line-height: 1.5;">No external cloud database sync. Anonymous usage analytics &amp; crash diagnostics (Firebase) and ads (AdMob) keep the app stable and free.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR PAGE 5: STUDENT PROFILE -->
+          <div id="pageProfile" class="tab-page overlay-page">
+            <header class="top-header">
+              <button class="icon-btn back-sidebar-page" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              </button>
+              <h1 class="page-title">Student Profile</h1>
+              <button class="btn-text" id="saveProfileBtn">Save</button>
+            </header>
+
+            <div class="scroll-content">
+              <!-- Hero Profile Card -->
+              <div class="card profile-hero-card">
+                <div class="profile-avatar-container">
+                  <div class="profile-avatar extra-large" id="profileAvatarBig">RE</div>
+                  <button class="avatar-edit-badge" title="Change Avatar Initials / Image">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  </button>
+                </div>
+                <h2 class="profile-hero-name" id="profileHeroName">Rashid Ekbal</h2>
+                <p class="profile-hero-sub" id="profileHeroSub">Computer Science & Engineering · Sem 5</p>
+                <div class="profile-tags-row">
+                  <span class="status-chip chip-safe" id="profSemTag">Semester 5</span>
+                  <span class="status-chip chip-secondary" id="profRollTag">Roll #2023CSE089</span>
+                </div>
+              </div>
+
+              <!-- Quick Academic Stats Snapshot -->
+              <div class="card profile-stats-card">
+                <h4 class="card-section-title">Academic Snapshot</h4>
+                <div class="stats-trio" style="margin-top: 10px;">
+                  <div class="stat-card" style="padding: 10px; background: var(--surface-subtle); border-radius: 12px; text-align: center;">
+                    <span class="stat-value text-accent" id="profStatAttendance">82%</span>
+                    <span class="stat-label">Attendance</span>
+                  </div>
+                  <div class="stat-card" style="padding: 10px; background: var(--surface-subtle); border-radius: 12px; text-align: center;">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Subjects</span>
+                  </div>
+                  <div class="stat-card" style="padding: 10px; background: var(--surface-subtle); border-radius: 12px; text-align: center;">
+                    <span class="stat-value">75%</span>
+                    <span class="stat-label">Target</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Editable Student Information Form -->
+              <div class="card profile-form-card">
+                <h4 class="card-section-title">Personal & Academic Info</h4>
+                
+                <div class="form-group" style="margin-top: 12px;">
+                  <label>Full Name</label>
+                  <input type="text" id="profInputName" class="form-input" value="Rashid Ekbal" />
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label>College / University Name</label>
+                  <input type="text" id="profInputCollege" class="form-input" value="Institute of Technology & Engineering" />
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label>Branch / Major</label>
+                  <input type="text" id="profInputBranch" class="form-input" value="Computer Science & Engineering" />
+                </div>
+
+                <div class="form-row" style="display: flex; gap: 10px; margin-top: 10px;">
+                  <div class="form-group" style="flex: 1;">
+                    <label>Current Semester</label>
+                    <select id="profSelectSem" class="form-input">
+                      <option value="Sem 1">Semester 1</option>
+                      <option value="Sem 2">Semester 2</option>
+                      <option value="Sem 3">Semester 3</option>
+                      <option value="Sem 4">Semester 4</option>
+                      <option value="Sem 5" selected>Semester 5</option>
+                      <option value="Sem 6">Semester 6</option>
+                      <option value="Sem 7">Semester 7</option>
+                      <option value="Sem 8">Semester 8</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" style="flex: 1;">
+                    <label>Roll Number / ID</label>
+                    <input type="text" id="profInputRoll" class="form-input" value="2023CSE089" />
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label>Student Email</label>
+                  <input type="email" id="profInputEmail" class="form-input" value="rashid.ekbal@college.edu" />
+                </div>
+              </div>
+
+              <!-- Quick Data & Management Actions -->
+              <div class="card">
+                <h4 class="card-section-title">Data & Management</h4>
+                <div class="profile-actions-list" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+                  <button class="btn-submit-pill" id="exportDataBtn" style="justify-content: center; padding: 10px;">
+                    📥 Export Academic Backup (JSON)
+                  </button>
+                  <button class="btn-submit-pill" id="resetTermBtn" style="justify-content: center; padding: 10px; color: var(--danger); border-color: rgba(224, 86, 36, 0.3);">
+                    ⚠️ Reset Current Term Data
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /app-content-container -->
+
+        <!-- Floating Pill Bottom Navigation with Center Round Add Button -->
+        <nav class="bottom-nav" aria-label="Bottom Navigation">
+          <button class="nav-item active" data-target="pageHome" aria-label="Home">
+            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1.8"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1.8"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1.8"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1.8"></rect>
+            </svg>
+            <span class="nav-pill-badge">Home</span>
+          </button>
+
+          <button class="nav-item" data-target="pageAttendance" aria-label="Attendance">
+            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+              <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+            </svg>
+            <span class="nav-pill-badge">Attend</span>
+          </button>
+
+          <!-- Center Round Add Button -->
+          <button id="mainFab" class="nav-center-add" aria-label="Quick Add">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-target="pageTasks" aria-label="Tasks">
+            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              <path d="m9 14 2 2 4-4"></path>
+            </svg>
+            <span class="nav-pill-badge">Tasks</span>
+          </button>
+
+          <button class="nav-item" data-target="pageMarks" aria-label="Marks">
+            <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span class="nav-pill-badge">Marks</span>
+          </button>
+        </nav>
+
+        <!-- Quick Action Bottom Sheet -->
+        <div id="bottomSheetBackdrop" class="sheet-backdrop"></div>
+        <div id="quickActionSheet" class="bottom-sheet">
+          <div class="sheet-handle"></div>
+          <div class="sheet-options">
+            <button class="sheet-option-item" id="sheetAddAssignment">
+              <div class="sheet-text">
+                <span class="option-title">Add Assignment</span>
+                <span class="option-sub">Due date + reminder</span>
+              </div>
+            </button>
+
+            <button class="sheet-option-item" id="sheetAddSubject">
+              <div class="sheet-text">
+                <span class="option-title">Add Subject</span>
+                <span class="option-sub">New subject with weekly class count</span>
+              </div>
+            </button>
+
+            <button class="sheet-option-item" id="sheetAddMarks">
+              <div class="sheet-text">
+                <span class="option-title">Add Marks</span>
+                <span class="option-sub">Log a mid sem marks</span>
+              </div>
+            </button>
+
+            <button class="sheet-option-item" id="sheetAddHoliday">
+              <div class="sheet-text">
+                <span class="option-title">Add Holiday</span>
+                <span class="option-sub">Excluded from attendance automatically</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Data Modal Popup -->
+        <div id="modalOverlay" class="modal-overlay">
+          <div class="modal-card">
+            <div class="modal-header">
+              <h3 class="modal-title" id="modalTitle">Add Item</h3>
+              <button class="modal-close" id="modalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+              <button class="btn-secondary" id="modalCancelBtn">Cancel</button>
+              <button class="btn-primary" id="modalSubmitBtn">Save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast Notification Bar -->
+        <div id="toastNotification" class="toast-bar">
+          <span class="toast-message" id="toastMessage">Action completed successfully</span>
+        </div>
+
+      </div><!-- /mobile-screen -->
+    </div><!-- /phone-frame -->
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

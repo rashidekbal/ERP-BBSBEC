@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_12">
+
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8">
+
+        <LinearLayout
+            android:id="@+id/widget_header_title_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/widget_header_actions"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/widget_app_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/widget_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_s_classes"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_11" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_header_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/widget_refresh_btn"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_28"
+                android:background="@drawable/widget_btn_normal"
+                android:contentDescription="@string/refresh"
+                android:padding="@dimen/dp_5"
+                android:src="@drawable/ic_widget_refresh" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Divider Line -->
+    <ImageView
+        android:id="@+id/widget_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:background="@color/border"
+        android:contentDescription="@null" />
+
+    <!-- Content Area: ListView and Empty View -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Classes ListView -->
+        <ListView
+            android:id="@+id/widget_class_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/dp_6"
+            android:scrollbars="vertical" />
+
+        <!-- Empty State View -->
+        <LinearLayout
+            android:id="@+id/widget_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_8"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/widget_empty_icon"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginBottom="@dimen/dp_6"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_empty_classes" />
+
+            <TextView
+                android:id="@+id/widget_empty_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_classes_scheduled_today"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_12"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/widget_empty_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:gravity="center"
+                android:text="@string/tap_to_open_attend"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_10" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Footer Stats Bar -->
+    <LinearLayout
+        android:id="@+id/widget_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/widget_footer_pct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/widget_pill_bg"
+            android:paddingStart="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_3"
+            android:paddingEnd="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_3"
+            android:text="@string/_100_overall"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/sp_10"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/widget_footer_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/on_track_1"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_10" />
+    </LinearLayout>
+
+</LinearLayout>

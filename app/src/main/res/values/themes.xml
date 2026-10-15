@@ -1,0 +1,99 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AttendCollegeAttendanceTracker" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        
+        <!-- Material 3 Typography overrides to match Web Mockup -->
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Attend.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Attend.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Attend.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Attend.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Attend.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Attend.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Attend.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Attend.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Attend.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Attend.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Attend.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Attend.LabelSmall</item>
+    </style>
+
+    <style name="Theme.AttendCollegeAttendanceTracker" parent="Base.Theme.AttendCollegeAttendanceTracker" />
+
+    <!-- Typography Styles -->
+    <style name="TextAppearance.Attend.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/outfit</item>
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Attend.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.Attend.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.Attend.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.Attend.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.Attend.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.Attend.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TransparentBottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MyBottomSheet</item>
+    </style>
+
+    <style name="MyBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+</resources>

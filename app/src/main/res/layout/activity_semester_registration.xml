@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Top Toolbar Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_15">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_left"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_12"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Semester Registration"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:text="Academic Enrollment &amp; Subject Master"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/refreshBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_restore"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/contentScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/dp_15"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_40">
+
+                <!-- Safety Notice Banner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@drawable/surface2_card_background"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_14"
+                    android:paddingVertical="@dimen/dp_10">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:src="@drawable/info_alert"
+                        app:tint="@color/text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="Official read-only view. Registration links are protected for data security."
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12" />
+                </LinearLayout>
+
+                <!-- 1. Registration Status Hero Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:background="@drawable/surface_card_bg"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_16">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/sessionText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_18"
+                                android:textStyle="bold"
+                                tools:text="Session: Jul-Dec 2026" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/semesterTag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_13"
+                                tools:text="Semester 5 · Regular" />
+                        </LinearLayout>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/surface2"
+                            app:cardCornerRadius="@dimen/dp_12"
+                            app:strokeColor="@color/success"
+                            app:strokeWidth="@dimen/dp_1">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/statusBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_12"
+                                android:layout_marginVertical="@dimen/dp_6"
+                                android:text="APPROVED"
+                                android:textColor="@color/success"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:layout_marginVertical="@dimen/dp_12"
+                        android:background="@color/border" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Applied Date"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/appliedDateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_13"
+                                android:textStyle="bold"
+                                tools:text="2026-07-20" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Status Remarks"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/remarksText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_13"
+                                android:textStyle="bold"
+                                tools:text="Confirmed by HOD" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 2. Registered Subjects Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_18"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Enrolled Subjects"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/subjectCountBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/surface2_card_background"
+                        android:paddingHorizontal="@dimen/dp_10"
+                        android:paddingVertical="@dimen/dp_4"
+                        android:textColor="@color/accent"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold"
+                        tools:text="6 Subjects · 24 Credits" />
+                </LinearLayout>
+
+                <!-- RecyclerView for Registered Subjects -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/registeredSubjectsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- Action Button: View Eligible / Available Subjects -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/viewEligibleSubjectsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="Browse Eligible Semester Subjects"
+                    android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_14"
+                    app:backgroundTint="@color/accent"
+                    app:cornerRadius="@dimen/dp_12"
+                    app:icon="@drawable/ic_search"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/all_white" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</LinearLayout>

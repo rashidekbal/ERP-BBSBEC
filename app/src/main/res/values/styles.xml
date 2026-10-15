@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NoIndicator" parent="">
+
+
+    </style>
+    <style name="circular_fab" parent="">
+        <item name="cornerSize">@dimen/dp_50</item>
+    </style>
+</resources>

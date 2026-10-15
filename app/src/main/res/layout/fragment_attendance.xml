@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    tools:context=".screens.home.pages.attendance.AttendanceFragment">
+
+    <!-- Top Bar with Drawer Button (analyticsBtn removed) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sideBar_btn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_gravity="center"
+                android:padding="@dimen/dp_10"
+                android:src="@drawable/side_menu" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_weight="1"
+            android:fontFamily="@font/outfit"
+            android:text="@string/attendance_1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_26" />
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_80">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/semesterInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@string/semester_5_aug_dec_82_overall"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+
+
+                <!-- ── 1. Hero Overall Analytics & Safe Margin Card ── -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_16"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                            android:id="@+id/overallProgressIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:progress="0"
+                            tools:progress="75"
+                            app:indicatorColor="@color/accent"
+                            app:indicatorSize="@dimen/dp_110"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:trackColor="@color/accent_dim"
+                            app:trackCornerRadius="@dimen/dp_3"
+                            app:trackThickness="@dimen/dp_10" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:elevation="@dimen/dp_6"
+                            android:translationZ="@dimen/dp_6"
+                            app:layout_constraintBottom_toBottomOf="@id/overallProgressIndicator"
+                            app:layout_constraintEnd_toEndOf="@id/overallProgressIndicator"
+                            app:layout_constraintStart_toStartOf="@id/overallProgressIndicator"
+                            app:layout_constraintTop_toTopOf="@id/overallProgressIndicator">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/overallPercentageText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_22"
+                                android:textStyle="bold"
+                                tools:text="82%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Overall"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_16"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="@id/overallProgressIndicator"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/overallProgressIndicator"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/overallStatusChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardBackgroundColor="@color/accent_dim"
+                                app:cardCornerRadius="@dimen/dp_6"
+                                app:cardElevation="0dp"
+                                app:strokeWidth="0dp">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/overallStatusChipText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/plus_jakarta_sans"
+                                    android:paddingHorizontal="@dimen/dp_8"
+                                    android:paddingVertical="@dimen/dp_3"
+                                    android:textColor="@color/accent"
+                                    android:textSize="@dimen/sp_11"
+                                    android:textStyle="bold"
+                                    tools:text="Safe Margin" />
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/heroBunkHeadline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_6"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold"
+                                tools:text="Can safely skip 5 classes" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/targetCriteriaNote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_12"
+                                tools:text="Target: 75% (+7% margin)" />
+
+                            <!-- Consecutive Streak Badge -->
+                            <LinearLayout
+                                android:id="@+id/streakContainer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_6"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/streakIcon"
+                                    android:layout_width="@dimen/dp_13"
+                                    android:layout_height="@dimen/dp_13"
+                                    android:layout_marginEnd="@dimen/dp_4"
+                                    android:src="@drawable/ic_streak_bolt"
+                                    app:tint="@color/accent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/streakText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/plus_jakarta_sans"
+                                    android:text="0-Day Streak"
+                                    android:textColor="@color/accent"
+                                    android:textSize="@dimen/sp_11"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:layout_marginVertical="@dimen/dp_14"
+                        android:background="@color/border" />
+
+                    <!-- 4-Column Stats Grid -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/totalAttendedText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold"
+                                tools:text="48" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Attended"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/totalConductedText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold"
+                                tools:text="58" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Conducted"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/totalMissedText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/danger"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold"
+                                tools:text="10" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Missed"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/totalCancelledText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── 2. Attendance Momentum & Velocity (7 Days vs 30 Days) ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- 7-Day Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="@dimen/dp_14"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border"
+                    app:strokeWidth="@dimen/dp_1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Past 7 Days"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/last7DaysPctText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_18"
+                                android:textStyle="bold"
+                                tools:text="90%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/velocityIndicatorText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_6"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:textColor="@color/success"
+                                android:textSize="@dimen/sp_11"
+                                android:textStyle="bold"
+                                tools:text="↗ Improving" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 30-Day Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="@dimen/dp_14"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border"
+                    app:strokeWidth="@dimen/dp_1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Past 30 Days"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/last30DaysPctText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:fontFamily="@font/outfit"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"
+                            tools:text="82%" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+
+            <!-- ── 3. Weekday Attendance Distribution ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_16"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit"
+                        android:text="Weekday Distribution"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/weekdayInsightText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Compare attendance consistency across weekdays"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12" />
+
+                    <com.redcodersgroup.attend_collegeattendancetracker.screens.analytics.view.WeekdayDistributionView
+                        android:id="@+id/weekdayDistributionView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_130"
+                        android:layout_marginTop="@dimen/dp_8" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── 4. What-If Attendance Projection Simulator ── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_16"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_14">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/outfit"
+                                android:text="What-If Bunk Simulator"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Test attending or bunking upcoming sessions"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_12" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/resetSimBtn"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reset"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+
+                    <!-- Interactive Controls: Attend Stepper & Bunk Stepper -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <!-- Attend Stepper -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:background="@drawable/surface_card_bg"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Attend Next"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_6"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/minusAttendBtn"
+                                    android:layout_width="@dimen/dp_28"
+                                    android:layout_height="@dimen/dp_28"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/dp_6"
+                                    android:src="@drawable/ic_minus"
+                                    app:tint="@color/text_dim" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/simAttendValueText"
+                                    android:layout_width="@dimen/dp_32"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/outfit"
+                                    android:gravity="center"
+                                    android:text="0"
+                                    android:textColor="@color/text"
+                                    android:textSize="@dimen/sp_16"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/plusAttendBtn"
+                                    android:layout_width="@dimen/dp_28"
+                                    android:layout_height="@dimen/dp_28"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/dp_6"
+                                    android:src="@drawable/ic_fab_plus"
+                                    app:tint="@color/success" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Bunk Stepper -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:background="@drawable/surface_card_bg"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Bunk Next"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_6"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/minusBunkBtn"
+                                    android:layout_width="@dimen/dp_28"
+                                    android:layout_height="@dimen/dp_28"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/dp_6"
+                                    android:src="@drawable/ic_minus"
+                                    app:tint="@color/text_dim" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/simBunkValueText"
+                                    android:layout_width="@dimen/dp_32"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/outfit"
+                                    android:gravity="center"
+                                    android:text="0"
+                                    android:textColor="@color/text"
+                                    android:textSize="@dimen/sp_16"
+                                    android:textStyle="bold" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/plusBunkBtn"
+                                    android:layout_width="@dimen/dp_28"
+                                    android:layout_height="@dimen/dp_28"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:padding="@dimen/dp_6"
+                                    android:src="@drawable/ic_fab_plus"
+                                    app:tint="@color/danger" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Simulation Result Output -->
+                    <LinearLayout
+                        android:id="@+id/simResultCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/surface_card_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:paddingVertical="@dimen/dp_10">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/simProjectedPctText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/outfit"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_20"
+                            android:textStyle="bold"
+                            tools:text="82%" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/simStatusHeadline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="No simulation active"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_13"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/simStatusDeltaText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:text="Adjust attendance or bunk counters above"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Pending Setup Subjects Section ── -->
+            <LinearLayout
+                android:id="@+id/setupGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit"
+                        android:text="Pending Subject Setup"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/pendingSetupCountBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/accent_dim"
+                        app:cardCornerRadius="@dimen/dp_6"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/pendingSetupCountText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:paddingHorizontal="@dimen/dp_8"
+                            android:paddingVertical="@dimen/dp_3"
+                            android:text="Action Required"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_10"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Complete setup for these subjects to include them in attendance tracking"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pendingSetupRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/subject_setup_card_rv" />
+            </LinearLayout>
+
+            <!-- ── 5. By Subject Attendance Cards Section ── -->
+            <LinearLayout
+                android:id="@+id/attendanceSubjectListSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/outfit"
+                        android:text="Subject Breakdown &amp; Health"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/attendanceSubjectContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/attendanceCardRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_subject_risk" />
+
+                    <!-- Empty State for Subjects -->
+                    <LinearLayout
+                        android:id="@+id/emptySubjectsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/dp_20"
+                        android:paddingVertical="@dimen/dp_20"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/emptyAttendanceIcon"
+                            android:layout_width="@dimen/dp_64"
+                            android:layout_height="@dimen/dp_64"
+                            android:src="@drawable/ic_empty_attendance" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="No Subjects Available"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:gravity="center"
+                            android:text="Pull down to refresh and sync subjects &amp; attendance from BBSBEC ERP"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,1021 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 10,
+    "identityHash": "22bc1e9663a19ec28640a68eac13633b",
+    "entities": [
+      {
+        "tableName": "holiday",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `eventName` TEXT, `startDate` INTEGER NOT NULL, `endDate` INTEGER NOT NULL, `reminderSchedule` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "hid",
+            "columnName": "hid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "eventName",
+            "columnName": "eventName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "startDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endDate",
+            "columnName": "endDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reminderSchedule",
+            "columnName": "reminderSchedule",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "hid"
+          ]
+        }
+      },
+      {
+        "tableName": "subject",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `subjectName` TEXT, `isLab` INTEGER NOT NULL, `classesPerWeek` INTEGER NOT NULL, `labsPerWeek` INTEGER NOT NULL, `attendance_criteria` INTEGER NOT NULL, `uniqueColorCode` TEXT, `timeTableSetupComplete` INTEGER NOT NULL, `attendanceSetupComplete` INTEGER NOT NULL, `erpSubjectId` INTEGER NOT NULL DEFAULT 0, `subjectCode` TEXT, `subjectType` TEXT, `credits` INTEGER NOT NULL DEFAULT 0, `teacherName` TEXT, `roomNo` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "sid",
+            "columnName": "sid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subjectName",
+            "columnName": "subjectName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isLab",
+            "columnName": "isLab",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "classesPerWeek",
+            "columnName": "classesPerWeek",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "labsPerWeek",
+            "columnName": "labsPerWeek",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attendanceCriteria",
+            "columnName": "attendance_criteria",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uniqueColorCode",
+            "columnName": "uniqueColorCode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isTimeTableSetUpComplete",
+            "columnName": "timeTableSetupComplete",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isAttendanceSetUpComplete",
+            "columnName": "attendanceSetupComplete",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "erpSubjectId",
+            "columnName": "erpSubjectId",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "subjectCode",
+            "columnName": "subjectCode",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "subjectType",
+            "columnName": "subjectType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "credits",
+            "columnName": "credits",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "teacherName",
+            "columnName": "teacherName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "roomNo",
+            "columnName": "roomNo",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "sid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_subject_sid",
+            "unique": true,
+            "columnNames": [
+              "sid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_subject_sid` ON `${TABLE_NAME}` (`sid`)"
+          }
+        ]
+      },
+      {
+        "tableName": "assignment",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`aid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sid` INTEGER NOT NULL, `subjectName` TEXT, `assignmentTitle` TEXT, `assignmentDesc` TEXT, `dueDate` INTEGER NOT NULL, `reminderSchedule` TEXT, `submitted` INTEGER NOT NULL, FOREIGN KEY(`sid`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "aid",
+            "columnName": "aid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sid",
+            "columnName": "sid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subjectName",
+            "columnName": "subjectName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "assignmentTitle",
+            "columnName": "assignmentTitle",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "assignmentDesc",
+            "columnName": "assignmentDesc",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "dueDate",
+            "columnName": "dueDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reminderSchedule",
+            "columnName": "reminderSchedule",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "submitted",
+            "columnName": "submitted",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "aid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_assignment_sid",
+            "unique": false,
+            "columnNames": [
+              "sid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_assignment_sid` ON `${TABLE_NAME}` (`sid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sid"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "marks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`marksId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sid` INTEGER NOT NULL, `subjectName` TEXT, `mid1` REAL NOT NULL, `mid2` REAL NOT NULL, `mid3` REAL NOT NULL, FOREIGN KEY(`sid`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "marksId",
+            "columnName": "marksId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sid",
+            "columnName": "sid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subjectName",
+            "columnName": "subjectName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "mid1",
+            "columnName": "mid1",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mid2",
+            "columnName": "mid2",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mid3",
+            "columnName": "mid3",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "marksId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_marks_sid",
+            "unique": true,
+            "columnNames": [
+              "sid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_marks_sid` ON `${TABLE_NAME}` (`sid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sid"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "user",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `collegeName` TEXT, `department` TEXT, `branch` TEXT, `semester` INTEGER NOT NULL, `sem_startDate` INTEGER NOT NULL, `sem_endDate` INTEGER NOT NULL, `working_days` INTEGER NOT NULL, `first_period_start_time` INTEGER NOT NULL, `attendanceCriteria` INTEGER NOT NULL, `themeColor` TEXT, `maxMarks` INTEGER NOT NULL DEFAULT 24, `rollNumber` TEXT, `phone` TEXT, `email` TEXT, `universityRollNumber` TEXT, `classGroup` TEXT, `course` TEXT, `erpStudentId` INTEGER NOT NULL DEFAULT 0, `photoUrl` TEXT, `fatherName` TEXT, `motherName` TEXT, `fatherProfession` TEXT, `motherProfession` TEXT, `gender` TEXT, `dob` TEXT, `aadhar` TEXT, `bloodGroup` TEXT, `category` TEXT, `status` TEXT, `parentMobile` TEXT, `batch` TEXT, `admissionType` TEXT, `practicalGroup` TEXT, `communicationAddress` TEXT, `permanentAddress` TEXT, `highSchoolBoard` TEXT, `highSchoolPassingYear` TEXT, `highSchoolMarks` TEXT, `highSchoolMaxMarks` TEXT, `highSchoolPercentage` TEXT, `interBoard` TEXT, `interPassingYear` TEXT, `interMarks` TEXT, `interMaxMarks` TEXT, `interPercentage` TEXT, `scholarship` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "collegeName",
+            "columnName": "collegeName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "department",
+            "columnName": "department",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "branch",
+            "columnName": "branch",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "semester",
+            "columnName": "semester",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "semStartDate",
+            "columnName": "sem_startDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "semEndDate",
+            "columnName": "sem_endDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workingDays",
+            "columnName": "working_days",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstPeriodStartTime",
+            "columnName": "first_period_start_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attendanceCriteria",
+            "columnName": "attendanceCriteria",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "themeColor",
+            "columnName": "themeColor",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "maxMarks",
+            "columnName": "maxMarks",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "24"
+          },
+          {
+            "fieldPath": "rollNumber",
+            "columnName": "rollNumber",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "phone",
+            "columnName": "phone",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "universityRollNumber",
+            "columnName": "universityRollNumber",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "classGroup",
+            "columnName": "classGroup",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "course",
+            "columnName": "course",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "erpStudentId",
+            "columnName": "erpStudentId",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "photoUrl",
+            "columnName": "photoUrl",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fatherName",
+            "columnName": "fatherName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "motherName",
+            "columnName": "motherName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "fatherProfession",
+            "columnName": "fatherProfession",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "motherProfession",
+            "columnName": "motherProfession",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "dob",
+            "columnName": "dob",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "aadhar",
+            "columnName": "aadhar",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "bloodGroup",
+            "columnName": "bloodGroup",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "parentMobile",
+            "columnName": "parentMobile",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "batch",
+            "columnName": "batch",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "admissionType",
+            "columnName": "admissionType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "practicalGroup",
+            "columnName": "practicalGroup",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "communicationAddress",
+            "columnName": "communicationAddress",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "permanentAddress",
+            "columnName": "permanentAddress",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "highSchoolBoard",
+            "columnName": "highSchoolBoard",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "highSchoolPassingYear",
+            "columnName": "highSchoolPassingYear",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "highSchoolMarks",
+            "columnName": "highSchoolMarks",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "highSchoolMaxMarks",
+            "columnName": "highSchoolMaxMarks",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "highSchoolPercentage",
+            "columnName": "highSchoolPercentage",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "interBoard",
+            "columnName": "interBoard",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "interPassingYear",
+            "columnName": "interPassingYear",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "interMarks",
+            "columnName": "interMarks",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "interMaxMarks",
+            "columnName": "interMaxMarks",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "interPercentage",
+            "columnName": "interPercentage",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "scholarship",
+            "columnName": "scholarship",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "uid"
+          ]
+        }
+      },
+      {
+        "tableName": "subjectAdditionalInfo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`said` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sid` INTEGER NOT NULL, `totalClasses` INTEGER NOT NULL, `totalLabs` INTEGER NOT NULL, FOREIGN KEY(`sid`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "said",
+            "columnName": "said",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sid",
+            "columnName": "sid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalClasses",
+            "columnName": "totalClasses",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalLabs",
+            "columnName": "totalLabs",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "said"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_subjectAdditionalInfo_sid",
+            "unique": true,
+            "columnNames": [
+              "sid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_subjectAdditionalInfo_sid` ON `${TABLE_NAME}` (`sid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sid"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "timeTable_day",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`did` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `dayName` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "did",
+            "columnName": "did",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dayName",
+            "columnName": "dayName",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "did"
+          ]
+        }
+      },
+      {
+        "tableName": "daySchedule",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scheduleId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `did` INTEGER NOT NULL, `p1` INTEGER, `p2` INTEGER, `p3` INTEGER, `p4` INTEGER, `p5` INTEGER, `p6` INTEGER, `p7` INTEGER, `p8` INTEGER, `p9` INTEGER, FOREIGN KEY(`did`) REFERENCES `timeTable_day`(`did`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p1`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p2`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p3`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p4`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p5`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p6`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p7`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p8`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`p9`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "scheduleId",
+            "columnName": "scheduleId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "did",
+            "columnName": "did",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "p1",
+            "columnName": "p1",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p2",
+            "columnName": "p2",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p3",
+            "columnName": "p3",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p4",
+            "columnName": "p4",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p5",
+            "columnName": "p5",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p6",
+            "columnName": "p6",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p7",
+            "columnName": "p7",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p8",
+            "columnName": "p8",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "p9",
+            "columnName": "p9",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "scheduleId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_daySchedule_did",
+            "unique": true,
+            "columnNames": [
+              "did"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_daySchedule_did` ON `${TABLE_NAME}` (`did`)"
+          },
+          {
+            "name": "index_daySchedule_p1",
+            "unique": false,
+            "columnNames": [
+              "p1"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p1` ON `${TABLE_NAME}` (`p1`)"
+          },
+          {
+            "name": "index_daySchedule_p2",
+            "unique": false,
+            "columnNames": [
+              "p2"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p2` ON `${TABLE_NAME}` (`p2`)"
+          },
+          {
+            "name": "index_daySchedule_p3",
+            "unique": false,
+            "columnNames": [
+              "p3"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p3` ON `${TABLE_NAME}` (`p3`)"
+          },
+          {
+            "name": "index_daySchedule_p4",
+            "unique": false,
+            "columnNames": [
+              "p4"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p4` ON `${TABLE_NAME}` (`p4`)"
+          },
+          {
+            "name": "index_daySchedule_p5",
+            "unique": false,
+            "columnNames": [
+              "p5"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p5` ON `${TABLE_NAME}` (`p5`)"
+          },
+          {
+            "name": "index_daySchedule_p6",
+            "unique": false,
+            "columnNames": [
+              "p6"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p6` ON `${TABLE_NAME}` (`p6`)"
+          },
+          {
+            "name": "index_daySchedule_p7",
+            "unique": false,
+            "columnNames": [
+              "p7"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p7` ON `${TABLE_NAME}` (`p7`)"
+          },
+          {
+            "name": "index_daySchedule_p8",
+            "unique": false,
+            "columnNames": [
+              "p8"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p8` ON `${TABLE_NAME}` (`p8`)"
+          },
+          {
+            "name": "index_daySchedule_p9",
+            "unique": false,
+            "columnNames": [
+              "p9"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_daySchedule_p9` ON `${TABLE_NAME}` (`p9`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "timeTable_day",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "did"
+            ],
+            "referencedColumns": [
+              "did"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p1"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p2"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p3"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p4"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p5"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p6"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p7"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p8"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          },
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "p9"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "attendance",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`aid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sid` INTEGER NOT NULL, `date` TEXT, `status` TEXT, `isLab` INTEGER NOT NULL DEFAULT 0, `erpAttendanceId` INTEGER NOT NULL DEFAULT 0, `lectureSessionId` INTEGER NOT NULL DEFAULT 0, `hour` TEXT, `rawMark` TEXT, FOREIGN KEY(`sid`) REFERENCES `subject`(`sid`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "aid",
+            "columnName": "aid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sid",
+            "columnName": "sid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isLab",
+            "columnName": "isLab",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "erpAttendanceId",
+            "columnName": "erpAttendanceId",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "lectureSessionId",
+            "columnName": "lectureSessionId",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "hour",
+            "columnName": "hour",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "rawMark",
+            "columnName": "rawMark",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "aid"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_attendance_sid",
+            "unique": false,
+            "columnNames": [
+              "sid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_attendance_sid` ON `${TABLE_NAME}` (`sid`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "subject",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sid"
+            ],
+            "referencedColumns": [
+              "sid"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '22bc1e9663a19ec28640a68eac13633b')"
+    ]
+  }
+}

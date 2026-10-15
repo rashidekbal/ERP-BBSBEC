@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    android:paddingBottom="@dimen/dp_15"
+    tools:context=".screens.privacy.PrivacyPolicyActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeColor="@color/border">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:padding="@dimen/dp_4"
+                android:src="@drawable/arrow_left" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/privacy_policy"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_26" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_15"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_30">
+
+            <!-- Highlight Banner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_20">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_privacy_is_our_priority"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/attend_is_designed_with_a_strict_offline"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <!-- Card 1: 100% Local Storage -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_15">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_1_100_local_storage"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/all_information_entered_in_this_applicat"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <!-- Card 2: Zero Tracking & Ads -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_15">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_2_zero_tracking_no_analytics"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/attend_does_not_integrate_third_party_tr"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <!-- Card 3: Permissions Explanation -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_15">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_3_permissions_used"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/post_notifications_used_exclusively_to_d"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <!-- Card 4: Ownership & Deletion -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_15">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_4_data_control_deletion"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/you_have_full_control_over_your_data_you"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <!-- Card 5: Developer Contact & Portfolio -->
+            <LinearLayout
+                android:id="@+id/developerCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/surface_card_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:paddingVertical="@dimen/dp_15">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/_5_contact_support"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_16"
+                        android:layout_height="@dimen/dp_16"
+                        android:rotation="180"
+                        android:src="@drawable/greater_than"
+                        app:tint="@color/accent" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:text="@string/attend_is_developed_and_maintained_by_r"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:text="🔗 Visit rasidekbal.in"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/sp_13"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

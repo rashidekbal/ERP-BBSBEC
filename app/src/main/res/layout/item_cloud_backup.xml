@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_14"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_14">
+
+        <!-- Top row: Backup label badge + Timestamp -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/surface2_card_background"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:paddingHorizontal="@dimen/dp_8"
+                android:paddingVertical="@dimen/dp_3"
+                android:text="LATEST"
+                android:textColor="@color/success"
+                android:textSize="@dimen/sp_10"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupDateText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit"
+                android:text="Oct 09, 2026 · 12:30 PM"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Details row: Student info, subjects, attendance counts -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupSubjectsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="6 Subjects"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+            <View
+                android:layout_width="@dimen/dp_4"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:background="@drawable/dot_shape" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupAttendanceCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="142 Records"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+            <View
+                android:id="@+id/dotStudentName"
+                android:layout_width="@dimen/dp_4"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginHorizontal="@dimen/dp_8"
+                android:background="@drawable/dot_shape" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupStudentName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:maxLines="1"
+                android:text="Student Name"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <!-- Restore Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestoreThis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="Restore this backup"
+            android:textAllCaps="false"
+            android:textColor="@color/all_white"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dp_10"
+            app:elevation="0dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

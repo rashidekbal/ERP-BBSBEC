@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20">
+
+    <!-- Header bar with handle and close button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_16">
+
+        <View
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_4"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/surface2_card_background" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dialogCloseBtn"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface2"
+            app:cardCornerRadius="@dimen/dp_16"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="@dimen/dp_18"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_close"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+    <!-- Subject Title -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialogSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        tools:text="[GitHub] An email address was removed from your account." />
+
+    <!-- Sender Details Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:background="@drawable/surface2_card_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_12">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dialogAvatarCard"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
+            android:layout_marginEnd="@dimen/dp_12"
+            app:cardBackgroundColor="@color/accent"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialogAvatarInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/all_white"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold"
+                tools:text="G" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialogSenderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold"
+                tools:text="GitHub" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialogSenderEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12"
+                tools:text="noreply@github.com" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialogDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_11"
+            tools:text="10 Oct, 04:05 PM" />
+    </LinearLayout>
+
+    <!-- Message Body -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:maxHeight="320dp"
+        android:scrollbars="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialogMessageBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/text"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/sp_14"
+            tools:text="Hey rashidekbal!\n\nAn email address (rasidekbal.241117@bbsbec.edu.in) was removed from your account. Visit https://github.com/settings/emails to review email addresses currently associated with your account.\n\nIf you don't recognize this change, visit: https://github.com/settings/emails" />
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Close Action Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialogDoneBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginTop="@dimen/dp_20"
+        android:backgroundTint="@color/accent"
+        android:fontFamily="@font/plus_jakarta_sans"
+        android:text="Close"
+        android:textAllCaps="false"
+        android:textColor="@color/all_white"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/dp_12" />
+
+</LinearLayout>

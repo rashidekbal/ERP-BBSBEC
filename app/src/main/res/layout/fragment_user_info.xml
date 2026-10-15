@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/onboarding_page_bg"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    android:paddingTop="@dimen/dp_48"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_2"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/accent"
+            app:strokeWidth="0dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_8"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/surface"
+            app:strokeWidth="0dp" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tell_us_about_you"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_26" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="@string/we_ll_personalize_your_dashboard_and_sem"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_5"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:text="@string/name_1"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/nameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="@string/e_g_rashid_ekbal"
+                        android:paddingHorizontal="@dimen/dp_15"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_5"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:text="@string/college_name_optional"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/collegeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="@string/e_g_iit_dholakpur"
+                        android:paddingHorizontal="@dimen/dp_15"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_5"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:text="@string/semester_start_date_approx"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/startDateTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp_5"
+                            android:hint="@string/dd_mm_yyyy"
+                            android:paddingHorizontal="@dimen/dp_15"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dp_5"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dp_5"
+                        android:text="@string/semester_end_date_approx"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/endDateTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/dp_5"
+                            android:hint="@string/dd_mm_yyyy"
+                            android:paddingHorizontal="@dimen/dp_15"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:text="@string/current_semester_1"
+                        android:textAllCaps="true"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/semesterChipGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
+                        app:chipSpacingHorizontal="@dimen/dp_10"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem1"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:tag="1"
+                            android:text="@string/_1st"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem2"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="2"
+                            android:text="@string/_2nd"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem3"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="3"
+                            android:text="@string/_3rd"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem4"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="4"
+                            android:text="@string/_4th"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem5"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="5"
+                            android:text="@string/_5th"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem6"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="6"
+                            android:text="@string/_6th"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem7"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="7"
+                            android:text="@string/_7th"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/sem8"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:tag="8"
+                            android:text="@string/_8th"
+                            android:textColor="@color/text"
+                            app:chipBackgroundColor="@color/chip_color_list"
+                            app:chipCornerRadius="@dimen/dp_16"
+                            app:chipStrokeColor="@color/border"
+                            app:chipStrokeWidth="@dimen/dp_1" />
+
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dp_15"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/backBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg"
+                android:text="@string/back" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:strokeWidth="0dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/continue_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#95F5A623"
+                android:text="@string/continue_text"
+                android:textColor="@color/all_white" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>

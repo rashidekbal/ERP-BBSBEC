@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_welcome_premium"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".screens.onBoarding.WelcomeFragment">
+
+
+        <LinearLayout
+            android:id="@+id/headerSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_32"
+            android:paddingBottom="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingHorizontal="@dimen/dp_20"
+            app:layout_constraintBottom_toTopOf="@+id/action_btn_holder">
+
+            <!-- App Badge Card with Glow Stroke -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_28"
+                app:cardElevation="@dimen/dp_6"
+                app:strokeColor="#40F5A623"
+                app:strokeWidth="@dimen/dp_2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_height="@dimen/dp_90"
+                    android:padding="@dimen/dp_8"
+                    android:src="@mipmap/ic_launcher" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pill Tag: Smart Academic Engine -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/surface_card_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_14"
+                android:paddingVertical="@dimen/dp_6">
+
+                <View
+                    android:layout_width="@dimen/dp_7"
+                    android:layout_height="@dimen/dp_7"
+                    android:background="@drawable/dot_shape"
+                    android:backgroundTint="@color/accent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Offline-First Academic Planner"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Brand Typography -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit"
+                    android:text="@string/welcome_to"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_28"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/outfit" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:fontFamily="@font/outfit"
+                    android:text="@string/attend"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/sp_32"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/outfit" />
+            </LinearLayout>
+
+            <!-- Subtitle Description -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:lineSpacingExtra="@dimen/dp_4"
+                android:text="@string/your_all_in_one_college_companion_for_at"
+                android:textAlignment="center"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+
+    <!-- Bottom Action & Agreement Dock -->
+    <LinearLayout
+        android:id="@+id/action_btn_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_18"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       >
+
+        <!-- Terms and Privacy Agreement Checkbox Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/termsAgreementContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_16"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/dp_12"
+                android:paddingVertical="@dimen/dp_10">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/termsCheckbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    app:buttonTint="@color/accent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/termsText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:lineSpacingExtra="@dimen/dp_2"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Primary CTA: Let's Cook -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_54"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/outfit"
+            android:text="@string/let_s_cook"
+            android:textAllCaps="false"
+            android:textColor="@color/all_white"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/dp_28"
+            app:elevation="@dimen/dp_2" />
+
+        <!-- Secondary CTA: Import Backup (Cloud or Local File) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/restoreBtn"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_marginTop="@dimen/dp_6"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="Already have data? Import Backup"
+            android:textAllCaps="false"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_cloud_upload"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/dp_8"
+            app:iconSize="@dimen/dp_18"
+            app:iconTint="@color/accent" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

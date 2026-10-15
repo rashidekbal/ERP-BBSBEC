@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingTop="@dimen/dp_14"
+    android:paddingBottom="@dimen/dp_24">
+
+    <!-- Drag Handle -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/dp_36"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_12"
+        app:cardBackgroundColor="@color/border"
+        app:cardCornerRadius="@dimen/dp_2"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp" />
+
+    <!-- Top Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/closeBtn"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sheetTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit"
+                android:text="Complete Academic Profile"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sheetSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Set your semester &amp; timings before adding subjects"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/dp_6"
+            android:src="@drawable/ic_close"
+            app:tint="@color/text_dim" />
+
+    </RelativeLayout>
+
+    <!-- Step Indicator Progress Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stepNumberBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="STEP 1 OF 2: SEMESTER INFO"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/sp_11"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_1"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stepPercentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="50%"
+                android:textColor="@color/accent"
+                android:textSize="@dimen/sp_11"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/stepProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_6"
+            android:progress="50"
+            app:indicatorColor="@color/accent"
+            app:trackColor="@color/surface2"
+            app:trackCornerRadius="@dimen/dp_3" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ══════════════════════════════════════════════
+                 STEP 1 CONTAINER: Name, Semester, Sem Dates
+                 ══════════════════════════════════════════════ -->
+            <LinearLayout
+                android:id="@+id/step1Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- Name Field -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="YOUR FULL NAME"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/nameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:background="@drawable/surface2_card_background"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:hint="e.g. Alex Johnson"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/dp_14"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/text_faint"
+                    android:textSize="@dimen/sp_14" />
+
+                <!-- Semester Selector -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="CURRENT SEMESTER"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/semesterChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    app:chipSpacingHorizontal="@dimen/dp_6"
+                    app:chipSpacingVertical="@dimen/dp_2"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem1"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:tag="1"
+                        android:text="Sem 1"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem2"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="2"
+                        android:text="Sem 2"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem3"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="3"
+                        android:text="Sem 3"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem4"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="4"
+                        android:text="Sem 4"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem5"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="5"
+                        android:text="Sem 5"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem6"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="6"
+                        android:text="Sem 6"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem7"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="7"
+                        android:text="Sem 7"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/sem8"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="8"
+                        android:text="Sem 8"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Semester Dates Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <!-- Start Date -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="SEM START DATE"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/startDateBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/dp_18"
+                                android:layout_height="@dimen/dp_18"
+                                android:src="@drawable/ic_calendar_event"
+                                app:tint="@color/accent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/startDateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:hint="Select Date"
+                                android:maxLines="1"
+                                android:textColor="@color/text"
+                                android:textColorHint="@color/text_faint"
+                                android:textSize="@dimen/sp_13" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- End Date -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="SEM END DATE"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/endDateBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/dp_10">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/dp_18"
+                                android:layout_height="@dimen/dp_18"
+                                android:src="@drawable/ic_calendar_event"
+                                app:tint="@color/accent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/endDateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/plus_jakarta_sans"
+                                android:hint="Select Date"
+                                android:maxLines="1"
+                                android:textColor="@color/text"
+                                android:textColorHint="@color/text_faint"
+                                android:textSize="@dimen/sp_13" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Next CTA Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNextStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:backgroundTint="@color/accent"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Continue to Schedule →"
+                    android:textAllCaps="false"
+                    android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/dp_14" />
+
+            </LinearLayout>
+
+            <!-- ══════════════════════════════════════════════
+                 STEP 2 CONTAINER: Working Days, Period Time, Criteria
+                 ══════════════════════════════════════════════ -->
+            <LinearLayout
+                android:id="@+id/step2Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <!-- Working Days -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="WORKING DAYS PER WEEK"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/workingDaysChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_6"
+                    app:chipSpacingHorizontal="@dimen/dp_10"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip5Days"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="5 Days (Mon – Fri)"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip6Days"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6 Days (Mon – Sat)"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Period Start Time -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="FIRST PERIOD START TIME"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/periodTimeBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:background="@drawable/surface2_card_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/accent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/periodTimeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:hint="Select Start Time"
+                        android:text="09:00 AM"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+                <!-- Attendance Criteria -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:text="TARGET ATTENDANCE CRITERIA"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/criteriaChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_6"
+                    app:chipSpacingHorizontal="@dimen/dp_8"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/criteria65"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="65"
+                        android:text="65%"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/criteria75"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:tag="75"
+                        android:text="75% (Target)"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/criteria80"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="80"
+                        android:text="80%"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/chip_color_list"
+                        app:chipCornerRadius="@dimen/dp_16"
+                        app:chipStrokeColor="@color/border"
+                        app:chipStrokeWidth="@dimen/dp_1" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Actions: Back & Finish -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBackStep"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:text="← Back"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_14"
+                        app:cornerRadius="@dimen/dp_14"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnFinishSetup"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="2"
+                        android:backgroundTint="@color/accent"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Complete Setup"
+                        android:textAllCaps="false"
+                        android:textColor="@color/all_white"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold"
+                        app:cornerRadius="@dimen/dp_14" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

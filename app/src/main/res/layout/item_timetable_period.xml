@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/periodCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:clickable="false"
+    android:focusable="false"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_14"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Left Colored Vertical Pillar -->
+        <View
+            android:id="@+id/colorStrip"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="match_parent"
+            android:background="@color/accent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_14"
+            android:paddingVertical="@dimen/dp_12">
+
+            <!-- Top Row: Period number + Time + Tag -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/periodNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/surface2_card_background"
+                    android:paddingHorizontal="@dimen/dp_8"
+                    android:paddingVertical="@dimen/dp_2"
+                    android:text="PERIOD 1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/sp_10"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/periodTimeRangeText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_weight="1"
+                    android:text="09:00 AM - 09:50 AM"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12" />
+
+                <!-- Lab / Lecture Tag Chip -->
+                <TextView
+                    android:id="@+id/labTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/surface2_card_background"
+                    android:paddingHorizontal="@dimen/dp_8"
+                    android:paddingVertical="@dimen/dp_3"
+                    android:text="Lab"
+                    android:textColor="@color/danger"
+                    android:textSize="@dimen/sp_10"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <!-- Bottom Row: Subject details or Free period placeholder -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/subjectNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:maxLines="1"
+                        android:text="Data Structures &amp; Algorithms"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/subjectSubtext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:text="Criteria: 75% • 4 slots/wk"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/actionIcon"
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:alpha="0.7"
+                    android:contentDescription="Action"
+                    android:src="@drawable/ic_edit"
+                    android:visibility="gone"
+                    app:tint="@color/text_dim" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

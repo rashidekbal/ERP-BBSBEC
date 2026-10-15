@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_unfilled_icon"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/attendance"
+        android:icon="@drawable/square_att"
+        android:title="@string/attendance" />
+    <item
+        android:id="@+id/task"
+        android:icon="@drawable/tasks_list"
+        android:title="@string/tasks"/>
+    <item
+        android:id="@+id/marks"
+        android:icon="@drawable/star"
+        android:title="@string/marks"
+        />
+
+</menu>

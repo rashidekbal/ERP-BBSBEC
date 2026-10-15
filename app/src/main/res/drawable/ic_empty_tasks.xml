@@ -1,0 +1,41 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="@color/accent_dim"
+        android:pathData="M36,36m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
+    <!-- Clipboard Outline -->
+    <path
+        android:strokeColor="@color/accent"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M26,24h-3a4,4 0,0 0,-4 4v24a4,4 0,0 0,4 4h26a4,4 0,0 0,4 -4V28a4,4 0,0 0,-4 -4h-3" />
+    <!-- Clipboard Top Clip -->
+    <path
+        android:strokeColor="@color/accent"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="@color/surface"
+        android:pathData="M28,21h16a2,2 0,0 1,2 2v3a2,2 0,0 1,-2 2H28a2,2 0,0 1,-2 -2v-3a2,2 0,0 1,2 -2z" />
+    <!-- Checkmark 1 -->
+    <path
+        android:strokeColor="@color/success"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"
+        android:pathData="M26,37l4,4l9,-9" />
+    <!-- Task line 2 -->
+    <path
+        android:strokeColor="@color/text_dim"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M26,47h20" />
+</vector>

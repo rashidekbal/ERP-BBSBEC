@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/modalCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_18"
+    android:layout_marginVertical="@dimen/dp_20"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_20"
+    app:cardElevation="@dimen/dp_12"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_18"
+        android:paddingTop="@dimen/dp_18"
+        android:paddingBottom="@dimen/dp_16">
+
+        <!-- Modal Header: Title + Close Button -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/headerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="@string/add_marks"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/closeBtn"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Close"
+                android:padding="@dimen/dp_6"
+                android:src="@drawable/ic_close"
+                app:tint="@color/text_dim" />
+        </RelativeLayout>
+
+        <!-- Scrollable Form Body -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:maxHeight="@dimen/dp_460"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Subject Selection -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/subjectSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:background="@drawable/spinner_box_bg"
+                    android:dropDownVerticalOffset="@dimen/dp_6"
+                    android:paddingHorizontal="@dimen/dp_14"
+                    android:popupBackground="@drawable/spinner_popup_background" />
+
+                <!-- Exam / Mid Term Selection -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/exam"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/midChipGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    app:chipSpacingHorizontal="@dimen/dp_8"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mid1"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/mid_sem1"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/surface2" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mid2"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mid_sem_2"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/surface2" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/mid3"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mid_sem_3"
+                        android:textColor="@color/text"
+                        app:chipBackgroundColor="@color/surface2" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Score Obtained Input -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:text="@string/score_obtained"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/marksInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_46"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:background="@drawable/surface2_card_background"
+                    android:hint="@string/eg_20"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="@dimen/dp_14"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/text_faint"
+                    android:textSize="@dimen/sp_14" />
+
+                <!-- Clear Marks Option (Conditional) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/clearMarksBtnCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="@dimen/dp_10"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/danger"
+                    app:strokeWidth="@dimen/dp_1"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/clearMarksBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_38"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="@string/clear_mid_1_marks"
+                        android:textAllCaps="false"
+                        android:textColor="@color/danger"
+                        android:textSize="@dimen/sp_13"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Modal Action Footer (1:1 Web Mockup) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_10"
+                android:text="Cancel"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/accent"
+                app:cardCornerRadius="@dimen/dp_10"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_38"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:minWidth="@dimen/dp_80"
+                    android:paddingHorizontal="@dimen/dp_20"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

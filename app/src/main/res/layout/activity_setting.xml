@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    tools:context=".screens.setting.SettingActivity">
+
+  <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/arrow_left" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:text="@string/setting"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_60">
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="Academic criteria, period duration &amp; app setup"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_13" />
+
+            <!-- ══════════════════════════════════════════════
+                 1. Attendance Target Threshold (1:1 Web Mockup)
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/thresholdRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_16">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Attendance Target Threshold"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <!-- Slider & Percentage Display Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/thresholdText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_12"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:text="@string/_75"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_24"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/thresholdSlider"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:stepSize="1.0"
+                            android:value="75.0"
+                            android:valueFrom="60.0"
+                            android:valueTo="90.0"
+                            app:thumbColor="@color/accent"
+                            app:trackColorActive="@color/accent"
+                            app:trackColorInactive="@color/surface2" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:text="Used to calculate live &quot;Safe-to-Bunk&quot; and &quot;Classes to Recovery&quot; formulas."
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════════════════════════
+                 2. Class Schedule Configuration (1:1 Web Mockup)
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Class Schedule Configuration"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <!-- Default Period Duration Row -->
+                    <LinearLayout
+                        android:id="@+id/periodLengthRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/period_length"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Default period length for timetable slots"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/periodLengthText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/surface2_card_background"
+                            android:paddingHorizontal="@dimen/dp_10"
+                            android:paddingVertical="@dimen/dp_4"
+                            android:text="@string/_50_mins"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_13"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Academic Working Days Row -->
+                    <LinearLayout
+                        android:id="@+id/workingDaysRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/working_days"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Monday-Friday (5) or Monday-Saturday (6)"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/workingDaysText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/surface2_card_background"
+                            android:paddingHorizontal="@dimen/dp_10"
+                            android:paddingVertical="@dimen/dp_4"
+                            android:text="@string/_5_days_mon_fri_1"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_13"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Semester Dates Row (Hidden: ERP has no session start/end dates) -->
+                    <LinearLayout
+                        android:id="@+id/semesterDatesRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/semester_dates"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Term start &amp; end bounds for metrics"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/semesterDatesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/surface2_card_background"
+                            android:paddingHorizontal="@dimen/dp_10"
+                            android:paddingVertical="@dimen/dp_4"
+                            android:text="@string/edit_in_profile"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_13"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════════════════════════
+                 3. Theme & Accent Color Palette
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/accentColorTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="@string/accent_color"
+                        android:textAllCaps="true"
+                        android:textColor="@color/accent"
+                        android:textSize="@dimen/sp_13"
+                        android:textStyle="bold" />
+
+                    <!-- Swatches Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <!-- Amber -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchAmber"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#F5A623"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Green -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchGreen"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#22C55E"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Coral -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchCoral"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#F5654A"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Blue -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchBlue"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#3B82F6"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Purple -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchPurple"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#8B5CF6"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Pink -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchPink"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#EC4899"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Cyan -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchCyan"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#06B6D4"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                        <!-- Indigo -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/swatchIndigo"
+                            android:layout_width="@dimen/dp_34"
+                            android:layout_height="@dimen/dp_34"
+                            android:layout_marginHorizontal="@dimen/dp_3"
+                            app:cardBackgroundColor="#6366F1"
+                            app:cardCornerRadius="@dimen/dp_17"
+                            app:strokeColor="@color/border"
+                            app:strokeWidth="@dimen/dp_1" />
+
+                    </LinearLayout>
+
+                    <!-- Dark Mode Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_14"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/dark_mode"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/dark_mode_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/all_white"
+                            app:trackTint="@color/accent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════════════════════════
+                 4. Toggles & Notifications
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="Notifications &amp; Reminders"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <!-- Attendance Reminders (Hidden: ERP attendance has no morning marking reminder) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="@drawable/bottom_border"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/attendance_reminders"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Morning notification before scheduled classes"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/attendance_reminder_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/all_white"
+                            app:trackTint="@color/accent" />
+                    </LinearLayout>
+
+                    <!-- Assignment Reminders -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom_border"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/assignment_reminders"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Get alerts 1-2 days before due dates"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/assignment_reminder_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/all_white"
+                            app:trackTint="@color/accent" />
+                    </LinearLayout>
+
+                    <!-- Holiday Alerts -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/holiday_alerts"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Reminders for upcoming official breaks"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/holiday_alert_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="@color/all_white"
+                            app:trackTint="@color/accent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════════════════════════
+                 5. Data & Backup (100% Offline SQLite)
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="@string/data_backup"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+
+
+                    <!-- Export Data Row -->
+                    <LinearLayout
+                        android:id="@+id/exportDataRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/export_data"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="@string/save_a_backup_to_downloads"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/text_dim" />
+                    </LinearLayout>
+
+                    <!-- Import Data Row (Hidden) -->
+                    <LinearLayout
+                        android:id="@+id/importDataRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/import_data"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="@string/restore_from_a_backup_file"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/text_dim" />
+                    </LinearLayout>
+
+                    <!-- Clear All Data Row (Hidden) -->
+                    <LinearLayout
+                        android:id="@+id/clearDataRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/surface2_card_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/dp_12"
+                        android:paddingVertical="@dimen/dp_10"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Clear All App Data"
+                                android:textColor="@color/danger"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Erase attendance, marks, assignments &amp; timetable"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_20"
+                            android:layout_height="@dimen/dp_20"
+                            android:src="@drawable/ic_delete"
+                            app:tint="@color/danger" />
+                    </LinearLayout>
+
+                    <!-- Log Out Row -->
+                    <LinearLayout
+                        android:id="@+id/logoutRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:background="@drawable/surface2_card_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/dp_12"
+                        android:paddingVertical="@dimen/dp_10">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Log Out from ERP"
+                                android:textColor="@color/danger"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_2"
+                                android:text="Sign out of student account and return to login"
+                                android:textColor="@color/text_dim"
+                                android:textSize="@dimen/sp_11" />
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_18"
+                            android:layout_height="@dimen/dp_18"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/danger" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══════════════════════════════════════════════
+                 6. About & Support
+                 ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingVertical="@dimen/dp_14">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="@string/about_support"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <!-- Privacy Policy Row -->
+                    <LinearLayout
+                        android:id="@+id/privacyPolicyRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/privacy_policy_1"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/text_dim" />
+                    </LinearLayout>
+
+                    <!-- Terms & Conditions Row -->
+                    <LinearLayout
+                        android:id="@+id/termsRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/terms_and_conditions"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/text_dim" />
+                    </LinearLayout>
+
+                    <!-- Contact Us Row -->
+                    <LinearLayout
+                        android:id="@+id/contactUsRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom_border"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/contact_us"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_16"
+                            android:layout_height="@dimen/dp_16"
+                            android:rotation="180"
+                            android:src="@drawable/greater_than"
+                            app:tint="@color/text_dim" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- App Version Footer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appVersionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attendance_tracker_v1_0_0"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:text="@string/made_with_by_r_technologies"
+                    android:textColor="@color/text_faint"
+                    android:textSize="@dimen/sp_11" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="@color/accent_dim"
+        android:pathData="M36,36m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
+    <!-- Sun -->
+    <path
+        android:fillColor="@color/accent"
+        android:pathData="M36,25m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    <!-- Sun rays -->
+    <path
+        android:strokeColor="@color/accent"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M36,15v3M36,32v3M26,25h-3M49,25h-3M28.9,17.9l-2.1,-2.1M45.2,34.2l-2.1,-2.1M28.9,32.1l-2.1,2.1M45.2,15.8l-2.1,2.1" />
+    <!-- Island Beach Curve -->
+    <path
+        android:strokeColor="@color/text_dim"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M18,52c6,-4 18,-6 36,-1" />
+    <!-- Umbrella / Palm -->
+    <path
+        android:strokeColor="@color/success"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M32,49c0,-6 4,-10 9,-10c-3,-3 -8,-3 -12,0c3,3 3,7 3,10z" />
+</vector>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dp_6"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_18"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Vertical accent bar -->
+        <View
+            android:id="@+id/taskAccentBar"
+            android:layout_width="@dimen/dp_4"
+            android:layout_height="match_parent"
+            android:background="@color/accent" />
+
+        <!-- Main Card Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_16"
+            android:paddingVertical="@dimen/dp_14">
+
+            <!-- Top Row: Subject Tag + Status Chip -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Subject Tag -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/subjectTagCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/surface2"
+                    app:cardCornerRadius="@dimen/dp_8"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border"
+                    app:strokeWidth="@dimen/dp_1">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/subjectNameTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/dp_8"
+                        android:paddingVertical="@dimen/dp_4"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_11"
+                        android:textStyle="bold"
+                        tools:text="Software Engineering" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- Status Chip -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/statusCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/accent_dim"
+                    app:cardCornerRadius="@dimen/dp_12"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/statusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dp_10"
+                        android:layout_marginVertical="@dimen/dp_3"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/accent"
+                        android:textSize="@dimen/sp_11"
+                        android:textStyle="bold"
+                        tools:text="Due in 3 days" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Task Title -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/taskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:fontFamily="@font/outfit"
+                android:lineSpacingExtra="@dimen/dp_2"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_15"
+                android:textStyle="bold"
+                tools:text="Software Development Life Cycles Report" />
+
+            <!-- Hidden compatibility views for legacy bindings -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/subHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!-- Metadata Row: Due Date & Reminder -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Due Date -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_14"
+                        android:layout_height="@dimen/dp_14"
+                        android:layout_marginEnd="@dimen/dp_4"
+                        android:src="@drawable/ic_calendar_event"
+                        app:tint="@color/text_dim" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/taskDueDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        tools:text="Due Aug 18 · 11:59 PM" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/dp_12"
+                    android:layout_height="@dimen/dp_1" />
+
+                <!-- Reminder -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_13"
+                        android:layout_height="@dimen/dp_13"
+                        android:layout_marginEnd="@dimen/dp_4"
+                        android:src="@drawable/ic_notification"
+                        app:tint="@color/text_dim" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/taskReminder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        tools:text="1 day before" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Bottom Action Row: Submit Toggle + Options Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Mark Submitted Pill Button -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnSubmitToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/surface2"
+                    app:cardCornerRadius="@dimen/dp_10"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border"
+                    app:strokeWidth="@dimen/dp_1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/dp_12"
+                        android:paddingVertical="@dimen/dp_6">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/submitCheckIcon"
+                            android:layout_width="@dimen/dp_14"
+                            android:layout_height="@dimen/dp_14"
+                            android:layout_marginEnd="@dimen/dp_6"
+                            android:src="@drawable/ic_check"
+                            app:tint="@color/text_dim" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/submitBtnText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Mark Submitted"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <!-- Options ⋮ Button -->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/options_btn"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_32"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/dp_6"
+                    android:rotation="270"
+                    android:src="@drawable/options_dot"
+                    app:tint="@color/text_dim" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

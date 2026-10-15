@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Top Toolbar Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_15">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_left"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_12"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Message"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="BBSBEC Campus Webmail"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <!-- Copy / Share Action Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/shareBtn"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="@dimen/dp_18"
+                android:layout_gravity="center"
+                android:src="@drawable/info_alert"
+                app:tint="@color/text" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Header Card: Subject & Sender Information -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_16"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/border"
+        app:strokeWidth="@dimen/dp_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_16"
+            android:paddingVertical="@dimen/dp_14">
+
+            <!-- Subject Headline -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/detailSubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                android:textIsSelectable="true"
+                tools:text="[GitHub] An email address was removed from your account" />
+
+            <!-- Divider Line -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginVertical="@dimen/dp_12"
+                android:background="@color/border" />
+
+            <!-- Sender Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Avatar Circle -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/detailAvatarCard"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    app:cardBackgroundColor="@color/accent"
+                    app:cardCornerRadius="@dimen/dp_20"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/detailAvatarInitial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/all_white"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        tools:text="G" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Sender Name and Email -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/detailSenderName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold"
+                        tools:text="GitHub" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/detailSenderEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_2"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textIsSelectable="true"
+                        tools:text="noreply@github.com" />
+                </LinearLayout>
+
+                <!-- Date & Attachment Indicator -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/detailDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_11"
+                        tools:text="Oct 10, 10:35 AM" />
+
+                    <LinearLayout
+                        android:id="@+id/detailAttachmentBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/dp_6"
+                        android:paddingVertical="@dimen/dp_2"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dp_10"
+                            android:layout_height="@dimen/dp_10"
+                            android:src="@drawable/ic_attachment"
+                            app:tint="@color/text_dim" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:fontFamily="@font/plus_jakarta_sans"
+                            android:text="Attached"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_10"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Message Body Container with WebView -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_16"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/border"
+        app:strokeWidth="@dimen/dp_1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/detailWebView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/detailPlainScroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/detailPlainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_16"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:lineSpacingExtra="@dimen/dp_4"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14"
+                    android:textIsSelectable="true" />
+            </androidx.core.widget.NestedScrollView>
+
+            <ProgressBar
+                android:id="@+id/detailProgressBar"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/accent"
+                android:visibility="visible" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

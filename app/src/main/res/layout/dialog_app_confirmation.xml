@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="@dimen/dp_16"
+    android:layout_marginVertical="@dimen/dp_24"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_24"
+    app:cardElevation="@dimen/dp_8"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_20">
+
+        <!-- Top Icon -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dialogIconCard"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            app:cardBackgroundColor="@color/danger_dim"
+            app:cardCornerRadius="@dimen/dp_24"
+            app:strokeWidth="0dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dialogIcon"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/danger" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Title -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold"
+            tools:text="Delete Assignment?" />
+
+        <!-- Message -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dialogMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:lineSpacingExtra="@dimen/dp_2"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_13"
+            tools:text="Are you sure you want to delete this assignment? This action cannot be undone." />
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginEnd="@dimen/dp_6"
+                android:layout_weight="1"
+                android:backgroundTint="@color/surface2"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_14"
+                app:cornerRadius="@dimen/dp_12"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginStart="@dimen/dp_6"
+                android:layout_weight="1"
+                android:backgroundTint="@color/danger"
+                android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:textColor="@color/all_white"
+                android:textSize="@dimen/sp_14"
+                app:cornerRadius="@dimen/dp_12" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

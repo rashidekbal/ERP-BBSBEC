@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mailCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_14"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_14"
+        android:paddingVertical="@dimen/dp_12">
+
+        <!-- Top row: Avatar, Sender Name, Unread dot, Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Sender Avatar Circle -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/avatarCard"
+                android:layout_width="@dimen/dp_36"
+                android:layout_height="@dimen/dp_36"
+                android:layout_marginEnd="@dimen/dp_10"
+                app:cardBackgroundColor="@color/accent"
+                app:cardCornerRadius="@dimen/dp_20"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/avatarInitial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold"
+                    tools:text="G" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Sender Name and Email -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/senderName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:maxLines="1"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold"
+                    tools:text="GitHub" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/senderEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:maxLines="1"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    tools:text="noreply@github.com" />
+            </LinearLayout>
+
+            <!-- Date and Unread dot -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/unreadDot"
+                    android:layout_width="@dimen/dp_8"
+                    android:layout_height="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_6"
+                    app:cardBackgroundColor="@color/accent"
+                    app:cardCornerRadius="@dimen/dp_4"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_11"
+                    tools:text="10 Oct" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Subject -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subjectText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:ellipsize="end"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:maxLines="1"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            tools:text="[GitHub] An email address was removed from your account." />
+
+        <!-- Preview Body Snippet -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/previewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3"
+            android:ellipsize="end"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="2"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_12"
+            tools:text="Hey rashidekbal! An email address was removed from your account. Visit https://github.com/settings/emails..." />
+
+        <!-- Attachment indicator row -->
+        <LinearLayout
+            android:id="@+id/attachmentContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_6"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_14"
+                android:layout_height="@dimen/dp_14"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:src="@drawable/ic_attachment"
+                app:tint="@color/text_dim" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Attachment"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_11" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

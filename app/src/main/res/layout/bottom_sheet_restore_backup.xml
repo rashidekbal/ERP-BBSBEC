@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_20"
+    android:paddingTop="@dimen/dp_14"
+    android:paddingBottom="@dimen/dp_24">
+
+    <!-- Drag Handle -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/dp_36"
+        android:layout_height="@dimen/dp_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_12"
+        app:cardBackgroundColor="@color/border"
+        app:cardCornerRadius="@dimen/dp_2"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp" />
+
+    <!-- Top Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/closeBtn"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit"
+                android:text="Cloud Backups"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/backupsSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_2"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:text="Select a previous backup to restore your data"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close"
+            android:padding="@dimen/dp_6"
+            android:src="@drawable/ic_close"
+            app:tint="@color/text_dim" />
+
+    </RelativeLayout>
+
+    <!-- Loading State -->
+    <LinearLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_180"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:indicatorColor="@color/accent"
+            app:trackColor="@color/border" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="Loading previous backups from Google Drive..."
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_13" />
+
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/emptyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_180"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:src="@drawable/ic_cloud_upload"
+            app:tint="@color/text_faint" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:fontFamily="@font/outfit"
+            android:text="No Backups Found"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:fontFamily="@font/plus_jakarta_sans"
+            android:text="No backup records are saved in your Google Drive."
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_12" />
+
+    </LinearLayout>
+
+    <!-- Backups List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/backupsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:visibility="gone"
+        tools:listitem="@layout/item_cloud_backup" />
+
+</LinearLayout>

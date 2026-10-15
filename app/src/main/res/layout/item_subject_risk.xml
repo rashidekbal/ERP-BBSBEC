@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/subjectRiskCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/dp_14"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="@dimen/dp_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_14">
+
+        <!-- Top Header: Subject Title + Percentage Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/subjectNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/outfit"
+                        android:maxLines="1"
+                        android:textColor="@color/text"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        tools:text="Computer Networks" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/subjectLabBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:background="@drawable/surface_card_bg"
+                        android:fontFamily="@font/plus_jakarta_sans"
+                        android:paddingHorizontal="@dimen/dp_6"
+                        android:paddingVertical="@dimen/dp_2"
+                        android:text="LAB"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_10"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/attendedRatioText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:fontFamily="@font/plus_jakarta_sans"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="18 / 22 sessions attended" />
+            </LinearLayout>
+
+            <!-- Status Percentage Badge -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/riskBadgeCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp_8"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/percentageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit"
+                    android:paddingHorizontal="@dimen/dp_10"
+                    android:paddingVertical="@dimen/dp_4"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold"
+                    tools:text="81%" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Progress Indicator -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:progress="0"
+            tools:progress="81"
+            app:trackColor="@color/surface2"
+            app:trackCornerRadius="@dimen/dp_3"
+            app:trackThickness="@dimen/dp_6" />
+
+        <!-- Bottom Action / Margin Note -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/marginStatusText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/plus_jakarta_sans"
+                android:textColor="@color/text_dim"
+                android:textSize="@dimen/sp_12"
+                android:textStyle="bold"
+                tools:text="Safe to bunk: 3 classes" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:src="@drawable/arrow_right"
+                app:tint="@color/text_dim" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

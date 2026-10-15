@@ -1,0 +1,1925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dp_15"
+    tools:context=".screens.profile.ProfileActivity">
+
+    <!-- ══════════════════════════════════════════════
+         TOP HEADER BAR — 1:1 Web Mockup
+         ══════════════════════════════════════════════ -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_42"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="@dimen/dp_12"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="@dimen/dp_1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/arrow_left" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:text="Student Profile"
+            android:textAlignment="center"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
+
+        <!-- Top Right Save Button -->
+        <Button
+            android:id="@+id/saveTopBtn"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+            android:text="Save"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- ══════════════════════════════════════════════
+         SCROLL CONTENT
+         ══════════════════════════════════════════════ -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_60">
+
+            <!-- ── 1. Hero Profile Card ── -->
+            <LinearLayout
+                android:id="@+id/profileHeroCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/surface_card_bg"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_20">
+
+                <!-- Avatar Circle -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/profileCard"
+                    android:layout_width="@dimen/dp_76"
+                    android:layout_height="@dimen/dp_76"
+                    app:cardBackgroundColor="@color/accent"
+                    app:cardCornerRadius="@dimen/dp_40"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/all_white"
+                    app:strokeWidth="@dimen/dp_2">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/profileInitials"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                        android:text="RE"
+                        android:textColor="@color/all_white"
+                        android:textSize="@dimen/sp_26"
+                        android:textStyle="bold" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Student Name Headline -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/profileHeroName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_20"
+                    android:textStyle="bold"
+                    tools:text="Rashid Ekbal" />
+
+                <!-- Subtitle / Branch / Sem -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/profileHeroSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_13"
+                    tools:text="Computer Science &amp; Engineering · Sem 5" />
+
+                <!-- Tags Row (Semester & Roll No) -->
+                <LinearLayout
+                    android:id="@+id/profileTagsRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profSemTagCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_8"
+                        app:cardBackgroundColor="@color/surface2"
+                        app:cardCornerRadius="@dimen/dp_12"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/profSemTag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dp_10"
+                            android:layout_marginVertical="@dimen/dp_4"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/success"
+                            android:textSize="@dimen/sp_11"
+                            android:textStyle="bold"
+                            tools:text="Semester 5" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profRollTagCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/surface2"
+                        app:cardCornerRadius="@dimen/dp_12"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/profRollTag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dp_10"
+                            android:layout_marginVertical="@dimen/dp_4"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11"
+                            android:textStyle="bold"
+                            tools:text="Roll #2023CSE089" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- Avatar Color Swatches -->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/accent_pick_slogan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:text="Choose Theme &amp; Avatar Accent"
+                    android:textColor="@color/text_dim"
+                    android:textSize="@dimen/sp_12" />
+
+                <LinearLayout
+                    android:id="@+id/colorSwatchesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch1"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/accent"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/text"
+                        app:strokeWidth="@dimen/dp_2" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch2"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/success"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch3"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/danger"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch4"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/color_blue"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch5"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/color_purple"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch6"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/color_pink"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch7"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="@color/color_teal"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/colorSwatch8"
+                        android:layout_width="@dimen/dp_32"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        app:cardBackgroundColor="#6366F1"
+                        app:cardCornerRadius="@dimen/dp_50"
+                        app:strokeColor="@color/border"
+                        app:strokeWidth="@dimen/dp_1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 2. Academic Snapshot Card — 1:1 Web Mockup ── -->
+            <LinearLayout
+                android:id="@+id/academicSnapshotCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Academic Snapshot"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!-- Stat 1: Attendance -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_4"
+                        android:layout_weight="1"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/statAttendanceVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/accent"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"
+                            tools:text="82%" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:text="Attendance"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11" />
+                    </LinearLayout>
+
+                    <!-- Stat 2: Subjects -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dp_4"
+                        android:layout_weight="1"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/statSubjectsVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"
+                            tools:text="5" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:text="Subjects"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11" />
+                    </LinearLayout>
+
+                    <!-- Stat 3: Target -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_4"
+                        android:layout_weight="1"
+                        android:background="@drawable/surface2_card_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/dp_12">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/statTargetVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_18"
+                            android:textStyle="bold"
+                            tools:text="75%" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:text="Target"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_11" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 3. Personal & Academic Info Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/personalInfoTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Personal &amp; Academic Info"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Full Name -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full Name"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/nameInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Rashid Ekbal"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- College / University -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="College / University (Optional)"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/collegeInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Institute of Technology"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Course / Degree -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Course / Degree"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/courseInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. B.Tech Computer Science &amp; Engg."
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Branch / Major -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Branch / Major"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/branchInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Computer Science &amp; Engineering"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Class Group / Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Class Group / Section"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/classGroupInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Group A / Section 1"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Current Semester (Chips) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current Semester"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:scrollbars="none">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/semesterChipGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:singleSelection="true">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem1"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="1"
+                                android:text="Sem 1" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem2"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="2"
+                                android:text="Sem 2" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem3"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="3"
+                                android:text="Sem 3" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem4"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="4"
+                                android:text="Sem 4" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem5"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="5"
+                                android:text="Sem 5" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem6"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="6"
+                                android:text="Sem 6" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem7"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="7"
+                                android:text="Sem 7" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/sem8"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="8"
+                                android:text="Sem 8" />
+                        </com.google.android.material.chip.ChipGroup>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
+                <!-- College Roll Number -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="College Roll Number"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/rollNumberInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 2023CSE089"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- University Roll Number -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="University Roll Number"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/universityRollNumberInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 2104000"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- ERP Student ID -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ERP Student ID"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/erpStudentIdInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 10245"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Email -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student Email"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/emailInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. rashid.ekbal@college.edu"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Phone (Optional) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone (Optional)"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/phoneInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. +91 9876543210"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ── 3A. Personal & Identity Details Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Personal Details"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Date of Birth -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date of Birth"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/dobInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 2004-11-07"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Gender & Category row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gender"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/genderInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. MALE"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Category"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/categoryInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. OBC / GEN"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Blood Group & Status row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Blood Group"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/bloodGroupInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. B+"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Student Status"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/statusInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. Active"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Aadhar Number -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aadhar Number"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/aadharInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 451184933628"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 3B. Family & Guardian Details Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Family &amp; Guardian Info"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Father's Name & Profession -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Father's Name"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/fatherNameInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Father's Name"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Father's Profession"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/fatherProfessionInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Farmer / Engineer"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Mother's Name & Profession -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mother's Name"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/motherNameInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Mother's Name"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mother's Profession"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/motherProfessionInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. Homemaker"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Parent Mobile -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Parent Mobile"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/parentMobileInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="e.g. 9798033490"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 3C. Academic & Batch Details Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Batch &amp; Practical Groups"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Batch & Practical Group row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Batch"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/batchInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. 2024"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Practical Group"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/practicalGroupInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. 5C32"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Admission Type & Scholarship row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Admission Type"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/admissionTypeInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. Normal"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Scholarship"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/scholarshipInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:hint="e.g. DRCC"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 3D. Addresses Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Address Records"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Communication Address -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Communication Address"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/communicationAddressInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Current Communication Address"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:paddingVertical="@dimen/dp_10"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Permanent Address -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Permanent Address"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/permanentAddressInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Permanent Hometown Address"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:paddingVertical="@dimen/dp_10"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 3E. Prior Academic Qualifications Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Academic History &amp; Education"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- 10th / Matriculation -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10th / Matriculation"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/highSchoolDetailsInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Board, Passing Year, Marks, %"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:paddingVertical="@dimen/dp_10"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- 12th / Intermediate -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12th / Intermediate"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/interDetailsInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:hint="Board, Passing Year, Marks, %"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:paddingVertical="@dimen/dp_10"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ── 4. Academic Criteria & Settings Card ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_14"
+                android:background="@drawable/surface_card_bg"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_16">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/academicSettingsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:text="Academic Settings"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+
+                <!-- Attendance Criteria -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Attendance Target Threshold"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/attendanceCriteriaChipGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip65"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="65%" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip75"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="75%" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip80"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="80%" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip85"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="85%" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+
+                <!-- Working Days -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Academic Working Days"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/workingDaysChipGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip5Days"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5 Days (Mon - Fri)" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip6Days"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6 Days (Mon - Sat)" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+
+                <!-- Max Marks / Mid Sem Total -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Max Marks per Mid Sem"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/maxMarksInput"
+                        android:focusable="false"
+                        android:clickable="false"
+                            android:layout_width="@dimen/dp_80"
+                            android:layout_height="@dimen/dp_48"
+                            android:background="@drawable/surface2_card_background"
+                            android:gravity="center"
+                            android:text="24"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/sp_14"
+                            android:textStyle="bold" />
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:scrollbars="none">
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/maxMarksChipGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:singleSelection="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/m_20"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/m_24"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="24" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/m_25"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="25" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/m_30"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/m_50"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="50" />
+                            </com.google.android.material.chip.ChipGroup>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Class Timings & Term Dates -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Period Start Time"
+                        android:textColor="@color/text_dim"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                        android:id="@+id/firstClassStartTimeInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_48"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:background="@drawable/surface2_card_background"
+                        android:focusable="false"
+                        android:hint="e.g. 09:00 AM"
+                        android:paddingHorizontal="@dimen/dp_14"
+                        android:textColor="@color/text"
+                        android:textColorHint="@color/text_faint"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <!-- Semester Dates (Hidden: ERP has no session start/end dates) -->
+                <LinearLayout
+                    android:id="@+id/semesterDatesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Semester Start"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/semStartDateInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:focusable="false"
+                            android:hint="Start Date"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Semester End"
+                            android:textColor="@color/text_dim"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center_vertical"
+                            android:id="@+id/semEndDateInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_48"
+                            android:layout_marginTop="@dimen/dp_6"
+                            android:background="@drawable/surface2_card_background"
+                            android:focusable="false"
+                            android:hint="End Date"
+                            android:paddingHorizontal="@dimen/dp_14"
+                            android:textColor="@color/text"
+                            android:textColorHint="@color/text_faint"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Bottom Save Button -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/saveBottomBtn"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/accent"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/dp_14"
+                    android:text="Save Changes"
+                    android:textColor="@color/all_white"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Log Out Button -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profileLogoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_14"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/danger"
+                app:strokeWidth="@dimen/dp_1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans" app:fontFamily="@font/plus_jakarta_sans"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/dp_14"
+                    android:text="Log Out from BBSBEC ERP"
+                    android:textColor="@color/danger"
+                    android:textSize="@dimen/sp_15"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

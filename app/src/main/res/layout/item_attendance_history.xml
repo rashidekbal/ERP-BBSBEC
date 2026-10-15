@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:background="@drawable/surface2_card_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/dp_15"
+    android:paddingVertical="@dimen/dp_12">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/statusIndicator"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        app:cardBackgroundColor="@color/success"
+        app:cardCornerRadius="@dimen/dp_5"
+        app:strokeWidth="0dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/historyDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_15_aug_2026"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/historyType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:text="@string/theory_class"
+            android:textColor="@color/text_dim"
+            android:textSize="@dimen/sp_12" />
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/statusBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_10"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="@dimen/dp_12"
+        app:strokeColor="@color/border"
+        app:strokeWidth="@dimen/dp_1">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:paddingVertical="@dimen/dp_4"
+            android:text="@string/present_1"
+            android:textColor="@color/success"
+            android:textSize="@dimen/sp_11"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/deleteHistoryBtn"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/dp_3"
+        android:src="@drawable/ic_close"
+        app:tint="@color/text_faint" />
+
+</LinearLayout>
