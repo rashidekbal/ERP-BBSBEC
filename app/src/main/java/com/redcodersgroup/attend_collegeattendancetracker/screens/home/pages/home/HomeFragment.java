@@ -554,6 +554,30 @@ public class HomeFragment extends Fragment {
             startActivity(new Intent(requireActivity(), ProfileActivity.class));
         });
 
+        binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncImmediately(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+                @Override
+                public void onSuccess() {
+                    if (binding != null) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                    }
+                    if (homeViewModel != null) {
+                        homeViewModel.loadAllData();
+                    }
+                    ToastUtil.showToastShort("Data synced successfully");
+                }
+
+                @Override
+                public void onError(String msg) {
+                    if (binding != null) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                    }
+                    ToastUtil.showToastShort("Sync error: " + msg);
+                }
+            });
+        });
+
         binding.profileSetupBannerCard.setOnClickListener(v -> {
             CompleteProfileBottomSheet.show(getChildFragmentManager(), () -> {
                 if (homeViewModel != null) {
@@ -707,5 +731,11 @@ public class HomeFragment extends Fragment {
                 ToastUtil.showToastLong("Import failed: " + msg);
             }
         });
+    }
+
+    public void refreshData() {
+        if (homeViewModel != null) {
+            homeViewModel.loadAllData();
+        }
     }
 }

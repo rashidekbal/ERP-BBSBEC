@@ -74,4 +74,26 @@ public class SharedPrefUtil {
     public static void setProfileComplete(boolean val) {
         SharedPref.getSharedPrefs().edit().putBoolean(SharedPrefKeys.IS_PROFILE_COMPLETE.toString(), val).apply();
     }
+
+    // 4 hours in milliseconds (4 * 60 * 60 * 1000)
+    public static final long FULL_SYNC_INTERVAL_MS = 4 * 60 * 60 * 1000L;
+
+    public static long getLastFullSyncTime() {
+        return SharedPref.getSharedPrefs().getLong(SharedPrefKeys.LAST_FULL_SYNC_TIMESTAMP.toString(), 0L);
+    }
+
+    public static void setLastFullSyncTime(long timestamp) {
+        SharedPref.getSharedPrefs().edit().putLong(SharedPrefKeys.LAST_FULL_SYNC_TIMESTAMP.toString(), timestamp).apply();
+    }
+
+    /**
+     * Returns true if 4 hours have elapsed since the last full sync, or if sync never ran.
+     */
+    public static boolean isFullSyncDue() {
+        long last = getLastFullSyncTime();
+        if (last <= 0L) {
+            return true;
+        }
+        return (System.currentTimeMillis() - last) >= FULL_SYNC_INTERVAL_MS;
+    }
 }

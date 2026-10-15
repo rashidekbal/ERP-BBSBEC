@@ -155,7 +155,7 @@ public class AttendanceFragment extends Fragment {
         // Swipe Refresh for ERP Data
         binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
-            ErpSyncManager.syncAll(new ErpSyncManager.SyncCallback() {
+            ErpSyncManager.syncImmediately(new ErpSyncManager.SyncCallback() {
                 @Override
                 public void onSuccess() {
                     if (binding != null) {

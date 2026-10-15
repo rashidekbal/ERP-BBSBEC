@@ -103,6 +103,24 @@ public class HomeActivity extends AppCompatActivity {
 
         // Pre-warm other tab fragments shortly after initial render so first tap is instant
         binding.mainContainer.postDelayed(this::prewarmFragmentsIfNeeded, 300);
+
+        // Fresh launch sync: full data synced if 4-hour interval reached or never synced
+        com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncOnLaunchIfNeeded(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+            @Override
+            public void onSuccess() {
+                if (isFinishing() || isDestroyed()) return;
+                runOnUiThread(() -> {
+                    if (homeFragment instanceof HomeFragment) {
+                        ((HomeFragment) homeFragment).refreshData();
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String message) {
+                // Background sync failure handled silently
+            }
+        });
     }
 
     private void setupWindowInsets() {

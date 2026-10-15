@@ -54,8 +54,92 @@ public class ErpSyncManager {
         return cachedTimetableData;
     }
 
+    private static final java.util.concurrent.atomic.AtomicBoolean isSyncing = new java.util.concurrent.atomic.AtomicBoolean(false);
+
+    public static boolean isSyncing() {
+        return isSyncing.get();
+    }
+
+    /**
+     * Checks if 4 hours have passed since the last full sync or if fresh launch requires sync.
+     * If due, performs full sync; otherwise skips and immediately invokes callback.onSuccess().
+     */
+    public static void syncOnLaunchIfNeeded(SyncCallback callback) {
+        if (SharedPrefUtil.isFullSyncDue() || !SharedPrefUtil.isSetupComplete()) {
+            Log.d(TAG, "Launch sync triggered: 4-hour interval elapsed or first run");
+            syncInternal(false, callback);
+        } else {
+            long elapsed = System.currentTimeMillis() - SharedPrefUtil.getLastFullSyncTime();
+            long minsLeft = Math.max(1, (SharedPrefUtil.FULL_SYNC_INTERVAL_MS - elapsed) / (60 * 1000L));
+            Log.d(TAG, "Launch sync skipped: local data is fresh. Next full sync in ~" + minsLeft + " mins.");
+            if (callback != null) {
+                new Handler(Looper.getMainLooper()).post(callback::onSuccess);
+            }
+        }
+    }
+
+    // Cooldown duration between manual user swipe refreshes (10 seconds)
+    private static final long MANUAL_SYNC_COOLDOWN_MS = 10_000L;
+    private static volatile long lastManualSyncTime = 0L;
+
+    /**
+     * Executes sync immediately with debounce protection against rapid repeated swipe gestures.
+     */
+    public static void syncImmediately(SyncCallback callback) {
+        if (isSyncing.get()) {
+            if (callback != null) {
+                new Handler(Looper.getMainLooper()).post(() -> callback.onError("Sync already in progress..."));
+            }
+            return;
+        }
+
+        long now = System.currentTimeMillis();
+        long elapsed = now - lastManualSyncTime;
+        if (elapsed < MANUAL_SYNC_COOLDOWN_MS) {
+            long secondsLeft = Math.max(1, (MANUAL_SYNC_COOLDOWN_MS - elapsed) / 1000L);
+            Log.d(TAG, "Manual sync throttled: cooldown active (" + secondsLeft + "s left)");
+            if (callback != null) {
+                new Handler(Looper.getMainLooper()).post(() ->
+                        callback.onError("Please wait " + secondsLeft + "s before refreshing again.")
+                );
+            }
+            return;
+        }
+
+        lastManualSyncTime = now;
+        syncInternal(true, callback);
+    }
+
     public static void syncAll(SyncCallback callback) {
+        syncImmediately(callback);
+    }
+
+    private static void syncInternal(boolean isManual, SyncCallback callback) {
+        if (isSyncing.get()) {
+            Log.d(TAG, "A sync operation is already in progress, skipping duplicate call");
+            if (callback != null) {
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    if (isManual) {
+                        callback.onError("Sync already in progress...");
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
+            }
+            return;
+        }
+
+        isSyncing.set(true);
         DbHelper.execute(() -> {
+            try {
+                performFullSync(callback);
+            } finally {
+                isSyncing.set(false);
+            }
+        });
+    }
+
+    private static void performFullSync(SyncCallback callback) {
             boolean anySuccess = false;
             StringBuilder errorLog = new StringBuilder();
             BbsbecApiService api = NetworkClient.getApiService();
@@ -217,13 +301,17 @@ public class ErpSyncManager {
             SharedPrefUtil.setProfileComplete(true);
 
             if (anySuccess) {
-                new Handler(Looper.getMainLooper()).post(callback::onSuccess);
+                SharedPrefUtil.setLastFullSyncTime(System.currentTimeMillis());
+                if (callback != null) {
+                    new Handler(Looper.getMainLooper()).post(callback::onSuccess);
+                }
             } else {
-                new Handler(Looper.getMainLooper()).post(() -> callback.onError(
-                        errorLog.length() > 0 ? errorLog.toString() : "Sync failed"
-                ));
+                if (callback != null) {
+                    new Handler(Looper.getMainLooper()).post(() -> callback.onError(
+                            errorLog.length() > 0 ? errorLog.toString() : "Sync failed"
+                    ));
+                }
             }
-        });
     }
 
     private static void syncProfileToDb(ProfileResponse.Data data) {

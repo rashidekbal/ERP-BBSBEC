@@ -263,6 +263,30 @@ public class AnalyticsActivity extends AppCompatActivity {
             if (viewModel != null) viewModel.loadAllAnalytics();
         });
 
+        binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncImmediately(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+                @Override
+                public void onSuccess() {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        if (viewModel != null) {
+                            viewModel.loadAllAnalytics();
+                        }
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Analytics updated");
+                    }
+                }
+
+                @Override
+                public void onError(String message) {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort(message);
+                    }
+                }
+            });
+        });
+
         // Filters
         binding.filterAllBtn.setOnClickListener(v -> {
             showOnlyAtRisk = false;

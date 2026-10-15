@@ -23,6 +23,7 @@ import com.redcodersgroup.attend_collegeattendancetracker.network.NetworkClient;
 import com.redcodersgroup.attend_collegeattendancetracker.network.model.EligibleSubjectsResponse;
 import com.redcodersgroup.attend_collegeattendancetracker.network.model.SemesterRegistrationResponse;
 import com.redcodersgroup.attend_collegeattendancetracker.screens.registration.adapter.RegisteredSubjectAdapter;
+import com.redcodersgroup.attend_collegeattendancetracker.utils.ThemeManager;
 import com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -64,15 +65,34 @@ public class SemesterRegistrationActivity extends AppCompatActivity {
         binding.registeredSubjectsRecyclerView.setAdapter(adapter);
 
         binding.viewEligibleSubjectsBtn.setOnClickListener(v -> showEligibleSubjectsDialog());
+
+        binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
+        binding.swipeRefreshLayout.setOnRefreshListener(this::loadRegistrationData);
     }
 
+    private long lastRefreshTime = 0L;
+
     private void loadRegistrationData() {
-        binding.progressBar.setVisibility(View.VISIBLE);
+        long now = System.currentTimeMillis();
+        if (binding.swipeRefreshLayout.isRefreshing()) {
+            if (now - lastRefreshTime < 8000L) {
+                binding.swipeRefreshLayout.setRefreshing(false);
+                long waitSec = Math.max(1, (8000L - (now - lastRefreshTime)) / 1000L);
+                com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Please wait " + waitSec + "s before refreshing again.");
+                return;
+            }
+            lastRefreshTime = now;
+        }
+
+        if (!binding.swipeRefreshLayout.isRefreshing()) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+        }
 
         NetworkClient.getClient().getSemesterRegistrations().enqueue(new Callback<SemesterRegistrationResponse>() {
             @Override
             public void onResponse(Call<SemesterRegistrationResponse> call, Response<SemesterRegistrationResponse> response) {
                 binding.progressBar.setVisibility(View.GONE);
+                binding.swipeRefreshLayout.setRefreshing(false);
                 if (response.isSuccessful() && response.body() != null && !response.body().getData().isEmpty()) {
                     SemesterRegistrationResponse.RegistrationItem item = response.body().getData().get(0);
                     displayRegistration(item);
@@ -84,6 +104,7 @@ public class SemesterRegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SemesterRegistrationResponse> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE);
+                binding.swipeRefreshLayout.setRefreshing(false);
                 loadFromLocalFallback();
             }
         });

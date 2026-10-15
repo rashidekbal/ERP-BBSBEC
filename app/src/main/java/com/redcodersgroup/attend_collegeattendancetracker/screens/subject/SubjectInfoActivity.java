@@ -147,6 +147,31 @@ public class SubjectInfoActivity extends AppCompatActivity {
         binding.historyRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         binding.historyRecyclerView.setAdapter(historyAdapter);
         historyAdapter.setOnDeleteClickListener(this::handleDeleteHistoryItem);
+
+        // Swipe Refresh
+        binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncImmediately(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+                @Override
+                public void onSuccess() {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        if (viewModel != null) {
+                            viewModel.loadAllData();
+                        }
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Subject attendance updated");
+                    }
+                }
+
+                @Override
+                public void onError(String message) {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Sync error: " + message);
+                    }
+                }
+            });
+        });
     }
 
     private void setupObservers() {

@@ -90,6 +90,27 @@ public class TimeTableActivity extends AppCompatActivity {
     private void setEventListeners() {
         binding.backBtn.setOnClickListener(v -> finish());
 
+        binding.swipeRefreshLayout.setColorSchemeColors(ThemeManager.getAccentColorInt());
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.syncImmediately(new com.redcodersgroup.attend_collegeattendancetracker.network.ErpSyncManager.SyncCallback() {
+                @Override
+                public void onSuccess() {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort("Timetable updated");
+                    }
+                }
+
+                @Override
+                public void onError(String message) {
+                    if (!isFinishing() && !isDestroyed()) {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                        com.redcodersgroup.attend_collegeattendancetracker.utils.ToastUtil.showToastShort(message);
+                    }
+                }
+            });
+        });
+
         binding.dayChipGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
             if (checkedIds.isEmpty()) return;
             int checkedId = checkedIds.get(0);

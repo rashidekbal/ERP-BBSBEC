@@ -97,7 +97,20 @@ public class WebmailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private long lastMailboxRefreshTime = 0L;
+
     private void loadMailbox(boolean isSwipeRefresh) {
+        long now = System.currentTimeMillis();
+        if (isSwipeRefresh) {
+            if (now - lastMailboxRefreshTime < 8000L) {
+                binding.swipeRefreshLayout.setRefreshing(false);
+                long waitSec = Math.max(1, (8000L - (now - lastMailboxRefreshTime)) / 1000L);
+                ToastUtil.showToastShort("Please wait " + waitSec + "s before refreshing again.");
+                return;
+            }
+            lastMailboxRefreshTime = now;
+        }
+
         if (!isSwipeRefresh && mailList.isEmpty()) {
             binding.progressBar.setVisibility(View.VISIBLE);
         }

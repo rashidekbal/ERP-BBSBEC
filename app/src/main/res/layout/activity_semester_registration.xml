@@ -87,12 +87,17 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/contentScrollView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingHorizontal="@dimen/dp_15"
-            android:scrollbars="none">
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/contentScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/dp_15"
+                android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -306,5 +311,6 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </FrameLayout>
 </LinearLayout>
