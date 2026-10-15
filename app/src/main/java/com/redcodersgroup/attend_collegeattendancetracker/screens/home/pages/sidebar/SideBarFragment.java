@@ -129,6 +129,10 @@ public class SideBarFragment extends Fragment {
             startActivity(new Intent(requireActivity(), com.redcodersgroup.attend_collegeattendancetracker.screens.webmail.WebmailActivity.class));
             activity.closeDrawer();
         });
+        binding.notificationsBtn.setOnClickListener(v -> {
+            startActivity(new Intent(requireActivity(), com.redcodersgroup.attend_collegeattendancetracker.screens.notifications.NotificationsActivity.class));
+            activity.closeDrawer();
+        });
         binding.profileBtn.setOnClickListener(v -> {
             startActivity(new Intent(requireActivity(), ProfileActivity.class));
             activity.closeDrawer();

@@ -91,6 +91,9 @@
         <activity
             android:name=".screens.webmail.WebmailDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".screens.notifications.NotificationsActivity"
+            android:exported="false" />
 
         <!-- Quick Attendance AppWidget -->
         <receiver

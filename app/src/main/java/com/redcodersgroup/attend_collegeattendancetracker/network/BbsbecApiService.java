@@ -61,4 +61,20 @@ public interface BbsbecApiService {
             @retrofit2.http.Query("position") int position,
             @retrofit2.http.Query("limit") int limit
     );
+
+    @GET("notifications/inbox/")
+    Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationsInboxResponse> getNotificationsInbox();
+
+    @GET("notifications/unread-count/")
+    Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationUnreadCountResponse> getNotificationUnreadCount();
+
+    @POST("notifications/read/")
+    Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationActionResponse> markNotificationRead(
+            @Body com.redcodersgroup.attend_collegeattendancetracker.network.model.MarkNotificationReadRequest request
+    );
+
+    @POST("notifications/read-all/")
+    Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationActionResponse> markAllNotificationsRead(
+            @Body java.util.Map<String, Object> emptyBody
+    );
 }

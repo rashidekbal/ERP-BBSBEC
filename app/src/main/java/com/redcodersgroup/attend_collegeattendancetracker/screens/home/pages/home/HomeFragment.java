@@ -113,6 +113,7 @@ public class HomeFragment extends Fragment {
         if (attendancePageViewModel != null) {
             attendancePageViewModel.loadCalendarDays();
         }
+        updateNotificationBadge();
     }
 
     @Override
@@ -550,6 +551,9 @@ public class HomeFragment extends Fragment {
             }
         });
         binding.sideBarBtn.setOnClickListener(this::handleSideBarClick);
+        binding.notificationBtn.setOnClickListener(v -> {
+            startActivity(new Intent(requireActivity(), com.redcodersgroup.attend_collegeattendancetracker.screens.notifications.NotificationsActivity.class));
+        });
         binding.profileBtn.setOnClickListener(v -> {
             startActivity(new Intent(requireActivity(), ProfileActivity.class));
         });
@@ -733,9 +737,31 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void updateNotificationBadge() {
+        if (binding == null || getContext() == null) return;
+        int unread = com.redcodersgroup.attend_collegeattendancetracker.screens.notifications.storage.NotificationStorage.getInstance(requireContext()).getUnreadCount();
+        binding.notificationUnreadDot.setVisibility(unread > 0 ? View.VISIBLE : View.GONE);
+
+        com.redcodersgroup.attend_collegeattendancetracker.network.NetworkClient.getClient().getNotificationUnreadCount()
+                .enqueue(new retrofit2.Callback<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationUnreadCountResponse>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationUnreadCountResponse> call,
+                                           retrofit2.Response<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationUnreadCountResponse> response) {
+                        if (binding != null && response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+                            int count = response.body().getData().getCount();
+                            binding.notificationUnreadDot.setVisibility(count > 0 ? View.VISIBLE : View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(retrofit2.Call<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationUnreadCountResponse> call, Throwable t) {}
+                });
+    }
+
     public void refreshData() {
         if (homeViewModel != null) {
             homeViewModel.loadAllData();
         }
+        updateNotificationBadge();
     }
 }

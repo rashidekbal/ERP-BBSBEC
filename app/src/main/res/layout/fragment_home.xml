@@ -49,10 +49,50 @@
             android:fontFamily="@font/outfit"
             app:fontFamily="@font/outfit"
             app:layout_constraintStart_toEndOf="@id/sideBar_btn"
-            app:layout_constraintEnd_toStartOf="@id/profile_btn"
+            app:layout_constraintEnd_toStartOf="@id/notification_btn_container"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="Wednesday, 29 Jul" />
+
+        <!-- Notification bell button with unread indicator -->
+        <FrameLayout
+            android:id="@+id/notification_btn_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:layout_constraintEnd_toStartOf="@id/profile_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/notification_btn"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="@dimen/dp_12"
+                app:strokeColor="@color/border"
+                app:strokeWidth="@dimen/dp_1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_notification"
+                    app:tint="@color/text" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:id="@+id/notification_unread_dot"
+                android:layout_width="@dimen/dp_9"
+                android:layout_height="@dimen/dp_9"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="@dimen/dp_3"
+                android:layout_marginEnd="@dimen/dp_3"
+                android:background="@drawable/dot_shape"
+                android:backgroundTint="#EF4444"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </FrameLayout>
 
         <!-- Profile avatar button -->
         <com.google.android.material.card.MaterialCardView
