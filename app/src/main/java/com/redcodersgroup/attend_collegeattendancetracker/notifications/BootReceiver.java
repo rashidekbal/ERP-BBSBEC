@@ -22,6 +22,7 @@ public class BootReceiver extends BroadcastReceiver {
             // Re-arm alarms if setup is complete
             if (SharedPrefUtil.isSetupComplete()) {
                 NotificationScheduler.scheduleDailyReminder(context);
+                NotificationScheduler.scheduleNotificationCheck(context);
             }
         }
     }

@@ -96,4 +96,14 @@ public class SharedPrefUtil {
         }
         return (System.currentTimeMillis() - last) >= FULL_SYNC_INTERVAL_MS;
     }
+
+    public static java.util.Set<String> getNotifiedAnnouncementIds() {
+        return SharedPref.getSharedPrefs().getStringSet("notified_announcement_ids", new java.util.HashSet<>());
+    }
+
+    public static void addNotifiedAnnouncementId(int id) {
+        java.util.Set<String> set = new java.util.HashSet<>(getNotifiedAnnouncementIds());
+        set.add(String.valueOf(id));
+        SharedPref.getSharedPrefs().edit().putStringSet("notified_announcement_ids", set).apply();
+    }
 }

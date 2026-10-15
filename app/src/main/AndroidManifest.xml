@@ -127,6 +127,10 @@
             android:name=".notifications.DailyAlarmReceiver"
             android:exported="false" />
 
+        <receiver
+            android:name=".notifications.NotificationCheckReceiver"
+            android:exported="false" />
+
         <service
             android:name=".widget.AttendanceWidgetService"
             android:exported="false"

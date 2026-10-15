@@ -21,6 +21,7 @@ public class App extends Application {
 
         com.redcodersgroup.attend_collegeattendancetracker.notifications.NotificationHelper.createNotificationChannels(this);
         com.redcodersgroup.attend_collegeattendancetracker.notifications.NotificationScheduler.scheduleDailyReminder(this);
+        com.redcodersgroup.attend_collegeattendancetracker.notifications.NotificationScheduler.scheduleNotificationCheck(this);
 
     }
 

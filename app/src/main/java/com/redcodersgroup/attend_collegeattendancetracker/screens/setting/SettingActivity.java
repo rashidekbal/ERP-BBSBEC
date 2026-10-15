@@ -1,6 +1,8 @@
 package com.redcodersgroup.attend_collegeattendancetracker.screens.setting;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -104,6 +106,23 @@ public class SettingActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
+    }
+
+    private void checkAndRequestExactAlarmPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (!NotificationScheduler.canScheduleExactAlarms(this)) {
+                com.redcodersgroup.attend_collegeattendancetracker.screens.common.dialog.AppConfirmationDialogFragment.show(
+                        getSupportFragmentManager(),
+                        "Enable Precise Reminders",
+                        "To ensure campus notifications and assignment reminders arrive exactly on schedule without battery optimization delays, please enable 'Allow setting alarms and reminders'.",
+                        "Open Settings",
+                        "Not Now",
+                        R.drawable.arrow_right,
+                        false,
+                        () -> NotificationScheduler.openExactAlarmSettings(SettingActivity.this)
+                );
             }
         }
     }
@@ -399,6 +418,7 @@ public class SettingActivity extends AppCompatActivity {
             SharedPrefUtil.setAssignmentReminderEnabled(isChecked);
             if (isChecked) {
                 checkAndRequestNotificationPermission();
+                checkAndRequestExactAlarmPermission();
             }
         });
 
@@ -407,6 +427,7 @@ public class SettingActivity extends AppCompatActivity {
             SharedPrefUtil.setHolidayAlertEnabled(isChecked);
             if (isChecked) {
                 checkAndRequestNotificationPermission();
+                checkAndRequestExactAlarmPermission();
             }
         });
     }
