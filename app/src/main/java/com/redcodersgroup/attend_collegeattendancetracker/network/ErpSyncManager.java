@@ -296,6 +296,19 @@ public class ErpSyncManager {
                 Log.d(TAG, "College session endpoint not available or error: " + e.getMessage());
             }
 
+            // 6. Sync Notifications (/notifications/inbox/)
+            try {
+                Response<com.redcodersgroup.attend_collegeattendancetracker.network.model.NotificationsInboxResponse> notifResp = api.getNotificationsInbox().execute();
+                if (notifResp.isSuccessful() && notifResp.body() != null && notifResp.body().getData() != null) {
+                    com.redcodersgroup.attend_collegeattendancetracker.screens.notifications.storage.NotificationStorage
+                            .getInstance(com.redcodersgroup.attend_collegeattendancetracker.App.getInstance())
+                            .saveInbox(notifResp.body().getData());
+                    Log.d(TAG, "Notifications inbox synced successfully (" + notifResp.body().getData().getCount() + " items)");
+                }
+            } catch (Exception e) {
+                Log.d(TAG, "Notification sync notice: " + e.getMessage());
+            }
+
             // Mark setup as complete
             SharedPrefUtil.setSetupComplete(true);
             SharedPrefUtil.setProfileComplete(true);

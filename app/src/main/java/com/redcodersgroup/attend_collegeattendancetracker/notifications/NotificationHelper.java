@@ -24,9 +24,13 @@ public class NotificationHelper {
     public static final String CHANNEL_HOLIDAY_ID = "holiday_channel";
     public static final String CHANNEL_HOLIDAY_NAME = "Holiday Alerts";
 
+    public static final String CHANNEL_CAMPUS_ALERTS_ID = "campus_alerts_channel";
+    public static final String CHANNEL_CAMPUS_ALERTS_NAME = "Campus Announcements";
+
     public static final int NOTIFICATION_ID_ATTENDANCE = 1001;
     public static final int NOTIFICATION_ID_HOLIDAY = 1002;
     public static final int NOTIFICATION_ID_ASSIGNMENT_BASE = 2000;
+    public static final int NOTIFICATION_ID_CAMPUS_BASE = 3000;
 
     public static void createNotificationChannels(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -54,9 +58,17 @@ public class NotificationHelper {
             );
             holChannel.setDescription("Alerts when holidays cancel scheduled classes");
 
+            NotificationChannel campusChannel = new NotificationChannel(
+                    CHANNEL_CAMPUS_ALERTS_ID,
+                    CHANNEL_CAMPUS_ALERTS_NAME,
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            campusChannel.setDescription("Important college announcements and ERP notifications");
+
             manager.createNotificationChannel(attChannel);
             manager.createNotificationChannel(asgnChannel);
             manager.createNotificationChannel(holChannel);
+            manager.createNotificationChannel(campusChannel);
         }
     }
 
