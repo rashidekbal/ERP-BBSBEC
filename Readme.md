@@ -1,79 +1,51 @@
-# Attend — College Attendance Tracker & Academic Hub
+# BBSBEC Attend — Student ERP & Academic Companion
 
-<p align="center">
-  <img src="app-icon-512x512.png" alt="Attend Logo" width="100" height="100" style="border-radius: 22px;" />
-</p>
-
-<p align="center">
-  <strong>The intelligent, offline-first attendance engine and academic planner built natively for Android.</strong><br>
-  Track multi-period schedules and labs, calculate real-time safe-to-bunk margins, manage assignments with dynamic deadlines, track mid-sem examination scores, and customize your theme with zero cloud dependency.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=flat-square&logo=android&logoColor=white" alt="Platform" />
-  <img src="https://img.shields.io/badge/Language-Java%2017-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java 17" />
-  <img src="https://img.shields.io/badge/Architecture-MVVM-00599C?style=flat-square" alt="Architecture" />
-  <img src="https://img.shields.io/badge/Database-Room%20(SQLite)-4285F4?style=flat-square&logo=sqlite&logoColor=white" alt="Room DB" />
-  <img src="https://img.shields.io/badge/Design-Material%203-7C4DFF?style=flat-square" alt="Material 3" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" />
-</p>
-
-<p align="center">
-  <img src="feature-graphic-1024x500.png" alt="Attend Feature Banner" width="100%" style="max-width: 900px; border-radius: 12px;" />
-</p>
-
----
-
-## 📱 Visual Showcase
-
-<div align="center">
-
-| 1. Never Fall Short of Attendance | 2. Precision Timetable & 2-Hour Labs | 3. Smart Safe-to-Bunk Predictions |
-| :---: | :---: | :---: |
-| <img src="screenshots/01-device-bottom.png" width="280" alt="Attendance Dashboard & Safe to Bunk" /> | <img src="screenshots/02-device-top.png" width="280" alt="Timetable & Lab Schedule" /> | <img src="screenshots/03-device-bottom.png" width="280" alt="Subject Analytics & Bunk Margin" /> |
-
-<br/>
-
-| 4. Assignments & Deadline Reminders | 5. Mid-Sem Marks & Performance Hub | 6. 1-Tap Home Screen Widgets & Theming |
-| :---: | :---: | :---: |
-| <img src="screenshots/04-device-top.png" width="280" alt="Assignments & Deadlines" /> | <img src="screenshots/05-device-bottom.png" width="280" alt="Internal Assessment & Marks" /> | <img src="screenshots/06-device-top.png" width="280" alt="Interactive Android App Widget" /> |
-
-</div>
+**BBSBEC Attend** is the native Android companion app for students of **Baba Banda Singh Bahadur Engineering College (BBSBEC)**. It connects directly with the college ERP to automate attendance tracking, monitor mid-term assessment marks, track fee dues, manage course registrations, access campus webmail, and receive live college broadcasts—with offline-first local caching and home screen widgets.
 
 ---
 
 ## 🌟 Key Features
 
-### 1. 🧮 Period-Weighted Attendance Engine
+### 🏛️ 1. BBSBEC ERP Integration
+- **Direct Student Authentication**: Secure session-based authentication with automatic token renewal (`/student/login/`, `/student/profile/`).
+- **Smart 4-Hour Synchronization**: Background sync engine refreshes college data every 4 hours on fresh launch, or immediately on demand via pull-to-refresh.
+- **Rate-Limit & Debounce Protection**: Rapid swipe debounce prevents excessive API calls and protects server resources.
+- **Startup Sync Routing**: Initial data verification runs seamlessly during entry startup before reaching the home dashboard.
 
-- **Multi-Period & Multi-Lab Awareness**: Accurately weighs attendance records against the number of scheduled class/lab periods on any given day (e.g., consecutive lab periods count proportionally towards total attended and conducted hours).
-- **Intelligent "Safe to Bunk" Math**: Real-time formula calculates exactly how many consecutive sessions you can skip without falling below your target threshold (e.g. 75%), or how many consecutive classes you must attend to recover from a shortage.
-- **Granular Status States**: Supports `PRESENT`, `ABSENT`, and `CANCELLED` (auto-excluded from total conducted count).
-- **Missed Day Backfilling**: Interactive calendar history lets you view and backfill past attendance with single-tap precision.
+### 🔔 2. Campus Notifications & Background Alerts
+- **Dedicated Notification Center**: View college circulars and departmental announcements (`/notifications/inbox/`).
+- **Category Filter Chips**: Easily switch between **All**, **Academic**, **General**, and **Fees** updates.
+- **Read & Unread State Tracking**: Instant visual badges on unread items, with single-tap and bulk "Mark all as read" support.
+- **Background Push Service**: Periodic background receiver (`NotificationCheckReceiver`) checks for unread campus broadcasts even when the app is completely closed or killed.
+- **Direct Deep-Linking**: Tapping status-bar notifications opens the announcement details page instantly.
+- **Adaptive Alarm System**: Graceful fallback between exact alarms (`SCHEDULE_EXACT_ALARM`) and power-saving idle wakeups, preventing unexpected crashes across Android 12 through 15.
 
-### 2. 🎯 Mid-Sem Marks & Performance Hub
+### 📊 3. Period-Weighted Attendance Engine
+- **ERP Subject & Attendance Sync**: Synchronizes enrolled subjects and verified attendance counts (`/student/fetchsubjects/`, `/student/fetchattendance/`).
+- **Intelligent "Safe to Bunk" Math**: Real-time formula calculates exactly how many consecutive lectures can be missed while remaining above the mandatory 75% threshold, or how many must be attended to recover from shortage.
+- **Multi-Period Lab Support**: Consecutively scheduled lab periods are weighted proportionally in conducted and attended tallies.
+- **Interactive Calendar History**: Backfill and review historical class-by-class attendance with day-level precision.
 
-- **Mid Sem 1, 2, and 3 Tracking**: Log internal assessment scores per subject against configurable benchmark targets (e.g., 20, 24, 25, 30, 50 marks).
-- **Subject-Wise Trend Insights**: Visual status tags indicate top performance, balanced trends, or subjects needing improvement.
-- **Clear & Edit Actions**: Easily modify, clear specific mid-sem records, or recalculate semester averages.
+### 📝 4. Assessments & Mid-Sem Marks
+- **Internal Assessment Sync**: Fetches mid-term examination scores and evaluation criteria (`/student/assessments/`).
+- **Performance Trends**: Visual tags and progress indicators identify strong subjects and areas requiring academic focus.
 
-### 3. 📋 Assignment & Task Management
+### 💳 5. Fees & Payments
+- **Official Fee Structure**: View semester fee breakdowns, installments, and paid receipts (`/student/fees/`).
+- **Payment Workflow**: Clean interface mirroring the ERP payment process with clear breakdowns and manual checkout flow (no automated financial mutations without student consent).
 
-- **Lifecycle Tracking**: Dynamic status chips for **Due Soon**, **Overdue**, and **Submitted**.
-- **Deadline Countdown**: Displays real-time day countdowns (e.g., "Due in 3 days", "Due today").
-- **Direct Submission Toggle**: One-tap "Mark Submitted" with undo support, edit modal, and deletion confirmation.
+### 📋 6. Semester Registration
+- **Course Enrollment Flow**: View and manage subject registrations matching the official BBSBEC registration portal (`/student/registration/`).
+- **Core & Elective Selection**: Browse course codes, credits, and syllabus requirements.
 
-### 4. 📅 Master Timetable & Holiday Exclusion
+### 📬 7. Campus Webmail
+- **Integrated Student Email**: Connect to institutional student webmail without third-party mail clients.
+- **Rich HTML Reader**: Built-in full-screen message reader with formatting, attachments, and offline caching.
 
-- **Interactive Timetable Grid**: View and manage weekly class distribution across working days (5-day or 6-day weeks).
-- **Custom Period Duration**: Flexible period lengths (30 to 90 minutes) with custom minute configuration.
-- **Automated Holiday Exclusion**: Scheduled holidays and institute breaks are automatically excluded from attendance requirements and schedule notifications.
-
-### 5. 🎨 Customization, Home Screen Widget & Offline First
-
-- **Dynamic Accent Theming**: Choose from a palette of vibrant accent colors with full light/dark mode support.
-- **Android Home Screen Widget**: `AttendanceWidgetProvider` displays live overall attendance percentage and safe-to-bunk alerts directly on the launcher.
-- **100% Offline & Private**: Built entirely on Room SQLite. No account creation, cloud tracking, or internet connection needed.
+### 📱 8. Android App Widget & Offline First
+- **Home Screen Quick Widget**: Displays overall attendance percentage and safe-to-bunk status directly on the Android home screen (`AttendanceWidgetProvider`).
+- **100% Offline-First Architecture**: All ERP data, assignments, timetable schedules, and notifications are stored locally in Room SQLite and disk cache for instant offline access.
+- **Dynamic Theming**: Multi-color accent swatch palette with automatic and manual Light/Dark mode.
 
 ---
 
@@ -81,77 +53,86 @@
 
 The application is engineered strictly following modern native Android best practices:
 
+- **Language**: Modern Java 17 (lambdas, switch expressions, method references).
+- **Target SDK**: Android 14+ / 15 (minSdk 31, targetSdk 37).
 - **Architecture**: MVVM (Model-View-ViewModel) with Android Architecture Components (`ViewModel`, `LiveData`).
-- **Language**: Modern Java 17 using lambdas, switch expressions, and method references.
-- **Local Persistence**: **Room Database** with SQLite, utilizing a centralized `DbHelper` facade with background `ExecutorService` threading and UI `Handler` dispatch.
-- **View Layer**: ViewBinding enabled across all activities, fragments, dialogs, and custom adapters with zero view reflection overhead.
-- **Scheduling & Notifications**: `AlarmManager` and `BroadcastReceiver` pipelines for morning class reminders and assignment alerts.
-- **App Widgets**: `AppWidgetProvider` with remote view updates reflecting period-weighted attendance math.
+- **Networking**: Retrofit 2 + OkHttp 3 with cookie persistence, custom logging interceptors, and Gson serialization.
+- **Local Persistence**: **Room Database** (SQLite) for structured relational data (`Attendance`, `Marks`, `Timetable`, `Assignments`, `Holidays`), complemented by JSON disk storage for offline notification inboxes.
+- **Threading**: Centralized `DbHelper` facade with dedicated `ExecutorService` background workers and main-thread `Handler` posting.
+- **View Layer**: XML Layouts with ViewBinding enabled across all activities, fragments, custom views, and adapters.
+- **Background Scheduling**: `AlarmManager` with `setAndAllowWhileIdle` and `BroadcastReceiver` pipelines for reliable reminders and background announcement checking.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-com.rtechnologies.attend_collegeattendancetracker/
-├── base/                     # Base Activity, Fragment, and ViewModel abstractions
-├── db/                       # Room Database, DAOs, Entities, and DbHelper facade
-│   ├── attendance/           # Attendance records and schedule entities
-│   ├── marks/                # Mid-sem examination score entities
-│   ├── assignment/           # Task and assignment entities
-│   ├── holiday/              # Academic holiday entities
-│   └── timetable/            # Period slots and timetable mapping
-├── notifications/            # DailyAlarmReceiver and NotificationHelper
-├── screens/
-│   ├── home/                 # Main container, Drawer, Home, Attendance, Tasks, Marks tabs
-│   ├── onboarding/           # Welcome, profile setup, timetable setup, subject setup
-│   ├── subject/              # Detailed subject statistics, safe-to-bunk, and calendar history
-│   ├── addAssignment/        # Add & Edit assignment flows
-│   ├── addHoliday/           # Holiday management
-│   ├── addMarks/             # Mid-sem mark logger
-│   ├── addSubject/           # Subject creation and lab configuration
-│   ├── profile/              # Academic thresholds and student profile settings
-│   ├── settings/             # Theme accent selection, dark mode, notification toggles
-│   └── timetable/            # Weekly master timetable editor and duration picker
-├── utils/                    # AttendanceScheduleUtil (core math engine), SharedPref, DateUtil
-└── widget/                   # AttendanceWidgetProvider (Android Home Screen Widget)
+app/src/main/java/com/redcodersgroup/attend_collegeattendancetracker/
+├── api/ / network/           # Retrofit services, ERP endpoints, TokenManager, and SyncManager
+│   ├── BbsbecApiService.java # ERP API contracts (auth, profile, subjects, attendance, fees, notifications)
+│   ├── ErpSyncManager.java   # Intelligent background sync engine (4-hour interval & swipe-to-refresh)
+│   └── NetworkClient.java    # OkHttp / Retrofit client configuration
+├── db/                       # Room Database, DAOs, and Entity schemas
+│   ├── attendance/           # Attendance records and schedule logs
+│   ├── marks/                # Mid-sem and assessment schemas
+│   ├── assignment/           # Academic assignments and tasks
+│   ├── holiday/              # Holiday calendar entries
+│   ├── timeTable/            # Daily period slots and schedule mapping
+│   └── user/                 # Cached student profile details
+├── notifications/            # Alarm and Notification services
+│   ├── NotificationHelper.java        # Notification channels and status bar alert builders
+│   ├── NotificationScheduler.java     # AlarmManager scheduling and exact-alarm permission helpers
+│   ├── NotificationCheckReceiver.java # Background receiver for closed-app notification polling
+│   ├── DailyAlarmReceiver.java        # Morning reminder and holiday alert receiver
+│   └── BootReceiver.java              # Re-arms background alarms on device reboot
+├── screens/                  # Activities, Fragments, ViewHolders, and Adapters
+│   ├── auth/                 # ERP Student Login
+│   ├── home/                 # Main navigation container (Home, Attendance, Tasks, Marks)
+│   ├── notifications/        # NotificationsActivity, NotificationAdapter, and NotificationStorage
+│   ├── webmail/              # WebmailInboxActivity and WebmailDetailActivity
+│   ├── fees/                 # FeesActivity and payment flows
+│   ├── registration/         # SubjectRegistrationActivity
+│   ├── profile/              # Student profile and academic criteria
+│   ├── setting/              # Theme switcher, reminder toggles, and data export/import
+│   ├── subject/              # Subject details, safe-to-bunk math, and attendance timeline
+│   └── timetable/            # Weekly master timetable scheduler
+└── widget/                   # Android Home Screen Widget (AttendanceWidgetProvider)
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Getting Started
 
 ### Prerequisites
-
-- Android Studio Ladybug / Iguana or later
-- Android SDK (API 34 / 35)
-- JDK 17
-- Device running Android 8.0 (API 26) or higher
+- **Android Studio**: Ladybug / Iguana or later
+- **JDK**: Java 17
+- **Android SDK**: API 31 (minimum) up to API 37
+- A device or emulator running **Android 12 (API 31)** or higher
 
 ### Build & Run
-
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rashidekbal/Attend-College-Attendance-Tracker.git
+   git clone https://github.com/rashidekbal/ERP-BBSBEC.git
    ```
 2. Open the project in Android Studio.
-3. Sync Gradle dependencies.
-4. Run on an Android Emulator or connected physical device:
+3. Allow Gradle to download dependencies and sync.
+4. Build the debug APK:
    ```bash
    ./gradlew assembleDebug
+   ```
+5. Install and launch on your connected device:
+   ```bash
+   ./gradlew installDebug
    ```
 
 ---
 
-## 👤 Author
-
-**Rasid Ekbal**
-
-- **GitHub**: [@rashidekbal](https://github.com/rashidekbal)
-- **Portfolio**: [rasidekbal.in](https://rasidekbal.in)
+## 🔒 Privacy & Security
+- **No Third-Party Analytics**: Zero third-party telemetry, trackers, or advertising SDKs.
+- **Direct College Communication**: Network traffic is strictly exchanged between the client app and official college ERP servers over HTTPS.
+- **Local Credential Storage**: Authentication sessions and encrypted tokens are stored in private Android `SharedPreferences`.
 
 ---
 
 ## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
