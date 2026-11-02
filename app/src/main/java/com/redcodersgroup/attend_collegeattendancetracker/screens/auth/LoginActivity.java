@@ -32,6 +32,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setupListeners();
+        prefillCredentials();
+    }
+
+    private void prefillCredentials() {
+        String savedUsername = TokenManager.getSavedUsername();
+        if (savedUsername != null && !savedUsername.trim().isEmpty()) {
+            binding.emailEditText.setText(savedUsername);
+        }
+        String savedPassword = TokenManager.getSavedPassword();
+        if (savedPassword != null && !savedPassword.trim().isEmpty()) {
+            binding.passwordEditText.setText(savedPassword);
+        }
     }
 
     private void setupListeners() {
@@ -64,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         setLoading(true);
 
         WebLoginRequest request = new WebLoginRequest(email, password);
-        NetworkClient.getApiService().webLogin(NetworkClient.WEB_LOGIN_URL, request).enqueue(new Callback<WebLoginResponse>() {
+        NetworkClient.getAuthService().webLogin(NetworkClient.WEB_LOGIN_URL, request).enqueue(new Callback<WebLoginResponse>() {
             @Override
             public void onResponse(Call<WebLoginResponse> call, Response<WebLoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
@@ -75,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                             ? data.getProfile().getName() : "Student";
 
                     if (token != null && !token.trim().isEmpty()) {
-                        TokenManager.saveSession(token, refresh, email, studentName);
+                        TokenManager.saveSession(token, refresh, email, password, studentName);
                         SharedPrefUtil.setSetupComplete(true);
 
                         // Trigger full sync

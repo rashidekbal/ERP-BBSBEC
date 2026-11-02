@@ -2,8 +2,8 @@ package com.redcodersgroup.attend_collegeattendancetracker.network;
 
 import androidx.annotation.NonNull;
 
-import com.redcodersgroup.attend_collegeattendancetracker.network.model.RefreshTokenRequest;
-import com.redcodersgroup.attend_collegeattendancetracker.network.model.RefreshTokenResponse;
+import com.redcodersgroup.attend_collegeattendancetracker.network.model.WebLoginRequest;
+import com.redcodersgroup.attend_collegeattendancetracker.network.model.WebLoginResponse;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -20,13 +20,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkClient {
-    public static final String WEB_ERP_HOST = "https://erp.bbsbec.edu.in/";
     public static final String MOBILE_API_HOST = "https://api.bbsbec.edu.in/";
     public static final String WEB_LOGIN_URL = "https://erp.bbsbec.edu.in/authentication/api/login";
     public static final String COLLEGE_ID = "1399";
 
     private static BbsbecApiService apiService;
-    private static BbsbecApiService refreshService;
+    private static BbsbecApiService authService;
 
     public static BbsbecApiService getClient() {
         return getApiService();
@@ -55,25 +54,41 @@ public class NetworkClient {
             Authenticator tokenAuthenticator = new Authenticator() {
                 @Override
                 public Request authenticate(Route route, @NonNull Response response) throws IOException {
+                    // Do not attempt re-login if the failed request was login itself
+                    if (response.request().url().toString().contains("authentication/api/login")) {
+                        return null;
+                    }
+
                     if (responseCount(response) >= 2) {
                         return null; // Don't retry more than once
                     }
 
-                    String refreshToken = TokenManager.getRefreshToken();
-                    if (refreshToken == null || refreshToken.trim().isEmpty()) {
+                    if (!TokenManager.hasSavedCredentials()) {
                         return null;
                     }
 
-                    Call<RefreshTokenResponse> refreshCall = getRefreshService().refreshToken(new RefreshTokenRequest(refreshToken));
-                    retrofit2.Response<RefreshTokenResponse> refreshResp = refreshCall.execute();
+                    synchronized (NetworkClient.class) {
+                        String currentToken = TokenManager.getAccessToken();
+                        String requestAuth = response.request().header("Authorization");
+                        if (currentToken != null && !currentToken.trim().isEmpty()) {
+                            String currentBearer = "Bearer " + currentToken;
+                            if (!currentBearer.equals(requestAuth)) {
+                                // Token was already updated by another concurrent thread/request
+                                return response.request().newBuilder()
+                                        .header("Authorization", currentBearer)
+                                        .build();
+                            }
+                        }
 
-                    if (refreshResp.isSuccessful() && refreshResp.body() != null && refreshResp.body().getData() != null) {
-                        String newAccessToken = refreshResp.body().getData().getAccessToken();
-                        if (newAccessToken != null && !newAccessToken.trim().isEmpty()) {
-                            TokenManager.updateAccessToken(newAccessToken);
-                            return response.request().newBuilder()
-                                    .header("Authorization", "Bearer " + newAccessToken)
-                                    .build();
+                        // Automated re-login: extracts and updates token only (no data sync)
+                        boolean success = reloginSync();
+                        if (success) {
+                            String updatedToken = TokenManager.getAccessToken();
+                            if (updatedToken != null && !updatedToken.trim().isEmpty()) {
+                                return response.request().newBuilder()
+                                        .header("Authorization", "Bearer " + updatedToken)
+                                        .build();
+                            }
                         }
                     }
                     return null;
@@ -108,11 +123,27 @@ public class NetworkClient {
         return apiService;
     }
 
-    public static synchronized BbsbecApiService getRefreshService() {
-        if (refreshService == null) {
+    public static synchronized BbsbecApiService getAuthService() {
+        if (authService == null) {
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            Interceptor headersInterceptor = chain -> {
+                Request original = chain.request();
+                Request request = original.newBuilder()
+                        .header("Accept", "application/json")
+                        .header("Content-Type", "application/json")
+                        .header("X-College-Id", COLLEGE_ID)
+                        .build();
+                return chain.proceed(request);
+            };
+
             OkHttpClient client = new OkHttpClient.Builder()
-                    .connectTimeout(20, TimeUnit.SECONDS)
-                    .readTimeout(20, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .writeTimeout(30, TimeUnit.SECONDS)
+                    .addInterceptor(headersInterceptor)
+                    .addInterceptor(logging)
                     .build();
 
             Retrofit retrofit = new Retrofit.Builder()
@@ -121,8 +152,50 @@ public class NetworkClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            refreshService = retrofit.create(BbsbecApiService.class);
+            authService = retrofit.create(BbsbecApiService.class);
         }
-        return refreshService;
+        return authService;
+    }
+
+    public static synchronized BbsbecApiService getRefreshService() {
+        return getAuthService();
+    }
+
+    /**
+     * Executes a synchronous re-login using saved credentials to refresh the access token.
+     * Only updates the access and refresh tokens; does NOT trigger data sync.
+     *
+     * @return true if login succeeded and token was updated, false otherwise.
+     */
+    public static synchronized boolean reloginSync() {
+        String savedUsername = TokenManager.getSavedUsername();
+        String savedPassword = TokenManager.getSavedPassword();
+        if (savedUsername == null || savedUsername.trim().isEmpty() ||
+                savedPassword == null || savedPassword.trim().isEmpty()) {
+            return false;
+        }
+
+        try {
+            WebLoginRequest loginReq = new WebLoginRequest(savedUsername, savedPassword);
+            Call<WebLoginResponse> loginCall = getAuthService().webLogin(WEB_LOGIN_URL, loginReq);
+            retrofit2.Response<WebLoginResponse> loginResp = loginCall.execute();
+
+            if (loginResp.isSuccessful() && loginResp.body() != null && loginResp.body().getData() != null) {
+                WebLoginResponse.Data data = loginResp.body().getData();
+                String newToken = data.getToken();
+                String newRefresh = data.getRefresh();
+
+                if (newToken != null && !newToken.trim().isEmpty()) {
+                    TokenManager.updateAccessToken(newToken);
+                    if (newRefresh != null && !newRefresh.trim().isEmpty()) {
+                        TokenManager.updateRefreshToken(newRefresh);
+                    }
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            // Re-login failed (e.g. network timeout or server unreachable)
+        }
+        return false;
     }
 }
