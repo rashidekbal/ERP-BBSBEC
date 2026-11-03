@@ -64,6 +64,25 @@ The application is engineered strictly following modern native Android best prac
 
 ---
 
+## 📖 Engineering Documentation
+
+Comprehensive "Docs-as-Code" architectural specifications, exact API contracts, developer runbooks, and Architecture Decision Records (ADRs) are documented in the [`docs/`](docs/README.md) hub:
+
+- **[Documentation Index](docs/README.md)**: Main architecture index, invariants, and navigation hub.
+- **[Codebase Master Inventory](docs/CODEBASE_INDEX.md)**: File-by-file inventory indexing all 148 source files, exported types, and dependencies.
+- **[System Architecture](docs/01-architecture/overview.md)**: Product goals, system topology, constraints, and library manifests.
+- **[Component Architecture](docs/01-architecture/component-architecture.md)**: Subsystem breakdowns, state models, and ViewModels.
+- **[Process Isolation & Security](docs/01-architecture/process-isolation.md)**: Process boundaries, permissions, exact alarm policies, and storage sandboxing.
+- **[Data Flows & Sequence Diagrams](docs/01-architecture/data-flows.md)**: Mermaid sequence diagrams for all primary journeys.
+- **[API Contracts](docs/02-contracts-and-apis/api-contracts.md)**: Exact REST endpoint signatures, headers, JSON payloads, and error handling.
+- **[Realtime & Event Protocols](docs/02-contracts-and-apis/realtime-protocol.md)**: AlarmManager polling loops and AppWidget IPC broadcast actions.
+- **[Persistence & Storage](docs/02-contracts-and-apis/persistence-and-storage.md)**: Room SQLite schema (v10), migrations V1–V10, and disk caches.
+- **[Developer Playbooks](docs/03-developer-playbook/local-setup.md)**: Local workstation setup, Logcat/OkHttp debugging, and release packaging.
+- **[Change Playbooks](docs/04-change-playbooks/how-to-add-a-feature.md)**: Step-by-step recipes for new APIs, DB migrations, and troubleshooting.
+- **[Architecture Decision Records](docs/05-adrs/ADR-001-core-engine-choice.md)**: ADR-001 (Core Network Engine) and ADR-002 (Native Java MVVM & Room).
+
+---
+
 ## 📂 Project Structure
 
 ```
