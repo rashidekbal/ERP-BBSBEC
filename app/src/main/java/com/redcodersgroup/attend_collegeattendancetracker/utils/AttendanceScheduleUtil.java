@@ -132,15 +132,13 @@ public class AttendanceScheduleUtil {
             }
         }
 
-        int scheduledConducted = calculateScheduledConductedTillToday(user, subject, isLab, holidays, days, schedules);
-        int netScheduledConducted = Math.max(0, scheduledConducted - cancelled);
-        int conducted = Math.max(attended + missed, netScheduledConducted);
+        int conducted = attended + missed;
 
         int percentage;
         if (conducted > 0) {
             percentage = (int) Math.round(((double) attended / conducted) * 100);
         } else {
-            percentage = (records != null && !records.isEmpty()) ? 0 : 100;
+            percentage = 0;
         }
 
         return new AttendanceStats(attended, missed, cancelled, conducted, percentage);
